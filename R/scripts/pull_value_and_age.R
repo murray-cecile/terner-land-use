@@ -18,17 +18,19 @@ censuskey <- Sys.getenv("CENSUSAPI_KEY")
 # median gross rent - table B25064
 # aggregate gross rent - table B25065
 # median home value - B25077
+# aggregate home value - B25079
 # median year built - B25035
 
 # construct varlist
-vars <- sapply(c("B25035", "B25064", "B25065", "B25077"), 
+vars <- sapply(c("B25035", "B25064", "B25065", "B25077", "B25079"), 
                function(x) {paste0(x, "_001E")})
 
 place_data <- getCensus("acs/acs5", vintage = 2017, key = censuskey,
                  vars = vars, region = "place", regionin = "state:06") %>% 
   clean_api_pull("place") %>% 
   dplyr::rename(med_age = B25035_001E, med_rent = B25064_001E,
-                agg_rent = B25065_001E, med_homeval = B25077_001E)
+                agg_rent = B25065_001E, med_homeval = B25077_001E,
+                agg_homeval = B25079_001E)
 
 # check whether I need to fix NA's and top-code values
 setwd(MAIN_DIR)
@@ -49,11 +51,14 @@ write_excel_csv(place_data, "data_pulls/value_data_by_place.csv",
 # PULL TRACT DATA
 #===============================================================================#
 
-tract_data <- getCensus("acs/acs5", vintage = 2017, key = censuskey,
-                        vars = vars, region = "tract", regionin = "state:06") %>% 
-  clean_api_pull("tract") %>% 
-  dplyr::rename(med_age = B25035_001E, med_rent = B25064_001E,
-                agg_rent = B25065_001E, med_homeval = B25077_001E)
+tract_vars <- sapply(c( "B25065", "B25079"), function(x) {paste0(x, "_001E")})
+
+# use tidycensus because it handles the missing and top-coded values better!
+tract_data <- get_acs(geography = "tract", variables = tract_vars,
+                      year = 2017, state = "CA", key = censuskey) %>% 
+  dplyr::rename(tract = GEOID) %>% select(-NAME, -moe) %>% 
+  spread(variable, estimate) %>% 
+  dplyr::rename(agg_rent = B25065_001, agg_homeval = B25079_001)
 
 write_excel_csv(tract_data, "data_pulls/value_data_by_tract.csv",
                 na = ".")
