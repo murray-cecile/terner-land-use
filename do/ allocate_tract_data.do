@@ -12,7 +12,7 @@ clear all
 capture cd "/Users/cecilemurray/Documents/coding/Terner"
 
 capture log close
-log using "log/unincorporated_allocation-01-09", append
+log using "log/unincorporated_allocation-01-22", append
 
 * convert csvs into Stata files
 
@@ -28,9 +28,15 @@ save "census/race_ethnicity_CA_tracts_2013-17.dta", replace
 import delimited "R/temp/age_composition_tracts.csv", clear
 save "census/age_composition_CA_tracts_2013-17.dta", replace
 
+import delimited "R/data_pulls/value_data_by_tract.csv", clear
+save "census/housing_value_CA_tracts_2013-17.dta", replace
+
+
 * now merge all files together and reshape wide
 use "census/median_hh_income_CA_tracts_2013-17.dta", clear
 merge 1:1 tract using "census/BA_plus_share_CA_tracts_2013-17.dta", nogen
+
+merge 1:1 tract using "census/housing_value_CA_tracts_2013-17.dta", nogen
 
 merge 1:m tract using "census/race_ethnicity_CA_tracts_2013-17.dta", nogen
 reshape wide race_ct* race_share*, i(tract) j(race) string
@@ -78,12 +84,12 @@ reshape long race_, i(tract stplfips city agevar) j(racevar) string
 replace age_ = afact * age_
 replace race_ = afact * race_
 
-foreach v of varlist medhhinc* tot* baplus* {
+foreach v of varlist medhhinc* tot* baplus* agg_* {
 	replace `v' = `v' * afact
 }
 
 * now collapse by place
-collapse (sum) age_ race_ baplus* tot*, by(stplfips city agevar racevar)
+collapse (sum) age_ race_ baplus* tot* agg*, by(stplfips city agevar racevar)
 
 * actually going to drop all the se2s and previusly computed shares
 drop baplus_share_se2 baplus_se2 total_se2
@@ -96,10 +102,10 @@ drop if substr(racevar, 4, 3) == "se2"
 * RESHAPE WIDE (horribly)
 *===================================
 
-* currently snapshot 14
+* currently snapshot 2 (formerly 14!)
 snapshot save
 
-keep stplfips city baplus* total*
+keep stplfips city baplus* total* agg*
 duplicates drop stplfips, force
 
 * fix the shares
@@ -108,7 +114,7 @@ replace baplus_share = baplus / total
 * save this extract
 save "temp/unincorporated_place_basic_wide.dta", replace
 
-snapshot restore 14
+snapshot restore 2 
 
 foreach v in age race {
 	keep stplfips `v'_ `v'var total
@@ -118,7 +124,7 @@ foreach v in age race {
 	keep stplfips `v'var `v'_share
 	reshape wide `v'_share, i(stplfips) j(`v'var) string
 	save "temp/unincorporated_place_`v'_data.dta", replace
-	snapshot restore 14
+	snapshot restore 2
 }
 
 use "temp/unincorporated_place_basic_wide.dta", clear

@@ -12,7 +12,7 @@ set more off
 capture cd "/Users/cecilemurray/Documents/coding/Terner"
 
 capture log close
-log using "log/data_merges_2019-01-10", append
+log using "log/data_merges_2019-01-22", append
 
 *===============================
 * convert csvs into Stata files - only needs to be run once

@@ -12,7 +12,7 @@ set more off
 capture cd "/Users/cecilemurray/Documents/coding/Terner"
 
 capture log close
-log using "log/data_merges_2019-01-13", append
+log using "log/data_merges_2019-01-22", append
 
 use "raw/TCRLUS_data13_2018-11-12.dta", clear
 
