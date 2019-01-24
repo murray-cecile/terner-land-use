@@ -1,0 +1,810 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/data_merges_2019-01-13.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}13 Jan 2019, 10:33:37
+{txt}
+{com}. 
+. * add year indicators and drop extraneous geographic indicatorss
+. foreach y in "2013" "2014" "2015" "2016" "2017" {c -(}
+{txt}  2{com}.         use "census/CA_places_building_permits_`y'.dta", clear
+{txt}  3{com}.         capture gen year = `y'
+{txt}  4{com}.         capture drop stfips cofips plfips region division csa cbsa
+{txt}  5{com}.         save "census/CA_places_building_permits_`y'.dta", replace
+{txt}  6{com}. {c )-}
+{txt}(Written by R)
+file census/CA_places_building_permits_2013.dta saved
+(Written by R)
+file census/CA_places_building_permits_2014.dta saved
+(Written by R)
+file census/CA_places_building_permits_2015.dta saved
+(Written by R)
+file census/CA_places_building_permits_2016.dta saved
+(Written by R)
+file census/CA_places_building_permits_2017.dta saved
+
+{com}. 
+. use "census/CA_places_building_permits_2013.dta", clear
+{txt}(Written by R)
+
+{com}. 
+. * merge all years together
+. append using "census/CA_places_building_permits_2014.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2015.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2016.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2017.dta"
+{txt}
+{com}. 
+. sort place
+{txt}
+{com}. order stcofips stplfips place year
+{txt}
+{com}. 
+. * check for anomalies and correct Truckee
+. duplicates tag place, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} place{p_end}
+{txt}
+{com}. * browse if dup < 4
+. replace place = "Truckee" if place == "Truckee town"
+{txt}(2 real changes made)
+
+{com}. drop dup
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. * change unincorporated county FIPS to match TCRLUS: stcofips + 999
+. replace stplfips = stcofips + "999" if stplfips == "0699990"
+{txt}stplfips was {res}str7{txt} now {res}str8
+{txt}(269 real changes made)
+
+{com}. 
+. * manually recode Alpine County: 0600000 -> 06003999
+. replace stplfips = "06003999" if stplfips = "0600000" & stcofips = "06003"
+{err}type mismatch
+{txt}{search r(109):r(109);}
+
+end of do-file
+
+{search r(109):r(109);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. * manually recode Alpine County: 0600000 -> 06003999
+. replace stplfips = "06003999" if stplfips == "0600000" & stcofips == "06003"
+{txt}(4 real changes made)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. collapse (sum) x*, by(stplfips place)
+{txt}
+{com}. 
+. * additionally check Alpine, Mariposa, Sierra, and Trinity Counties in 2013?
+. * only Alpine unincorporated is actually in the Terner data
+. duplicates tag stplfips, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} stplfips{p_end}
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse if dup > 0
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. drop if dup > 0
+{txt}(3 observations deleted)
+
+{com}. drop dup
+{txt}
+{com}. 
+. save "census/merged_building_permits_2013-17.dta", replace
+{txt}file census/merged_building_permits_2013-17.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. capture log close
+{smcl}
+{com}{sf}{ul off}{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/data_merges_2019-01-13.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}13 Jan 2019, 10:37:07
+{txt}
+{com}. 
+. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. * MERGE IN ACS DATA
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,270
+{txt}{col 9}from master{col 30}{res}               0{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             271{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. drop if _merge == 2
+{txt}(1270 observations deleted)
+
+{com}. rename _merge has_acs
+{res}{txt}
+{com}. 
+. * MERGE IN PERMIT DATA
+. merge 1:1 stplfips using "census/merged_building_permits_2013-17.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}             260
+{txt}{col 9}from master{col 30}{res}               5{txt}  (_merge==1)
+{col 9}from using{col 30}{res}             255{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             266{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. rename _merge has_buildperm
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. tab _merge tab _hasbuildperm
+{err}variable _merge not found
+{txt}{search r(111):r(111);}
+
+{com}. tab has_acs has_buildperm
+
+                      {txt}{c |}     has_buildperm
+              has_acs {c |} master on  matched ( {c |}     Total
+{hline 22}{c +}{hline 22}{c +}{hline 10}
+          matched (3) {c |}{res}         5        266 {txt}{c |}{res}       271 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+                Total {c |}{res}         5        266 {txt}{c |}{res}       271 
+
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. use "R/data_pulls/CA_tenure_by_units_213-17.dta", clear
+{err}{p 0 4 2}
+file R/data_pulls/CA_tenure_by_units_213-17.dta
+not found
+{p_end}
+{txt}{search r(601):r(601);}
+
+end of do-file
+
+{search r(601):r(601);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. use "R/data_pulls/CA_tenure_by_units_2313-17.dta", clear
+{err}{p 0 4 2}
+file R/data_pulls/CA_tenure_by_units_2313-17.dta
+not found
+{p_end}
+{txt}{search r(601):r(601);}
+
+end of do-file
+
+{search r(601):r(601);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. use "R/data_pulls/CA_tenure_by_units_2013-17.dta", clear
+{txt}(Written by R)
+{err}.dta file corrupt
+{p 4 4 2}
+The file does not record
+<varnames> where expected.
+Either the file was written incorrectly in the
+first place or the file has become corrupted.
+{p_end}
+{txt}{search r(612):r(612);}
+
+end of do-file
+
+{search r(612):r(612);}
+
+{com}. import delimited "R/data_pulls/CA_tenure_by_units_2013-17.dta"
+{res}{err}file R/data_pulls/CA_tenure_by_units_2013-17.dta not found
+{txt}{search r(601):r(601);}
+
+{com}. import delimited "R/data_pulls/CA_tenure_by_units_2013-17.csv"
+{res}{text}(9 vars, 33484 obs)
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. capture log close
+{smcl}
+{com}{sf}{ul off}{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/data_merges_2019-01-13.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}13 Jan 2019, 10:50:15
+{txt}
+{com}. 
+. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. * MERGE IN ACS DEMOGRAPHIC DATA
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,270
+{txt}{col 9}from master{col 30}{res}               0{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             271{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. drop if _merge == 2
+{txt}(1270 observations deleted)
+
+{com}. rename _merge has_demo
+{res}{txt}
+{com}. 
+. * MERGE IN ACS TENURE DATA
+. merge 1:1 stplfips using "census/units_by_tenure.dta"
+{res}{err}{p 0 2 2}
+key variable
+stplfips is
+str50 in master but
+long in using data
+{p_end}
+{p 4 4 2}
+Each key variable -- the variables on
+which observations are
+matched -- must be of the same generic
+type in the master and using datasets.
+Same generic type means both numeric or
+both string.
+{p_end}
+{txt}{search r(106):r(106);}
+
+end of do-file
+
+{search r(106):r(106);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. capture log close
+{smcl}
+{com}{sf}{ul off}{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/data_merges_2019-01-13.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}13 Jan 2019, 10:52:01
+{txt}
+{com}. 
+. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. * MERGE IN ACS DEMOGRAPHIC DATA
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,270
+{txt}{col 9}from master{col 30}{res}               0{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             271{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. drop if _merge == 2
+{txt}(1270 observations deleted)
+
+{com}. rename _merge has_demo
+{res}{txt}
+{com}. 
+. * MERGE IN ACS TENURE DATA
+. merge 1:1 stplfips using "census/units_by_tenure.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,289
+{txt}{col 9}from master{col 30}{res}              19{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             252{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. tab _merge
+
+                 {txt}_merge {c |}      Freq.     Percent        Cum.
+{hline 24}{c +}{hline 35}
+        master only (1) {c |}{res}         19        1.23        1.23
+{txt}         using only (2) {c |}{res}      1,270       82.41       83.65
+{txt}            matched (3) {c |}{res}        252       16.35      100.00
+{txt}{hline 24}{c +}{hline 35}
+                  Total {c |}{res}      1,541      100.00
+{txt}
+{com}. rename _merge has_tenure
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. tab has_acs has_tenure
+{err}variable has_acs not found
+{txt}{search r(111):r(111);}
+
+{com}. tab has_demo has_tenure
+
+                      {txt}{c |}      has_tenure
+             has_demo {c |} master on  matched ( {c |}     Total
+{hline 22}{c +}{hline 22}{c +}{hline 10}
+          matched (3) {c |}{res}        19        252 {txt}{c |}{res}       271 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+                Total {c |}{res}        19        252 {txt}{c |}{res}       271 
+
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. *=======================
+. * PLACE DATA
+. *=======================
+. 
+. import delimited "R/data_pulls/CA_tenure_by_units_2013-17.csv", clear
+{res}{text}(9 vars, 33484 obs)
+
+{com}. 
+. * keep only unit shares and total count
+. keep stplfips varname share total
+{txt}
+{com}. 
+. * reshape wide
+. reshape wide share, i(stplfips) j(varname) string
+{txt}(note: j = own_10to19 own_1att own_1det own_2 own_20to49 own_3to4 own_50plus own_5to9 own_boatrv own_mobile ownocc rent_10to19 rent_1att rent_1det rent_2 rent_20to49 rent_3to4 rent_50plus rent_5to9 rent_boatrv rent_mobile rentocc)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}   33484   {txt}->{res}    1522
+{txt}Number of variables            {res}       4   {txt}->{res}      24
+{txt}j variable (22 values)          {res}varname   {txt}->   (dropped)
+xij variables:
+                                  {res}share   {txt}->   {res}shareown_10to19 shareown_1att ... sharerentocc
+{txt}{hline 77}
+
+{com}. 
+. * rename total variable
+. rename total tot_unit_ct
+{res}{txt}
+{com}. 
+. * convert FIPS to string 
+. tostring stplfips, format(%07.0f) replace
+{txt}stplfips was {res:long} now {res:str7}
+
+{com}. 
+. * save 
+. save "temp/units_by_tenure.dta", replace
+{txt}(note: file temp/units_by_tenure.dta not found)
+file temp/units_by_tenure.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. capture log close
+{smcl}
+{com}{sf}{ul off}{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/data_merges_2019-01-13.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}13 Jan 2019, 11:37:29
+{txt}
+{com}. 
+. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. * MERGE IN ACS DEMOGRAPHIC DATA
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,270
+{txt}{col 9}from master{col 30}{res}               0{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             271{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. drop if _merge == 2
+{txt}(1270 observations deleted)
+
+{com}. rename _merge has_demo
+{res}{txt}
+{com}. 
+. * MERGE IN ACS TENURE DATA
+. merge 1:1 stplfips using "census/units_by_tenure.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,289
+{txt}{col 9}from master{col 30}{res}              19{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             252{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. tab _merge
+
+                 {txt}_merge {c |}      Freq.     Percent        Cum.
+{hline 24}{c +}{hline 35}
+        master only (1) {c |}{res}         19        1.23        1.23
+{txt}         using only (2) {c |}{res}      1,270       82.41       83.65
+{txt}            matched (3) {c |}{res}        252       16.35      100.00
+{txt}{hline 24}{c +}{hline 35}
+                  Total {c |}{res}      1,541      100.00
+{txt}
+{com}. rename _merge has_tenure
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. tab has_demo has_tenure
+
+                      {txt}{c |}      has_tenure
+             has_demo {c |} master on  matched ( {c |}     Total
+{hline 22}{c +}{hline 22}{c +}{hline 10}
+          matched (3) {c |}{res}        19        252 {txt}{c |}{res}       271 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+                Total {c |}{res}        19        252 {txt}{c |}{res}       271 
+
+
+{com}. browse if has_tenure==1
+
+. use "census/unincorporated_place_acs_data_final.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. browse
+
+. use  "census/all_census_data_CA_places", clear
+
+. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. capture log close
+{smcl}
+{com}{sf}{ul off}{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/data_merges_2019-01-13.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}13 Jan 2019, 11:41:42
+{txt}
+{com}. 
+. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. * MERGE IN ACS DEMOGRAPHIC DATA
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,270
+{txt}{col 9}from master{col 30}{res}               0{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             271{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. drop if _merge == 2
+{txt}(1270 observations deleted)
+
+{com}. rename _merge has_demo
+{res}{txt}
+{com}. 
+. * MERGE IN ACS TENURE DATA
+. merge 1:1 stplfips using "census/units_by_tenure.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,270
+{txt}{col 9}from master{col 30}{res}               0{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             271{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. tab _merge
+
+                 {txt}_merge {c |}      Freq.     Percent        Cum.
+{hline 24}{c +}{hline 35}
+         using only (2) {c |}{res}      1,270       82.41       82.41
+{txt}            matched (3) {c |}{res}        271       17.59      100.00
+{txt}{hline 24}{c +}{hline 35}
+                  Total {c |}{res}      1,541      100.00
+{txt}
+{com}. rename _merge has_tenure
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. tab has_demo has_tenure
+
+                      {txt}{c |} has_tenure
+             has_demo {c |} matched ( {c |}     Total
+{hline 22}{c +}{hline 11}{c +}{hline 10}
+          matched (3) {c |}{res}       271 {txt}{c |}{res}       271 
+{txt}{hline 22}{c +}{hline 11}{c +}{hline 10}
+                Total {c |}{res}       271 {txt}{c |}{res}       271 
+
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. * MERGE IN PERMIT DATA
+. merge 1:1 stplfips using "census/merged_building_permits_2013-17.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,096
+{txt}{col 9}from master{col 30}{res}           1,058{txt}  (_merge==1)
+{col 9}from using{col 30}{res}              38{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             483{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. rename _merge has_buildperm
+{res}{txt}
+{com}. 
+. * snapshot 17
+. snapshot save
+{txt}{p 0 2}snapshot {res:1} created at {res:13 Jan 2019 11:42}{p_end}
+
+{com}. 
+. save "output/merged_TCRLUS_census_buildperm.dta", replace
+{txt}file output/merged_TCRLUS_census_buildperm.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. * save extract of the observations that won't merge (unincorporated + a few others)
+. keep if _merge == 1
+{err}_merge not found
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. tab has_demo has_buildperm
+
+                      {txt}{c |}     has_buildperm
+             has_demo {c |} master on  matched ( {c |}     Total
+{hline 22}{c +}{hline 22}{c +}{hline 10}
+          matched (3) {c |}{res}         5        266 {txt}{c |}{res}       271 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+                Total {c |}{res}         5        266 {txt}{c |}{res}       271 
+
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. * save extract of the observations that won't merge (unincorporated + a few others)
+. keep if has_buildperm == 1
+{txt}(521 observations deleted)
+
+{com}. keep stplfips county has_buildperm 
+{txt}
+{com}. save "temp/five_unmerged_places.dta", replace 
+{txt}(note: file temp/five_unmerged_places.dta not found)
+file temp/five_unmerged_places.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. snapshot restore 1
+
+. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. * MERGE IN ACS DEMOGRAPHIC DATA
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,270
+{txt}{col 9}from master{col 30}{res}               0{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             271{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. drop if _merge == 2
+{txt}(1270 observations deleted)
+
+{com}. rename _merge has_demo
+{res}{txt}
+{com}. 
+. * MERGE IN ACS TENURE DATA
+. merge 1:1 stplfips using "census/units_by_tenure.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,270
+{txt}{col 9}from master{col 30}{res}               0{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             271{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. tab _merge
+
+                 {txt}_merge {c |}      Freq.     Percent        Cum.
+{hline 24}{c +}{hline 35}
+         using only (2) {c |}{res}      1,270       82.41       82.41
+{txt}            matched (3) {c |}{res}        271       17.59      100.00
+{txt}{hline 24}{c +}{hline 35}
+                  Total {c |}{res}      1,541      100.00
+{txt}
+{com}. rename _merge has_tenure
+{res}{txt}
+{com}. drop if _has_tenure < 3
+{err}_has_tenure not found
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. * MERGE IN ACS DEMOGRAPHIC DATA
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,270
+{txt}{col 9}from master{col 30}{res}               0{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             271{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. drop if _merge == 2
+{txt}(1270 observations deleted)
+
+{com}. rename _merge has_demo
+{res}{txt}
+{com}. 
+. * MERGE IN ACS TENURE DATA
+. merge 1:1 stplfips using "census/units_by_tenure.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,270
+{txt}{col 9}from master{col 30}{res}               0{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             271{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. tab _merge
+
+                 {txt}_merge {c |}      Freq.     Percent        Cum.
+{hline 24}{c +}{hline 35}
+         using only (2) {c |}{res}      1,270       82.41       82.41
+{txt}            matched (3) {c |}{res}        271       17.59      100.00
+{txt}{hline 24}{c +}{hline 35}
+                  Total {c |}{res}      1,541      100.00
+{txt}
+{com}. rename _merge has_tenure
+{res}{txt}
+{com}. drop if has_tenure < 3
+{txt}(1270 observations deleted)
+
+{com}. 
+. * MERGE IN PERMIT DATA
+. merge 1:1 stplfips using "census/merged_building_permits_2013-17.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}             260
+{txt}{col 9}from master{col 30}{res}               5{txt}  (_merge==1)
+{col 9}from using{col 30}{res}             255{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             266{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. rename _merge has_buildperm
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. * snapshot 2
+. snapshot save
+{txt}{p 0 2}snapshot {res:2} created at {res:13 Jan 2019 11:44}{p_end}
+
+{com}. 
+. * save extract of the observations that won't merge (unincorporated + a few others)
+. keep if has_buildperm == 1
+{txt}(521 observations deleted)
+
+{com}. keep stplfips county has_buildperm 
+{txt}
+{com}. save "temp/five_unmerged_places.dta", replace 
+{txt}file temp/five_unmerged_places.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. snapshot restore 2
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. save "output/FINAL_merged_TCRLUS_census_buildperm.dta", replace
+{txt}(note: file output/FINAL_merged_TCRLUS_census_buildperm.dta not found)
+file output/FINAL_merged_TCRLUS_census_buildperm.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. capture log close
+{smcl}
+{com}{sf}{ul off}

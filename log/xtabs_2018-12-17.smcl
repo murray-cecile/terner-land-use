@@ -1,0 +1,799 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/xtabs_2018-12-17.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}17 Dec 2018, 12:27:47
+
+{com}. tab apr_sfplan apr_mfplan
+
+        {txt}How often are {c |}
+             complete {c |}
+single-family project {c |}
+         applications {c |}      How often are complete multifamily project applications approved?
+            approved? {c |}   Missing  Almost ne  Seldom (6  Sometimes  Often (51  Usually (  Almost al {c |}     Total
+{hline 22}{c +}{hline 77}{c +}{hline 10}
+              Missing {c |}{res}         5          0          0          0          0          1          0 {txt}{c |}{res}         6 
+{txt}       Seldom (6-25%) {c |}{res}         0          1          1          0          0          0          0 {txt}{c |}{res}         2 
+{txt}   Sometimes (26-50%) {c |}{res}         0          0          1          5          0          0          0 {txt}{c |}{res}         6 
+{txt}       Often (51-75%) {c |}{res}         1          1          0          1          6          1          0 {txt}{c |}{res}        10 
+{txt}     Usually (76-95%) {c |}{res}         2          0          2          4          6         52          4 {txt}{c |}{res}        70 
+{txt}Almost always (96-100 {c |}{res}        11          1          0          0          0         36        128 {txt}{c |}{res}       176 
+{txt}{hline 22}{c +}{hline 77}{c +}{hline 10}
+                Total {c |}{res}        19          3          4         10         12         90        132 {txt}{c |}{res}       270 
+
+
+{com}. tab apr_sfpermit apr_mfpermit
+
+        {txt}How often are {c |}
+             approved {c |}
+        single-family {c |}            How often are approved multifamily projects permitted?
+  projects permitted? {c |}   Missing  Almost ne  Seldom (6  Sometimes  Often (51  Usually (  Almost al {c |}     Total
+{hline 22}{c +}{hline 77}{c +}{hline 10}
+              Missing {c |}{res}         7          0          0          0          0          0          2 {txt}{c |}{res}         9 
+{txt}       Seldom (6-25%) {c |}{res}         0          1          1          0          0          0          0 {txt}{c |}{res}         2 
+{txt}   Sometimes (26-50%) {c |}{res}         0          1          0          5          3          2          0 {txt}{c |}{res}        11 
+{txt}       Often (51-75%) {c |}{res}         2          0          1          5         20          5          2 {txt}{c |}{res}        35 
+{txt}     Usually (76-95%) {c |}{res}         4          0          2          1         11         69         10 {txt}{c |}{res}        97 
+{txt}Almost always (96-100 {c |}{res}         6          1          0          1          2         20         86 {txt}{c |}{res}       116 
+{txt}{hline 22}{c +}{hline 77}{c +}{hline 10}
+                Total {c |}{res}        19          3          4         12         36         96        100 {txt}{c |}{res}       270 
+
+
+{com}. tab apr_sfoccupy apr_mfoccupy
+
+        {txt}How often are {c |}
+            permitted {c |}
+        single-family {c |}           How often are permitted multifamily projects completed?
+  projects completed? {c |}   Missing  Almost ne  Seldom (6  Sometimes  Often (51  Usually (  Almost al {c |}     Total
+{hline 22}{c +}{hline 77}{c +}{hline 10}
+              Missing {c |}{res}         9          0          0          0          0          0          1 {txt}{c |}{res}        10 
+{txt}  Almost never (0-5%) {c |}{res}         0          2          0          0          0          0          1 {txt}{c |}{res}         3 
+{txt}       Seldom (6-25%) {c |}{res}         0          0          1          0          0          0          0 {txt}{c |}{res}         1 
+{txt}   Sometimes (26-50%) {c |}{res}         0          0          0          5          1          0          0 {txt}{c |}{res}         6 
+{txt}       Often (51-75%) {c |}{res}         0          0          0          2         11          2          1 {txt}{c |}{res}        16 
+{txt}     Usually (76-95%) {c |}{res}         2          1          0          1          7         50          4 {txt}{c |}{res}        65 
+{txt}Almost always (96-100 {c |}{res}        10          2          1          0          2          7        147 {txt}{c |}{res}       169 
+{txt}{hline 22}{c +}{hline 77}{c +}{hline 10}
+                Total {c |}{res}        21          5          2          8         21         59        154 {txt}{c |}{res}       270 
+
+
+{com}. tab lrg_sf50 lrg_sf50
+
+            {txt}How many {c |}
+       single-family {c |}
+projects with 50-149 {c |}   How many single-family projects with 50-149 houses have been
+    houses have been {c |}                        built from 2015 on?
+ built from 2015 on? {c |}   Missing       None        1-2        3-5        6-9        10+ {c |}     Total
+{hline 21}{c +}{hline 66}{c +}{hline 10}
+             Missing {c |}{res}        17          0          0          0          0          0 {txt}{c |}{res}        17 
+{txt}                None {c |}{res}         0        183          0          0          0          0 {txt}{c |}{res}       183 
+{txt}                 1-2 {c |}{res}         0          0         48          0          0          0 {txt}{c |}{res}        48 
+{txt}                 3-5 {c |}{res}         0          0          0         13          0          0 {txt}{c |}{res}        13 
+{txt}                 6-9 {c |}{res}         0          0          0          0          6          0 {txt}{c |}{res}         6 
+{txt}                 10+ {c |}{res}         0          0          0          0          0          3 {txt}{c |}{res}         3 
+{txt}{hline 21}{c +}{hline 66}{c +}{hline 10}
+               Total {c |}{res}        17        183         48         13          6          3 {txt}{c |}{res}       270 
+
+
+{com}. tab lrg_sf150 lrg_sf150
+
+            {txt}How many {c |}
+       single-family {c |}
+  projects with 150+ {c |} How many single-family projects with 150+ houses have been built
+    houses have been {c |}                           from 2015 on?
+ built from 2015 on? {c |}   Missing       None        1-2        3-5        6-9        10+ {c |}     Total
+{hline 21}{c +}{hline 66}{c +}{hline 10}
+             Missing {c |}{res}        21          0          0          0          0          0 {txt}{c |}{res}        21 
+{txt}                None {c |}{res}         0        214          0          0          0          0 {txt}{c |}{res}       214 
+{txt}                 1-2 {c |}{res}         0          0         26          0          0          0 {txt}{c |}{res}        26 
+{txt}                 3-5 {c |}{res}         0          0          0          5          0          0 {txt}{c |}{res}         5 
+{txt}                 6-9 {c |}{res}         0          0          0          0          1          0 {txt}{c |}{res}         1 
+{txt}                 10+ {c |}{res}         0          0          0          0          0          3 {txt}{c |}{res}         3 
+{txt}{hline 21}{c +}{hline 66}{c +}{hline 10}
+               Total {c |}{res}        21        214         26          5          1          3 {txt}{c |}{res}       270 
+
+
+{com}. tab lrg_sf20 lrg_sf20
+
+            {txt}How many {c |}
+       single-family {c |}
+ projects with 20-49 {c |} How many single-family projects with 20-49 houses have been built
+    houses have been {c |}                           from 2015 on?
+ built from 2015 on? {c |}   Missing       None        1-2        3-5        6-9        10+ {c |}     Total
+{hline 21}{c +}{hline 66}{c +}{hline 10}
+             Missing {c |}{res}        15          0          0          0          0          0 {txt}{c |}{res}        15 
+{txt}                None {c |}{res}         0        161          0          0          0          0 {txt}{c |}{res}       161 
+{txt}                 1-2 {c |}{res}         0          0         67          0          0          0 {txt}{c |}{res}        67 
+{txt}                 3-5 {c |}{res}         0          0          0         20          0          0 {txt}{c |}{res}        20 
+{txt}                 6-9 {c |}{res}         0          0          0          0          2          0 {txt}{c |}{res}         2 
+{txt}                 10+ {c |}{res}         0          0          0          0          0          5 {txt}{c |}{res}         5 
+{txt}{hline 21}{c +}{hline 66}{c +}{hline 10}
+               Total {c |}{res}        15        161         67         20          2          5 {txt}{c |}{res}       270 
+
+
+{com}. tab ceq_sfthreat ceq_mfthreat
+
+         {txt}How often do {c |}
+        single-family {c |}
+    projects face the {c |}
+       threat of CEQA {c |}     How often do multifamily projects face the threat of CEQA lawsuits?
+            lawsuits? {c |}   Missing  Almost ne  Seldom (6  Sometimes  Often (51  Usually (  Almost al {c |}     Total
+{hline 22}{c +}{hline 77}{c +}{hline 10}
+              Missing {c |}{res}        13          0          0          0          0          0          0 {txt}{c |}{res}        13 
+{txt}  Almost never (0-5%) {c |}{res}         5        102         30         14          1          1          2 {txt}{c |}{res}       155 
+{txt}       Seldom (6-25%) {c |}{res}         2          5         43          9          5          0          1 {txt}{c |}{res}        65 
+{txt}   Sometimes (26-50%) {c |}{res}         0          2          5         10          5          0          1 {txt}{c |}{res}        23 
+{txt}       Often (51-75%) {c |}{res}         0          0          1          0          6          1          0 {txt}{c |}{res}         8 
+{txt}     Usually (76-95%) {c |}{res}         0          0          1          0          0          3          1 {txt}{c |}{res}         5 
+{txt}Almost always (96-100 {c |}{res}         0          0          0          0          0          0          2 {txt}{c |}{res}         2 
+{txt}{hline 22}{c +}{hline 77}{c +}{hline 10}
+                Total {c |}{res}        20        109         80         33         17          5          7 {txt}{c |}{res}       271 
+
+
+{com}. tab ceq_sflawsuit ceq_mflawsuit
+
+         {txt}How often do {c |}
+        single-family {c |}
+   projects face CEQA {c |}       How often do multifamily projects face CEQA lawsuits?
+            lawsuits? {c |}   Missing  Almost ne  Seldom (6  Sometimes  Often (51  Almost al {c |}     Total
+{hline 22}{c +}{hline 66}{c +}{hline 10}
+              Missing {c |}{res}        13          0          0          0          0          0 {txt}{c |}{res}        13 
+{txt}  Almost never (0-5%) {c |}{res}         7        170         19          7          1          1 {txt}{c |}{res}       205 
+{txt}       Seldom (6-25%) {c |}{res}         0         10         23          3          1          1 {txt}{c |}{res}        38 
+{txt}   Sometimes (26-50%) {c |}{res}         0          0          4          7          1          0 {txt}{c |}{res}        12 
+{txt}       Often (51-75%) {c |}{res}         0          0          0          0          2          0 {txt}{c |}{res}         2 
+{txt}Almost always (96-100 {c |}{res}         0          0          0          0          0          1 {txt}{c |}{res}         1 
+{txt}{hline 22}{c +}{hline 66}{c +}{hline 10}
+                Total {c |}{res}        20        180         46         17          5          3 {txt}{c |}{res}       271 
+
+
+{com}. tab ceq_sfrevision ceq_mfrevision
+
+    {txt}How often do CEQA {c |}
+   lawsuits result in {c |}
+         revisions to {c |}
+        single-family {c |}   How often do CEQA lawsuits result in revisions to multifamily projects?
+            projects? {c |}   Missing  Almost ne  Seldom (6  Sometimes  Often (51  Usually (  Almost al {c |}     Total
+{hline 22}{c +}{hline 77}{c +}{hline 10}
+              Missing {c |}{res}        20          0          0          0          0          0          0 {txt}{c |}{res}        20 
+{txt}  Almost never (0-5%) {c |}{res}         5        153         16          5          2          0          1 {txt}{c |}{res}       182 
+{txt}       Seldom (6-25%) {c |}{res}         1          7         28          4          0          1          0 {txt}{c |}{res}        41 
+{txt}   Sometimes (26-50%) {c |}{res}         0          0          3         17          1          0          0 {txt}{c |}{res}        21 
+{txt}       Often (51-75%) {c |}{res}         0          0          0          1          3          1          1 {txt}{c |}{res}         6 
+{txt}     Usually (76-95%) {c |}{res}         0          0          0          0          0          1          0 {txt}{c |}{res}         1 
+{txt}{hline 22}{c +}{hline 77}{c +}{hline 10}
+                Total {c |}{res}        26        160         47         27          6          3          2 {txt}{c |}{res}       271 
+
+
+{com}. tab ceq_sffailure ceq_mffailure
+
+    {txt}How often do CEQA {c |}
+   lawsuits result in {c |}
+       the failure of {c |}  How often do CEQA lawsuits result in the failure of multifamily
+        single-family {c |}                             projects?
+            projects? {c |}   Missing  Almost ne  Seldom (6  Sometimes  Often (51  Almost al {c |}     Total
+{hline 22}{c +}{hline 66}{c +}{hline 10}
+              Missing {c |}{res}        21          0          0          0          0          0 {txt}{c |}{res}        21 
+{txt}  Almost never (0-5%) {c |}{res}         5        193         11          3          0          1 {txt}{c |}{res}       213 
+{txt}       Seldom (6-25%) {c |}{res}         0          3         19          2          0          0 {txt}{c |}{res}        24 
+{txt}   Sometimes (26-50%) {c |}{res}         1          1          2          6          1          0 {txt}{c |}{res}        11 
+{txt}       Often (51-75%) {c |}{res}         0          0          0          0          2          0 {txt}{c |}{res}         2 
+{txt}{hline 22}{c +}{hline 66}{c +}{hline 10}
+                Total {c |}{res}        27        197         32         11          3          1 {txt}{c |}{res}       271 
+
+
+{com}. tab inc_land
+
+     {txt}May a developer {c |}
+  contribute land in {c |}
+   lieu of providing {c |}
+              units? {c |}      Freq.     Percent        Cum.
+{hline 21}{c +}{hline 35}
+             Missing {c |}{res}          9        6.82        6.82
+{txt}                  No {c |}{res}         46       34.85       41.67
+{txt}                 Yes {c |}{res}         77       58.33      100.00
+{txt}{hline 21}{c +}{hline 35}
+               Total {c |}{res}        132      100.00
+
+{com}. tab emp_fulltime
+
+   {txt}How many {c |}
+  full time {c |}
+  employees {c |}
+    work on {c |}
+   planning {c |}
+        for {c |}
+residential {c |}
+development {c |}
+          ? {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+        -99 {c |}{res}         10        3.70        3.70
+{txt}          0 {c |}{res}          5        1.85        5.56
+{txt}        .75 {c |}{res}          1        0.37        5.93
+{txt}          1 {c |}{res}         28       10.37       16.30
+{txt}          2 {c |}{res}         43       15.93       32.22
+{txt}          3 {c |}{res}         39       14.44       46.67
+{txt}        3.5 {c |}{res}          1        0.37       47.04
+{txt}          4 {c |}{res}         32       11.85       58.89
+{txt}          5 {c |}{res}         26        9.63       68.52
+{txt}          6 {c |}{res}         17        6.30       74.81
+{txt}          7 {c |}{res}         11        4.07       78.89
+{txt}          8 {c |}{res}          8        2.96       81.85
+{txt}          9 {c |}{res}          4        1.48       83.33
+{txt}         10 {c |}{res}          4        1.48       84.81
+{txt}         11 {c |}{res}          4        1.48       86.30
+{txt}         12 {c |}{res}          5        1.85       88.15
+{txt}         13 {c |}{res}          3        1.11       89.26
+{txt}         14 {c |}{res}          3        1.11       90.37
+{txt}         15 {c |}{res}          1        0.37       90.74
+{txt}         16 {c |}{res}          1        0.37       91.11
+{txt}         17 {c |}{res}          1        0.37       91.48
+{txt}         18 {c |}{res}          2        0.74       92.22
+{txt}         19 {c |}{res}          1        0.37       92.59
+{txt}         20 {c |}{res}          2        0.74       93.33
+{txt}         21 {c |}{res}          1        0.37       93.70
+{txt}         22 {c |}{res}          1        0.37       94.07
+{txt}         25 {c |}{res}          4        1.48       95.56
+{txt}         27 {c |}{res}          1        0.37       95.93
+{txt}         30 {c |}{res}          1        0.37       96.30
+{txt}         35 {c |}{res}          1        0.37       96.67
+{txt}         37 {c |}{res}          1        0.37       97.04
+{txt}         38 {c |}{res}          1        0.37       97.41
+{txt}         40 {c |}{res}          1        0.37       97.78
+{txt}         41 {c |}{res}          1        0.37       98.15
+{txt}         60 {c |}{res}          1        0.37       98.52
+{txt}         74 {c |}{res}          1        0.37       98.89
+{txt}         82 {c |}{res}          1        0.37       99.26
+{txt}        105 {c |}{res}          1        0.37       99.63
+{txt}        369 {c |}{res}          1        0.37      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        270      100.00
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD52808.000000"
+{txt}
+{com}. keep city lnd_* fee_* 
+{txt}
+{com}. reshape long lnd fee, i(city) j(zone) string
+{txt}(note: j = _mf _nr _sf)
+(note: fee_nr not found)
+
+Data{col 36}wide{col 43}->{col 48}long
+{hline 77}
+Number of obs.                 {res}     271   {txt}->{res}     813
+{txt}Number of variables            {res}       6   {txt}->{res}       4
+{txt}j variable (3 values)                     ->   {res}zone
+{txt}xij variables:
+                   {res}lnd_mf lnd_nr lnd_sf   {txt}->   {res}lnd
+                   fee_mf fee_nr fee_sf   {txt}->   {res}fee
+{txt}{hline 77}
+
+{com}. 
+{txt}end of do-file
+
+{com}. tab lnd zone
+
+                     {txt}{c |}               zone
+                 lnd {c |}       _mf        _nr        _sf {c |}     Total
+{hline 21}{c +}{hline 33}{c +}{hline 10}
+             Missing {c |}{res}         3          2          2 {txt}{c |}{res}         7 
+{txt}  Almost none (0-5%) {c |}{res}        28          7          2 {txt}{c |}{res}        37 
+{txt}      Little (6-25%) {c |}{res}       150         91         17 {txt}{c |}{res}       258 
+{txt}       Some (26-50%) {c |}{res}        75        133         69 {txt}{c |}{res}       277 
+{txt}      A lot (51-75%) {c |}{res}        11         28        119 {txt}{c |}{res}       158 
+{txt}       Most (76-95%) {c |}{res}         4          5         54 {txt}{c |}{res}        63 
+{txt}Almost all (96-100%) {c |}{res}         0          5          8 {txt}{c |}{res}        13 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+               Total {c |}{res}       271        271        271 {txt}{c |}{res}       813 
+
+
+{com}. tab lnd zone, nolab
+
+           {txt}{c |}               zone
+       lnd {c |}       _mf        _nr        _sf {c |}     Total
+{hline 11}{c +}{hline 33}{c +}{hline 10}
+       -99 {c |}{res}         3          2          2 {txt}{c |}{res}         7 
+{txt}         1 {c |}{res}        28          7          2 {txt}{c |}{res}        37 
+{txt}         2 {c |}{res}       150         91         17 {txt}{c |}{res}       258 
+{txt}         3 {c |}{res}        75        133         69 {txt}{c |}{res}       277 
+{txt}         4 {c |}{res}        11         28        119 {txt}{c |}{res}       158 
+{txt}         5 {c |}{res}         4          5         54 {txt}{c |}{res}        63 
+{txt}         6 {c |}{res}         0          5          8 {txt}{c |}{res}        13 
+{txt}{hline 11}{c +}{hline 33}{c +}{hline 10}
+     Total {c |}{res}       271        271        271 {txt}{c |}{res}       813 
+
+
+{com}. browse if lnd == 5
+
+. browse if lnd == 5 and zone == "_mf"
+{err}invalid 'and' 
+{txt}{search r(198):r(198);}
+
+{com}. browse if lnd == 5 & zone == "_mf"
+
+. browse if lnd >3 & zone == "_mf"
+
+. snapshot restore 1
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD52808.000000"
+{txt}
+{com}. * apr
+. foreach v in "auth" "plan" "permit" "occupy" {c -(}
+{txt}  2{com}.         tab apr_sf`v' apr_mf`v', missing
+{txt}  3{com}. {c )-}
+
+ {txt}Who typically grants {c |}
+        approvals for {c |}
+        single-family {c |}     Who typically grants approvals for multifamily
+     projects with 5+ {c |}                projects with 5+ units?
+               homes? {c |}   Missing  Jurisdict  Planning   City coun          . {c |}     Total
+{hline 22}{c +}{hline 55}{c +}{hline 10}
+              Missing {c |}{res}         2          0          0          0          0 {txt}{c |}{res}         2 
+{txt}Jurisdiction staff or {c |}{res}         1         21         15          5          0 {txt}{c |}{res}        42 
+{txt}Planning board or com {c |}{res}         1         21        125          5          0 {txt}{c |}{res}       152 
+{txt}City council or other {c |}{res}         2          6         19         47          0 {txt}{c |}{res}        74 
+{txt}                    . {c |}{res}         0          0          0          0          1 {txt}{c |}{res}         1 
+{txt}{hline 22}{c +}{hline 55}{c +}{hline 10}
+                Total {c |}{res}         6         48        159         57          1 {txt}{c |}{res}       271 
+
+
+        {txt}How often are {c |}
+             complete {c |}
+single-family project {c |}
+         applications {c |}      How often are complete multifamily project applications approved?
+            approved? {c |}   Missing  Almost ne  Seldom (6  Sometimes  Often (51  Usually (  Almost al {c |}     Total
+{hline 22}{c +}{hline 77}{c +}{hline 10}
+              Missing {c |}{res}         5          0          0          0          0          1          0 {txt}{c |}{res}         6 
+{txt}       Seldom (6-25%) {c |}{res}         0          1          1          0          0          0          0 {txt}{c |}{res}         2 
+{txt}   Sometimes (26-50%) {c |}{res}         0          0          1          5          0          0          0 {txt}{c |}{res}         6 
+{txt}       Often (51-75%) {c |}{res}         1          1          0          1          6          1          0 {txt}{c |}{res}        10 
+{txt}     Usually (76-95%) {c |}{res}         2          0          2          4          6         52          4 {txt}{c |}{res}        70 
+{txt}Almost always (96-100 {c |}{res}        11          1          0          0          0         36        128 {txt}{c |}{res}       176 
+{txt}                    . {c |}{res}         0          0          0          0          0          0          0 {txt}{c |}{res}         1 
+{txt}{hline 22}{c +}{hline 77}{c +}{hline 10}
+                Total {c |}{res}        19          3          4         10         12         90        132 {txt}{c |}{res}       271 
+
+
+                      {txt}{c |} How often
+                      {c |}    are
+                      {c |}  complete
+                      {c |} multifamil
+        How often are {c |} y project
+             complete {c |} applicatio
+single-family project {c |}     ns
+         applications {c |} approved?
+            approved? {c |}         . {c |}     Total
+{hline 22}{c +}{hline 11}{c +}{hline 10}
+              Missing {c |}{res}         0 {txt}{c |}{res}         6 
+{txt}       Seldom (6-25%) {c |}{res}         0 {txt}{c |}{res}         2 
+{txt}   Sometimes (26-50%) {c |}{res}         0 {txt}{c |}{res}         6 
+{txt}       Often (51-75%) {c |}{res}         0 {txt}{c |}{res}        10 
+{txt}     Usually (76-95%) {c |}{res}         0 {txt}{c |}{res}        70 
+{txt}Almost always (96-100 {c |}{res}         0 {txt}{c |}{res}       176 
+{txt}                    . {c |}{res}         1 {txt}{c |}{res}         1 
+{txt}{hline 22}{c +}{hline 11}{c +}{hline 10}
+                Total {c |}{res}         1 {txt}{c |}{res}       271 
+
+
+        {txt}How often are {c |}
+             approved {c |}
+        single-family {c |}            How often are approved multifamily projects permitted?
+  projects permitted? {c |}   Missing  Almost ne  Seldom (6  Sometimes  Often (51  Usually (  Almost al {c |}     Total
+{hline 22}{c +}{hline 77}{c +}{hline 10}
+              Missing {c |}{res}         7          0          0          0          0          0          2 {txt}{c |}{res}         9 
+{txt}       Seldom (6-25%) {c |}{res}         0          1          1          0          0          0          0 {txt}{c |}{res}         2 
+{txt}   Sometimes (26-50%) {c |}{res}         0          1          0          5          3          2          0 {txt}{c |}{res}        11 
+{txt}       Often (51-75%) {c |}{res}         2          0          1          5         20          5          2 {txt}{c |}{res}        35 
+{txt}     Usually (76-95%) {c |}{res}         4          0          2          1         11         69         10 {txt}{c |}{res}        97 
+{txt}Almost always (96-100 {c |}{res}         6          1          0          1          2         20         86 {txt}{c |}{res}       116 
+{txt}                    . {c |}{res}         0          0          0          0          0          0          0 {txt}{c |}{res}         1 
+{txt}{hline 22}{c +}{hline 77}{c +}{hline 10}
+                Total {c |}{res}        19          3          4         12         36         96        100 {txt}{c |}{res}       271 
+
+
+                      {txt}{c |} How often
+                      {c |}    are
+                      {c |}  approved
+        How often are {c |} multifamil
+             approved {c |} y projects
+        single-family {c |} permitted?
+  projects permitted? {c |}         . {c |}     Total
+{hline 22}{c +}{hline 11}{c +}{hline 10}
+              Missing {c |}{res}         0 {txt}{c |}{res}         9 
+{txt}       Seldom (6-25%) {c |}{res}         0 {txt}{c |}{res}         2 
+{txt}   Sometimes (26-50%) {c |}{res}         0 {txt}{c |}{res}        11 
+{txt}       Often (51-75%) {c |}{res}         0 {txt}{c |}{res}        35 
+{txt}     Usually (76-95%) {c |}{res}         0 {txt}{c |}{res}        97 
+{txt}Almost always (96-100 {c |}{res}         0 {txt}{c |}{res}       116 
+{txt}                    . {c |}{res}         1 {txt}{c |}{res}         1 
+{txt}{hline 22}{c +}{hline 11}{c +}{hline 10}
+                Total {c |}{res}         1 {txt}{c |}{res}       271 
+
+
+        {txt}How often are {c |}
+            permitted {c |}
+        single-family {c |}           How often are permitted multifamily projects completed?
+  projects completed? {c |}   Missing  Almost ne  Seldom (6  Sometimes  Often (51  Usually (  Almost al {c |}     Total
+{hline 22}{c +}{hline 77}{c +}{hline 10}
+              Missing {c |}{res}         9          0          0          0          0          0          1 {txt}{c |}{res}        10 
+{txt}  Almost never (0-5%) {c |}{res}         0          2          0          0          0          0          1 {txt}{c |}{res}         3 
+{txt}       Seldom (6-25%) {c |}{res}         0          0          1          0          0          0          0 {txt}{c |}{res}         1 
+{txt}   Sometimes (26-50%) {c |}{res}         0          0          0          5          1          0          0 {txt}{c |}{res}         6 
+{txt}       Often (51-75%) {c |}{res}         0          0          0          2         11          2          1 {txt}{c |}{res}        16 
+{txt}     Usually (76-95%) {c |}{res}         2          1          0          1          7         50          4 {txt}{c |}{res}        65 
+{txt}Almost always (96-100 {c |}{res}        10          2          1          0          2          7        147 {txt}{c |}{res}       169 
+{txt}                    . {c |}{res}         0          0          0          0          0          0          0 {txt}{c |}{res}         1 
+{txt}{hline 22}{c +}{hline 77}{c +}{hline 10}
+                Total {c |}{res}        21          5          2          8         21         59        154 {txt}{c |}{res}       271 
+
+
+                      {txt}{c |} How often
+                      {c |}    are
+                      {c |} permitted
+        How often are {c |} multifamil
+            permitted {c |} y projects
+        single-family {c |} completed?
+  projects completed? {c |}         . {c |}     Total
+{hline 22}{c +}{hline 11}{c +}{hline 10}
+              Missing {c |}{res}         0 {txt}{c |}{res}        10 
+{txt}  Almost never (0-5%) {c |}{res}         0 {txt}{c |}{res}         3 
+{txt}       Seldom (6-25%) {c |}{res}         0 {txt}{c |}{res}         1 
+{txt}   Sometimes (26-50%) {c |}{res}         0 {txt}{c |}{res}         6 
+{txt}       Often (51-75%) {c |}{res}         0 {txt}{c |}{res}        16 
+{txt}     Usually (76-95%) {c |}{res}         0 {txt}{c |}{res}        65 
+{txt}Almost always (96-100 {c |}{res}         0 {txt}{c |}{res}       169 
+{txt}                    . {c |}{res}         1 {txt}{c |}{res}         1 
+{txt}{hline 22}{c +}{hline 11}{c +}{hline 10}
+                Total {c |}{res}         1 {txt}{c |}{res}       271 
+
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD52808.000000"
+{txt}
+{com}. keep city apl*
+{txt}
+{com}. drop apl_adu
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD52808.000000"
+{txt}
+{com}. reshape long apl_sf*, i(city) j(sfunits)
+{err}no xij variables found
+{p 4 4 2}
+You typed something like
+{bf:reshape wide a b, i(i) j(j)}.{break}
+{bf:reshape} looked for existing variables
+named {bf:a}{it:#} and {bf:b}{it:#} but
+could not find any.  Remember this picture:
+
+{col 9} {it:long}                                {it:wide}
+{col 9}{c TLC}{hline 15}{c TRC}                   {c TLC}{hline 18}{c TRC}
+{col 9}{c |} {it:i   j}   a   b {c |}                   {c |} {it:i}   a1 a2  b1 b2 {c |}
+{col 9}{c |}{hline 15}{c |} <--- {bf:reshape} ---> {c |}{hline 18}{c |}
+{col 9}{c |} 1   1   1   2 {c |}                   {c |} 1   1   3   2  4 {c |}
+{col 9}{c |} 1   2   3   4 {c |}                   {c |} 2   5   7   6  8 {c |}
+{col 9}{c |} 2   1   5   6 {c |}                   {c BLC}{hline 18}{c BRC}
+{col 9}{c |} 2   2   7   8 {c |}
+{col 9}{c BLC}{hline 15}{c BRC}
+
+{col 9}long to wide: {bf:reshape wide a b, i(}{it:i}{bf:) j(}{it:j}{bf:)}    ({it:j} existing variable)
+{col 9}wide to long: {bf:reshape long a b, i(}{it:i}{bf:) j(}{it:j}{bf:)}    ({it:j}    new   variable)
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD52808.000000"
+{txt}
+{com}. reshape long apl_sf apl_mf, i(city) j(units) string
+{txt}(note: j = 1 20to49 2to4 50plus 5to19)
+(note: apl_mf1 not found)
+
+Data{col 36}wide{col 43}->{col 48}long
+{hline 77}
+Number of obs.                 {res}     271   {txt}->{res}    1355
+{txt}Number of variables            {res}      10   {txt}->{res}       4
+{txt}j variable (5 values)                     ->   {res}units
+{txt}xij variables:
+   {res}apl_sf1 apl_sf20to49 ... apl_sf5to19   {txt}->   {res}apl_sf
+   apl_mf1 apl_mf20to49 ... apl_mf5to19   {txt}->   {res}apl_mf
+{txt}{hline 77}
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. tab units apl_sf
+
+           {txt}{c |}                                    apl_sf
+     units {c |}   Missing      Never  Once per   Several t  Most mont  Most week  Most days {c |}     Total
+{hline 11}{c +}{hline 77}{c +}{hline 10}
+         1 {c |}{res}         6          3         36        102         52         49         23 {txt}{c |}{res}       271 
+{txt}    20to49 {c |}{res}        11         89        128         38          2          3          0 {txt}{c |}{res}       271 
+{txt}      2to4 {c |}{res}        12         36        120         76         19          8          0 {txt}{c |}{res}       271 
+{txt}    50plus {c |}{res}         9        115        110         32          3          2          0 {txt}{c |}{res}       271 
+{txt}     5to19 {c |}{res}        14         59        143         46          7          2          0 {txt}{c |}{res}       271 
+{txt}{hline 11}{c +}{hline 77}{c +}{hline 10}
+     Total {c |}{res}        52        302        537        294         83         64         23 {txt}{c |}{res}     1,355 
+
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD52808.000000"
+{txt}
+{com}. tab apl_sf units, missing
+
+                      {txt}{c |}                         units
+               apl_sf {c |}         1     20to49       2to4     50plus      5to19 {c |}     Total
+{hline 22}{c +}{hline 55}{c +}{hline 10}
+              Missing {c |}{res}         6         11         12          9         14 {txt}{c |}{res}        52 
+{txt}                Never {c |}{res}         3         89         36        115         59 {txt}{c |}{res}       302 
+{txt}Once per year or less {c |}{res}        36        128        120        110        143 {txt}{c |}{res}       537 
+{txt}Several times per yea {c |}{res}       102         38         76         32         46 {txt}{c |}{res}       294 
+{txt}          Most months {c |}{res}        52          2         19          3          7 {txt}{c |}{res}        83 
+{txt}           Most weeks {c |}{res}        49          3          8          2          2 {txt}{c |}{res}        64 
+{txt}            Most days {c |}{res}        23          0          0          0          0 {txt}{c |}{res}        23 
+{txt}{hline 22}{c +}{hline 55}{c +}{hline 10}
+                Total {c |}{res}       271        271        271        271        271 {txt}{c |}{res}     1,355 
+
+{txt}
+{com}. tab apl_mf units, missing 
+
+                      {txt}{c |}                         units
+               apl_mf {c |}         1     20to49       2to4     50plus      5to19 {c |}     Total
+{hline 22}{c +}{hline 55}{c +}{hline 10}
+              Missing {c |}{res}         0         10         12          9         10 {txt}{c |}{res}        41 
+{txt}                Never {c |}{res}         0         62         43         75         52 {txt}{c |}{res}       232 
+{txt}Once per year or less {c |}{res}         0        144        115        132        137 {txt}{c |}{res}       528 
+{txt}Several times per yea {c |}{res}         0         49         73         50         58 {txt}{c |}{res}       230 
+{txt}          Most months {c |}{res}         0          3         18          2          9 {txt}{c |}{res}        32 
+{txt}           Most weeks {c |}{res}         0          3          9          3          5 {txt}{c |}{res}        20 
+{txt}            Most days {c |}{res}         0          0          1          0          0 {txt}{c |}{res}         1 
+{txt}                    . {c |}{res}       271          0          0          0          0 {txt}{c |}{res}       271 
+{txt}{hline 22}{c +}{hline 55}{c +}{hline 10}
+                Total {c |}{res}       271        271        271        271        271 {txt}{c |}{res}     1,355 
+
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. tab units, nolab
+
+      {txt}units {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}        271       20.00       20.00
+{txt}     20to49 {c |}{res}        271       20.00       40.00
+{txt}       2to4 {c |}{res}        271       20.00       60.00
+{txt}     50plus {c |}{res}        271       20.00       80.00
+{txt}      5to19 {c |}{res}        271       20.00      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      1,355      100.00
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD52808.000000"
+{txt}
+{com}. tab apl_mf units, col
+{txt}
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+                      {c |}                    units
+               apl_mf {c |}    20to49       2to4     50plus      5to19 {c |}     Total
+{hline 22}{c +}{hline 44}{c +}{hline 10}
+              Missing {c |}{res}        10         12          9         10 {txt}{c |}{res}        41 
+                      {txt}{c |}{res}      3.69       4.43       3.32       3.69 {txt}{c |}{res}      3.78 
+{txt}{hline 22}{c +}{hline 44}{c +}{hline 10}
+                Never {c |}{res}        62         43         75         52 {txt}{c |}{res}       232 
+                      {txt}{c |}{res}     22.88      15.87      27.68      19.19 {txt}{c |}{res}     21.40 
+{txt}{hline 22}{c +}{hline 44}{c +}{hline 10}
+Once per year or less {c |}{res}       144        115        132        137 {txt}{c |}{res}       528 
+                      {txt}{c |}{res}     53.14      42.44      48.71      50.55 {txt}{c |}{res}     48.71 
+{txt}{hline 22}{c +}{hline 44}{c +}{hline 10}
+Several times per yea {c |}{res}        49         73         50         58 {txt}{c |}{res}       230 
+                      {txt}{c |}{res}     18.08      26.94      18.45      21.40 {txt}{c |}{res}     21.22 
+{txt}{hline 22}{c +}{hline 44}{c +}{hline 10}
+          Most months {c |}{res}         3         18          2          9 {txt}{c |}{res}        32 
+                      {txt}{c |}{res}      1.11       6.64       0.74       3.32 {txt}{c |}{res}      2.95 
+{txt}{hline 22}{c +}{hline 44}{c +}{hline 10}
+           Most weeks {c |}{res}         3          9          3          5 {txt}{c |}{res}        20 
+                      {txt}{c |}{res}      1.11       3.32       1.11       1.85 {txt}{c |}{res}      1.85 
+{txt}{hline 22}{c +}{hline 44}{c +}{hline 10}
+            Most days {c |}{res}         0          1          0          0 {txt}{c |}{res}         1 
+                      {txt}{c |}{res}      0.00       0.37       0.00       0.00 {txt}{c |}{res}      0.09 
+{txt}{hline 22}{c +}{hline 44}{c +}{hline 10}
+                Total {c |}{res}       271        271        271        271 {txt}{c |}{res}     1,084 
+                      {txt}{c |}{res}    100.00     100.00     100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD52808.000000"
+{txt}
+{com}. snapshot restore 1
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD52808.000000"
+{txt}
+{com}. keep city lrg*
+{txt}
+{com}. drop lrg_all
+{txt}
+{com}. reshape long lrg_sf lrg_mf, i(city) j(unitsize) string
+{txt}(note: j = 150plus 20to49 50to149)
+
+Data{col 36}wide{col 43}->{col 48}long
+{hline 77}
+Number of obs.                 {res}     271   {txt}->{res}     813
+{txt}Number of variables            {res}       7   {txt}->{res}       4
+{txt}j variable (3 values)                     ->   {res}unitsize
+{txt}xij variables:
+{res}lrg_sf150plus lrg_sf20to49 lrg_sf50to149  {txt}->   {res}lrg_sf
+lrg_mf150plus lrg_mf20to49 lrg_mf50to149  {txt}->   {res}lrg_mf
+{txt}{hline 77}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD52808.000000"
+{txt}
+{com}. tab lrg_sf unitsize, missing
+
+                     {txt}{c |}             unitsize
+              lrg_sf {c |}   150plus     20to49    50to149 {c |}     Total
+{hline 21}{c +}{hline 33}{c +}{hline 10}
+             Missing {c |}{res}        21         15         17 {txt}{c |}{res}        53 
+{txt}                None {c |}{res}       214        161        183 {txt}{c |}{res}       558 
+{txt}                 1-2 {c |}{res}        26         67         48 {txt}{c |}{res}       141 
+{txt}                 3-5 {c |}{res}         5         20         13 {txt}{c |}{res}        38 
+{txt}                 6-9 {c |}{res}         1          2          6 {txt}{c |}{res}         9 
+{txt}                 10+ {c |}{res}         3          5          3 {txt}{c |}{res}        11 
+{txt}                   . {c |}{res}         1          1          1 {txt}{c |}{res}         3 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+               Total {c |}{res}       271        271        271 {txt}{c |}{res}       813 
+
+{txt}
+{com}. tab lrg_mf unitsize, missing
+
+                     {txt}{c |}             unitsize
+              lrg_mf {c |}   150plus     20to49    50to149 {c |}     Total
+{hline 21}{c +}{hline 33}{c +}{hline 10}
+             Missing {c |}{res}        20         23         18 {txt}{c |}{res}        61 
+{txt}                None {c |}{res}       177        139        152 {txt}{c |}{res}       468 
+{txt}                 1-2 {c |}{res}        52         78         73 {txt}{c |}{res}       203 
+{txt}                 3-5 {c |}{res}        11         18         16 {txt}{c |}{res}        45 
+{txt}                 6-9 {c |}{res}         2          7          5 {txt}{c |}{res}        14 
+{txt}                 10+ {c |}{res}         7          5          6 {txt}{c |}{res}        18 
+{txt}                   . {c |}{res}         2          1          1 {txt}{c |}{res}         4 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+               Total {c |}{res}       271        271        271 {txt}{c |}{res}       813 
+
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD52808.000000"
+{txt}
+{com}. tab lrg_mf unitsize, missing col
+{txt}
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+                     {c |}             unitsize
+              lrg_mf {c |}   150plus     20to49    50to149 {c |}     Total
+{hline 21}{c +}{hline 33}{c +}{hline 10}
+             Missing {c |}{res}        20         23         18 {txt}{c |}{res}        61 
+                     {txt}{c |}{res}      7.38       8.49       6.64 {txt}{c |}{res}      7.50 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+                None {c |}{res}       177        139        152 {txt}{c |}{res}       468 
+                     {txt}{c |}{res}     65.31      51.29      56.09 {txt}{c |}{res}     57.56 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+                 1-2 {c |}{res}        52         78         73 {txt}{c |}{res}       203 
+                     {txt}{c |}{res}     19.19      28.78      26.94 {txt}{c |}{res}     24.97 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+                 3-5 {c |}{res}        11         18         16 {txt}{c |}{res}        45 
+                     {txt}{c |}{res}      4.06       6.64       5.90 {txt}{c |}{res}      5.54 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+                 6-9 {c |}{res}         2          7          5 {txt}{c |}{res}        14 
+                     {txt}{c |}{res}      0.74       2.58       1.85 {txt}{c |}{res}      1.72 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+                 10+ {c |}{res}         7          5          6 {txt}{c |}{res}        18 
+                     {txt}{c |}{res}      2.58       1.85       2.21 {txt}{c |}{res}      2.21 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+                   . {c |}{res}         2          1          1 {txt}{c |}{res}         4 
+                     {txt}{c |}{res}      0.74       0.37       0.37 {txt}{c |}{res}      0.49 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+               Total {c |}{res}       271        271        271 {txt}{c |}{res}       813 
+                     {txt}{c |}{res}    100.00     100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD52808.000000"
+{txt}
+{com}. tab lrg_sf unitsize, missing col
+{txt}
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+                     {c |}             unitsize
+              lrg_sf {c |}   150plus     20to49    50to149 {c |}     Total
+{hline 21}{c +}{hline 33}{c +}{hline 10}
+             Missing {c |}{res}        21         15         17 {txt}{c |}{res}        53 
+                     {txt}{c |}{res}      7.75       5.54       6.27 {txt}{c |}{res}      6.52 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+                None {c |}{res}       214        161        183 {txt}{c |}{res}       558 
+                     {txt}{c |}{res}     78.97      59.41      67.53 {txt}{c |}{res}     68.63 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+                 1-2 {c |}{res}        26         67         48 {txt}{c |}{res}       141 
+                     {txt}{c |}{res}      9.59      24.72      17.71 {txt}{c |}{res}     17.34 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+                 3-5 {c |}{res}         5         20         13 {txt}{c |}{res}        38 
+                     {txt}{c |}{res}      1.85       7.38       4.80 {txt}{c |}{res}      4.67 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+                 6-9 {c |}{res}         1          2          6 {txt}{c |}{res}         9 
+                     {txt}{c |}{res}      0.37       0.74       2.21 {txt}{c |}{res}      1.11 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+                 10+ {c |}{res}         3          5          3 {txt}{c |}{res}        11 
+                     {txt}{c |}{res}      1.11       1.85       1.11 {txt}{c |}{res}      1.35 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+                   . {c |}{res}         1          1          1 {txt}{c |}{res}         3 
+                     {txt}{c |}{res}      0.37       0.37       0.37 {txt}{c |}{res}      0.37 
+{txt}{hline 21}{c +}{hline 33}{c +}{hline 10}
+               Total {c |}{res}       271        271        271 {txt}{c |}{res}       813 
+                     {txt}{c |}{res}    100.00     100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. clear all
+
+. ls
+
+{res}total 1248
+drwxr-xr-x  6 cecilemurray  staff     192 Dec 19 11:29 R/
+-rw-r--r--@ 1 cecilemurray  staff     989 Nov 26 13:05 Schuetz call 2018-11-26
+drwxr-xr-x  5 cecilemurray  staff     160 Dec 19 12:32 census/
+drwxr-xr-x  4 cecilemurray  staff     128 Dec 18 21:00 do/
+-rw-r--r--@ 1 cecilemurray  staff     713 Dec 17 12:12 exploration.txt
+drwxr-xr-x  3 cecilemurray  staff      96 Dec 19 08:58 log/
+drwx------@ 9 cecilemurray  staff     288 Nov 26 09:10 raw/
+-rw-r--r--@ 1 cecilemurray  staff  629452 Nov 19 22:00 rerevisedauthorinfo.zip
+drwxr-xr-x  4 cecilemurray  staff     128 Dec 17 11:24 temp/
+
+{com}. use "census/CA_places_building_permits.dta"
+{err}{p 0 4 2}
+file census/CA_places_building_permits.dta
+not found
+{p_end}
+{txt}{search r(601):r(601);}
+
+{com}. use "census/CA_places_building_permits_2017.dta"
+{txt}(Written by R)
+
+{com}. browse
+
+. exit

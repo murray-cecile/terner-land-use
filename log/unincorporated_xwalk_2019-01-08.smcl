@@ -1,0 +1,757 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/unincorporated_xwalk_2019-01-08.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 8 Jan 2019, 20:55:20
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. import delimited "raw/geocorr2014.csv", firstrow
+{err}option {bf:firstrow} not allowed
+{txt}{search r(198):r(198);}
+
+end of do-file
+
+{search r(198):r(198);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. import delimited "raw/geocorr2014.csv"
+{res}{text}(11 vars, 11615 obs)
+
+{com}. 
+{txt}end of do-file
+
+{com}. clear
+
+. help import delimited
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. import delimited "raw/geocorr2014.csv", varnames(1) rowrange(2:)
+{res}{text}(11 vars, 11614 obs)
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. clear
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. import delimited "raw/geocorr2014.csv", varnames(1) rowrange(3:)
+{res}{text}(11 vars, 11613 obs)
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * adjust FIPS codes
+. destring tract, replace
+{txt}tract has all characters numeric; {res}replaced {txt}as {res}double
+{txt}
+{com}. replace tract = tract * 100
+{txt}(11613 real changes made)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. tostring tract, replace
+{txt}tract cannot be converted reversibly; no {res}replace
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. tostring tract
+{err}{p}must specify either generate or replace option{p_end}
+{txt}{search r(198):r(198);}
+
+end of do-file
+
+{search r(198):r(198);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. tostring tract, gen(fips)
+{txt}tract cannot be converted reversibly; no {res}generate
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. help tostring
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. tostring fips, replace force format(%6.0f)
+{err}variable fips not found
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. clear all
+{txt}
+{com}. 
+. capture cd "/Users/cecilemurray/Documents/coding/Terner"
+{txt}
+{com}. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/unincorporated_xwalk_2019-01-08.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 8 Jan 2019, 21:01:49
+{txt}
+{com}. 
+. * bring in crosswalk from MABLE-Geocorr
+. import delimited "raw/geocorr2014.csv", varnames(1) rowrange(3:)
+{res}{text}(11 vars, 11613 obs)
+
+{com}. 
+. * adjust FIPS codes
+. destring tract, gen(fips)
+{txt}tract has all characters numeric; fips {res}generated {txt}as {res}double
+{txt}
+{com}. replace fips = fips * 100
+{txt}(11613 real changes made)
+
+{com}. tostring fips, replace force format(%6.0f)
+{txt}fips was {res:double} now {res:str6}
+fips was forced to string; some loss of information
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. help tostring
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * bring in crosswalk from MABLE-Geocorr
+. clear
+{txt}
+{com}. import delimited "raw/geocorr2014.csv", varnames(1) rowrange(3:)
+{res}{text}(11 vars, 11613 obs)
+
+{com}. 
+. * adjust FIPS codes
+. destring tract, gen(fips)
+{txt}tract has all characters numeric; fips {res}generated {txt}as {res}double
+{txt}
+{com}. replace fips = fips * 100
+{txt}(11613 real changes made)
+
+{com}. tostring fips, replace format(%6.0f)
+{txt}fips cannot be converted reversibly; no {res}replace
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. help tostring
+
+. browse
+
+. help format
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. tostring fips, replace format(%06.0f)
+{txt}fips cannot be converted reversibly; no {res}replace
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. tostring fips, replace format(%06.0s)
+{err}use numeric format in format() option
+{txt}{search r(198):r(198);}
+
+end of do-file
+
+{search r(198):r(198);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. tostring fips, replace format(%06.0f) force
+{txt}fips was {res:double} now {res:str6}
+fips was forced to string; some loss of information
+
+{com}. 
+{txt}end of do-file
+
+{com}. help string
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * bring in crosswalk from MABLE-Geocorr
+. clear
+{txt}
+{com}. import delimited "raw/geocorr2014.csv", varnames(1) rowrange(3:)
+{res}{text}(11 vars, 11613 obs)
+
+{com}. 
+. * adjust FIPS codes
+. destring tract, gen(fips)
+{txt}tract has all characters numeric; fips {res}generated {txt}as {res}double
+{txt}
+{com}. replace fips = fips * 100
+{txt}(11613 real changes made)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. replace fips = string(fips, "%06.0f")
+{err}type mismatch
+{txt}{search r(109):r(109);}
+
+end of do-file
+
+{search r(109):r(109);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. gen tract2 = string(fips, "%06.0f")
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse tract* fips
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. drop tract
+{txt}
+{com}. rename tract2 tract
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * replace numerics stored as string
+. destring hus10, replace
+{txt}hus10 has all characters numeric; {res}replaced {txt}as {res}int
+{txt}
+{com}. destring afact, replace
+{txt}afact has all characters numeric; {res}replaced {txt}as {res}double
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. replace tract = county + tract
+{txt}tract was {res}str6{txt} now {res}str11
+{txt}(11613 real changes made)
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. replace placefp14 = state + placefp14 
+{txt}(11613 real changes made)
+
+{com}. rename county stcofips
+{res}{txt}
+{com}. rename placefp14 stplfips
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. keep tract stcofips stplfips placenm14 hus10 afact
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. save "temp/tract_place_xwalk_raw.dta", replace
+{txt}(note: file temp/tract_place_xwalk_raw.dta not found)
+file temp/tract_place_xwalk_raw.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. clear
+
+. use "temp/unincorporated_unmerged.dta"
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. * MERGE IN ACS DATA
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,289
+{txt}{col 9}from master{col 30}{res}              19{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             252{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. drop if _merge == 2
+{txt}(1270 observations deleted)
+
+{com}. rename _merge has_acs
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse city county stplfips if has_acs , 3
+{err}option {bf:3} not allowed
+{txt}{search r(198):r(198);}
+
+{com}. browse city county stplfips if has_acs < 3
+
+. use "census/merged_building_permits_nocounty_2013-17.dta", clear
+{txt}(Written by R)
+
+{com}. sort stplfips
+
+. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. * MERGE IN ACS DATA
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,289
+{txt}{col 9}from master{col 30}{res}              19{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             252{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. drop if _merge == 2
+{txt}(1270 observations deleted)
+
+{com}. rename _merge has_acs
+{res}{txt}
+{com}. 
+. * MERGE IN PERMIT DATA
+. merge 1:1 stplfips using "census/merged_building_permits_nocounty_2013-17.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}             241
+{txt}{col 9}from master{col 30}{res}              24{txt}  (_merge==1)
+{col 9}from using{col 30}{res}             217{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             247{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. 
+. * snapshot 1
+. snapshot save
+{txt}{p 0 2}snapshot {res:2} created at {res: 9 Jan 2019 08:56}{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. snapshot erase all
+{err}invalid numlist
+{txt}{search r(121):r(121);}
+
+{com}. snapshot erase 1
+
+. snapshot erase 2
+
+. snapshot save
+{txt}{p 0 2}snapshot {res:2} created at {res: 9 Jan 2019 08:57}{p_end}
+
+{com}. snapshot erase 2
+
+. snapshot list
+
+. snapshot save 1
+{err}varlist not allowed
+{txt}{search r(101):r(101);}
+
+{com}. snapshot save
+{txt}{p 0 2}snapshot {res:2} created at {res: 9 Jan 2019 08:57}{p_end}
+
+{com}. browse if _merge < 3
+
+. order stplfips city place county has_acs _merge
+
+. sort stplfips
+
+. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse FIPS
+
+. use "census/all_census_data_CA_places.dta", clear
+
+. browse stplfips
+
+. snapshot restore 2
+
+. order stplfips city has_acs _merge place
+
+. browse
+
+. browse if _merge < 3
+
+. browse if _merge < 3
+
+. use "census/merged_building_permits_nocounty_2013-17.dta", clear
+{txt}(Written by R)
+
+{com}. sort stplfips
+
+. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "census/CA_places_building_permits_2013.dta", clear
+{txt}(Written by R)
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * merge all years together
+. append using "census/CA_places_building_permits_2014.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2015.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2016.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2017.dta"
+{txt}
+{com}. 
+. sort place
+{txt}
+{com}. order stcofips stplfips place year
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse if stplfips == "0613882"
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * bring in crosswalk from MABLE-Geocorr
+. clear
+{txt}
+{com}. import delimited "raw/geocorr2014.csv", varnames(1) rowrange(3:)
+{res}{text}(11 vars, 11613 obs)
+
+{com}. 
+. * adjust FIPS codes
+. destring tract, gen(fips)
+{txt}tract has all characters numeric; fips {res}generated {txt}as {res}double
+{txt}
+{com}. replace fips = fips * 100
+{txt}(11613 real changes made)
+
+{com}. gen tract2 = string(fips, "%06.0f")
+{txt}
+{com}. drop tract
+{txt}
+{com}. rename tract2 tract
+{res}{txt}
+{com}. 
+. replace tract = county + tract
+{txt}tract was {res}str6{txt} now {res}str11
+{txt}(11613 real changes made)
+
+{com}. replace placefp14 = state + placefp14 
+{txt}(11613 real changes made)
+
+{com}. rename county stcofips
+{res}{txt}
+{com}. rename placefp14 stplfips
+{res}{txt}
+{com}. 
+. * replace numerics stored as string
+. destring hus10, replace
+{txt}hus10 has all characters numeric; {res}replaced {txt}as {res}int
+{txt}
+{com}. destring afact, replace
+{txt}afact has all characters numeric; {res}replaced {txt}as {res}double
+{txt}
+{com}. 
+. * keep only relevant vars and save temp file
+. keep tract stcofips stplfips placenm14 hus10 afact
+{txt}
+{com}. save "temp/tract_place_xwalk_raw.dta", replace
+{txt}file temp/tract_place_xwalk_raw.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. help substr
+
+. desribe stplfips
+{err}unrecognized command:  desribe
+{txt}{search r(199):r(199);}
+
+{com}. describe stplfips
+
+              {txt}storage   display    value
+variable name   type    format     label      variable label
+{hline}
+{p 0 48}{res}{bind:stplfips       }{txt}{bind: str9    }{bind:{txt}%9s       }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * flag unincorporated places
+. gen uninc = .
+{txt}(11613 missing values generated)
+
+{com}. replace uninc = 1 if substr(stplfips, 3, 7)
+{err}type mismatch
+{txt}{search r(109):r(109);}
+
+end of do-file
+
+{search r(109):r(109);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * bring in crosswalk from MABLE-Geocorr
+. clear
+{txt}
+{com}. import delimited "raw/geocorr2014.csv", varnames(1) rowrange(3:)
+{res}{text}(11 vars, 11613 obs)
+
+{com}. 
+. * adjust FIPS codes
+. destring tract, gen(fips)
+{txt}tract has all characters numeric; fips {res}generated {txt}as {res}double
+{txt}
+{com}. replace fips = fips * 100
+{txt}(11613 real changes made)
+
+{com}. gen tract2 = string(fips, "%06.0f")
+{txt}
+{com}. drop tract
+{txt}
+{com}. rename tract2 tract
+{res}{txt}
+{com}. 
+. replace tract = county + tract
+{txt}tract was {res}str6{txt} now {res}str11
+{txt}(11613 real changes made)
+
+{com}. replace placefp14 = state + placefp14 
+{txt}(11613 real changes made)
+
+{com}. rename county stcofips
+{res}{txt}
+{com}. rename placefp14 stplfips
+{res}{txt}
+{com}. 
+. * replace numerics stored as string
+. destring hus10, replace
+{txt}hus10 has all characters numeric; {res}replaced {txt}as {res}int
+{txt}
+{com}. destring afact, replace
+{txt}afact has all characters numeric; {res}replaced {txt}as {res}double
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * bring in crosswalk from MABLE-Geocorr
+. clear
+{txt}
+{com}. import delimited "raw/geocorr2014.csv", varnames(1) rowrange(3:)
+{res}{text}(11 vars, 11613 obs)
+
+{com}. 
+. * adjust FIPS codes
+. destring tract, gen(fips)
+{txt}tract has all characters numeric; fips {res}generated {txt}as {res}double
+{txt}
+{com}. replace fips = fips * 100
+{txt}(11613 real changes made)
+
+{com}. gen tract2 = string(fips, "%06.0f")
+{txt}
+{com}. drop tract
+{txt}
+{com}. rename tract2 tract
+{res}{txt}
+{com}. 
+. replace tract = county + tract
+{txt}tract was {res}str6{txt} now {res}str11
+{txt}(11613 real changes made)
+
+{com}. gen stplfips = state + placefp14 
+{txt}
+{com}. rename county stcofips
+{res}{txt}
+{com}. rename placefp14 plfips
+{res}{txt}
+{com}. 
+. * replace numerics stored as string
+. destring hus10, replace
+{txt}hus10 has all characters numeric; {res}replaced {txt}as {res}int
+{txt}
+{com}. destring afact, replace
+{txt}afact has all characters numeric; {res}replaced {txt}as {res}double
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * flag unincorporated places
+. gen uninc = 1 if plfips == "99999"
+{txt}(9817 missing values generated)
+
+{com}. 
+{txt}end of do-file
+
+{com}. tab uninc
+
+      {txt}uninc {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}      1,796      100.00      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      1,796      100.00
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * keep only relevant vars and save temp file
+. keep tract stcofips stplfips plfips placenm14 hus10 afact
+{txt}
+{com}. save "temp/tract_place_xwalk_raw.dta", replace 
+{txt}file temp/tract_place_xwalk_raw.dta saved
+
+{com}. 
+. * flag unincorporated places
+. gen uninc = 1 if plfips == "99999"
+{txt}(9817 missing values generated)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. replace stplfips = stcofips + "99999" if uninc
+{txt}stplfips was {res}str7{txt} now {res}str10
+{txt}(11613 real changes made)
+
+{com}. 
+{txt}end of do-file
+
+{com}. snapshot save
+{txt}{p 0 2}snapshot {res:3} created at {res: 9 Jan 2019 09:16}{p_end}
+
+{com}. snapshot restore 2
+
+. browse stplfips if _merge < 3
+
+. snapshot restore 3
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. replace stplfips = stcofips + "999" if uninc
+{txt}(11613 real changes made)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * keep only unincorporated places, save temp file
+. keep if uninc
+{txt}(0 observations deleted)
+
+{com}. save "temp/unincorporated_tract_xwalk.dta", replace
+{txt}(note: file temp/unincorporated_tract_xwalk.dta not found)
+file temp/unincorporated_tract_xwalk.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. /*================================================================= *
+> * TERNER HOUSING SURVEY DATA: ALLOCATE TRACT DATA 
+> *       
+> *       Cecile Murray
+> *       Stata 13.1 on Mac
+> *       Created: 2019-01-09
+> * ================================================================= */
+. 
+. set more off
+{txt}
+{com}. clear all
+{txt}
+{com}. 
+. capture cd "/Users/cecilemurray/Documents/coding/Terner"
+{txt}
+{com}. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}

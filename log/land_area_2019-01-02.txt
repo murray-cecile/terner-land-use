@@ -1,0 +1,97 @@
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+browse
+help import
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+browse
+browse
+help strcat
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+browse
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+help merge
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+browse FIPS
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+clear
+use 
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+help dup
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+help duplicates
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+clear
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+clear
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+set more off
+duplicates tag stplfips
+duplicates tag stplfips, gen
+duplicates tag stplfips, gen(dup)
+browse
+help collapse
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+browse
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+browse if _merge==1
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+browse if _merge==1
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+browse
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+help use
+tab lnd_sf, missing
+drop if _merge != 3
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+tab lnd_sf, missing
+tab lnd_sf, missing nolab
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+browse
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+browse
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+snapshot erase 1
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+browse
+browse
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+browse
+snapshot restore 1
+browse
+snapshot erase 1
+drop lnd_lb lnd_ub
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+browse
+di .12 + .32 +.44
+di .31 + .51 + .66
+snapshot restore 1
+browse if lnd_max == .
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+help export excel
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD09956.000000"
+ls
+exit, clear

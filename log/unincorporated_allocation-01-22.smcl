@@ -1,0 +1,1568 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/unincorporated_allocation-01-22.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}22 Jan 2019, 21:37:01
+{txt}
+{com}. 
+. * convert csvs into Stata files
+. 
+. import delimited "R/temp/BA_plus_share_tracts.csv", clear
+{res}{text}(7 vars, 8057 obs)
+
+{com}. save "census/BA_plus_share_CA_tracts_2013-17.dta", replace
+{txt}file census/BA_plus_share_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/temp/median_income_tracts.csv", clear
+{res}{text}(3 vars, 8057 obs)
+
+{com}. save "census/median_hh_income_CA_tracts_2013-17.dta", replace
+{txt}file census/median_hh_income_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/temp/race_ethnicity_tracts.csv", clear
+{res}{text}(8 vars, 32228 obs)
+
+{com}. save "census/race_ethnicity_CA_tracts_2013-17.dta", replace
+{txt}file census/race_ethnicity_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/temp/age_composition_tracts.csv", clear
+{res}{text}(8 vars, 16114 obs)
+
+{com}. save "census/age_composition_CA_tracts_2013-17.dta", replace
+{txt}file census/age_composition_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/data_pulls/value_data_by_tract.csv", clear
+{res}{text}(5 vars, 8057 obs)
+
+{com}. save "census/housing_value_CA_tracts_2013-17.dta", replace
+{txt}(note: file census/housing_value_CA_tracts_2013-17.dta not found)
+file census/housing_value_CA_tracts_2013-17.dta saved
+
+{com}. 
+. 
+. * now merge all files together and reshape wide
+. use "census/median_hh_income_CA_tracts_2013-17.dta", clear
+{txt}
+{com}. merge 1:1 tract using "census/BA_plus_share_CA_tracts_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           8,057{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. merge 1:1 tract using "census/housing_value_CA_tracts_2013-17.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           8,057{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. drop _merge
+
+. set more off
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD10336.000000"
+{txt}
+{com}. 
+. merge 1:m tract using "census/race_ethnicity_CA_tracts_2013-17.dta", nogen
+{res}{txt}{p 0 7 2}
+(note: variable
+total was 
+int, now long to accommodate using data's values)
+{p_end}
+
+{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}          32,228{txt}  
+{col 5}{hline 41}
+
+{com}. reshape wide race_ct* race_share*, i(tract) j(race) string
+{txt}(note: j = asian_nh black_nh hisp white_nh)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}   32228   {txt}->{res}    8057
+{txt}Number of variables            {res}      18   {txt}->{res}      29
+{txt}j variable (4 values)              {res}race   {txt}->   (dropped)
+xij variables:
+                                {res}race_ct   {txt}->   {res}race_ctasian_nh race_ctblack_nh ... race_ctwhite_nh
+                            race_ct_se2   {txt}->   {res}race_ct_se2asian_nh race_ct_se2black_nh ... race_ct_se2white_nh
+                             race_share   {txt}->   {res}race_shareasian_nh race_shareblack_nh ... race_sharewhite_nh
+                         race_share_se2   {txt}->   {res}race_share_se2asian_nh race_share_se2black_nh ... race_share_se2white_nh
+{txt}{hline 77}
+
+{com}. 
+. merge 1:m tract using "census/age_composition_CA_tracts_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}          16,114{txt}  
+{col 5}{hline 41}
+
+{com}. reshape wide age_ct* age_share*, i(tract) j(agecat) string
+{txt}(note: j = over65 under18)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}   16114   {txt}->{res}    8057
+{txt}Number of variables            {res}      34   {txt}->{res}      37
+{txt}j variable (2 values)            {res}agecat   {txt}->   (dropped)
+xij variables:
+                                 {res}age_ct   {txt}->   {res}age_ctover65 age_ctunder18
+                             age_ct_se2   {txt}->   {res}age_ct_se2over65 age_ct_se2under18
+                              age_share   {txt}->   {res}age_shareover65 age_shareunder18
+                          age_share_se2   {txt}->   {res}age_share_se2over65 age_share_se2under18
+{txt}{hline 77}
+
+{com}. 
+. * fix the FIPS codes
+. tostring tract, format(%011.0f) replace
+{txt}tract was {res:double} now {res:str11}
+
+{com}. 
+. save "census/all_tract_data.dta", replace
+{txt}file census/all_tract_data.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD10336.000000"
+{txt}
+{com}. *===================================
+. * MERGE DATA WITH UNINCORPORATED
+. *===================================
+. 
+. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:m stplfips using "temp/unincorporated_tract_xwalk.dta", nogen keep(match)
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}             742{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. duplicates tag stplfips, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} stplfips{p_end}
+{txt}
+{com}. tab dup
+
+        {txt}dup {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}          1        0.13        0.13
+{txt}          5 {c |}{res}          6        0.81        0.94
+{txt}          7 {c |}{res}          8        1.08        2.02
+{txt}          9 {c |}{res}         10        1.35        3.37
+{txt}         10 {c |}{res}         11        1.48        4.85
+{txt}         13 {c |}{res}         14        1.89        6.74
+{txt}         19 {c |}{res}         20        2.70        9.43
+{txt}         25 {c |}{res}         26        3.50       12.94
+{txt}         27 {c |}{res}         28        3.77       16.71
+{txt}         29 {c |}{res}         30        4.04       20.75
+{txt}         34 {c |}{res}         35        4.72       25.47
+{txt}         38 {c |}{res}         39        5.26       30.73
+{txt}         48 {c |}{res}         98       13.21       43.94
+{txt}         51 {c |}{res}         52        7.01       50.94
+{txt}         65 {c |}{res}         66        8.89       59.84
+{txt}         74 {c |}{res}         75       10.11       69.95
+{txt}         94 {c |}{res}         95       12.80       82.75
+{txt}        127 {c |}{res}        128       17.25      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        742      100.00
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD10336.000000"
+{txt}
+{com}. drop dup
+{txt}
+{com}. 
+. duplicates tag tract stplfips, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} tract stplfips{p_end}
+{txt}
+{com}. tab dup
+
+        {txt}dup {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        742      100.00      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        742      100.00
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD10336.000000"
+{txt}
+{com}. 
+. keep tract stplfips city stcofips county afact
+{txt}
+{com}. 
+. * keep only tracts in unincorporated places
+. merge m:1 tract using "census/all_tract_data.dta", nogen keep(match)
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}             742{txt}  
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD10336.000000"
+{txt}
+{com}. /*================================================================= *
+> * TERNER HOUSING SURVEY DATA: ALLOCATE TRACT DATA 
+> *       
+> *       Cecile Murray
+> *       Stata 13.1 on Mac
+> *       Created: 2019-01-09
+> * ================================================================= */
+. 
+. set more off
+{txt}
+{com}. clear all
+{txt}
+{com}. 
+. capture cd "/Users/cecilemurray/Documents/coding/Terner"
+{txt}
+{com}. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/unincorporated_allocation-01-22.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}22 Jan 2019, 21:43:55
+{txt}
+{com}. 
+. * convert csvs into Stata files
+. 
+. import delimited "R/temp/BA_plus_share_tracts.csv", clear
+{res}{text}(7 vars, 8057 obs)
+
+{com}. save "census/BA_plus_share_CA_tracts_2013-17.dta", replace
+{txt}file census/BA_plus_share_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/temp/median_income_tracts.csv", clear
+{res}{text}(3 vars, 8057 obs)
+
+{com}. save "census/median_hh_income_CA_tracts_2013-17.dta", replace
+{txt}file census/median_hh_income_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/temp/race_ethnicity_tracts.csv", clear
+{res}{text}(8 vars, 32228 obs)
+
+{com}. save "census/race_ethnicity_CA_tracts_2013-17.dta", replace
+{txt}file census/race_ethnicity_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/temp/age_composition_tracts.csv", clear
+{res}{text}(8 vars, 16114 obs)
+
+{com}. save "census/age_composition_CA_tracts_2013-17.dta", replace
+{txt}file census/age_composition_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/data_pulls/value_data_by_tract.csv", clear
+{res}{text}(6 vars, 8057 obs)
+
+{com}. save "census/housing_value_CA_tracts_2013-17.dta", replace
+{txt}file census/housing_value_CA_tracts_2013-17.dta saved
+
+{com}. 
+. 
+. * now merge all files together and reshape wide
+. use "census/median_hh_income_CA_tracts_2013-17.dta", clear
+{txt}
+{com}. merge 1:1 tract using "census/BA_plus_share_CA_tracts_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           8,057{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. merge 1:1 tract using "census/housing_value_CA_tracts_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           8,057{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. merge 1:m tract using "census/race_ethnicity_CA_tracts_2013-17.dta", nogen
+{res}{txt}{p 0 7 2}
+(note: variable
+total was 
+int, now long to accommodate using data's values)
+{p_end}
+
+{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}          32,228{txt}  
+{col 5}{hline 41}
+
+{com}. reshape wide race_ct* race_share*, i(tract) j(race) string
+{txt}(note: j = asian_nh black_nh hisp white_nh)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}   32228   {txt}->{res}    8057
+{txt}Number of variables            {res}      19   {txt}->{res}      30
+{txt}j variable (4 values)              {res}race   {txt}->   (dropped)
+xij variables:
+                                {res}race_ct   {txt}->   {res}race_ctasian_nh race_ctblack_nh ... race_ctwhite_nh
+                            race_ct_se2   {txt}->   {res}race_ct_se2asian_nh race_ct_se2black_nh ... race_ct_se2white_nh
+                             race_share   {txt}->   {res}race_shareasian_nh race_shareblack_nh ... race_sharewhite_nh
+                         race_share_se2   {txt}->   {res}race_share_se2asian_nh race_share_se2black_nh ... race_share_se2white_nh
+{txt}{hline 77}
+
+{com}. 
+. merge 1:m tract using "census/age_composition_CA_tracts_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}          16,114{txt}  
+{col 5}{hline 41}
+
+{com}. reshape wide age_ct* age_share*, i(tract) j(agecat) string
+{txt}(note: j = over65 under18)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}   16114   {txt}->{res}    8057
+{txt}Number of variables            {res}      35   {txt}->{res}      38
+{txt}j variable (2 values)            {res}agecat   {txt}->   (dropped)
+xij variables:
+                                 {res}age_ct   {txt}->   {res}age_ctover65 age_ctunder18
+                             age_ct_se2   {txt}->   {res}age_ct_se2over65 age_ct_se2under18
+                              age_share   {txt}->   {res}age_shareover65 age_shareunder18
+                          age_share_se2   {txt}->   {res}age_share_se2over65 age_share_se2under18
+{txt}{hline 77}
+
+{com}. 
+. * fix the FIPS codes
+. tostring tract, format(%011.0f) replace
+{txt}tract was {res:double} now {res:str11}
+
+{com}. 
+. save "census/all_tract_data.dta", replace
+{txt}file census/all_tract_data.dta saved
+
+{com}. 
+. *===================================
+. * MERGE DATA WITH UNINCORPORATED
+. *===================================
+. 
+. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:m stplfips using "temp/unincorporated_tract_xwalk.dta", nogen keep(match)
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}             742{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. duplicates tag stplfips, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} stplfips{p_end}
+{txt}
+{com}. tab dup
+
+        {txt}dup {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}          1        0.13        0.13
+{txt}          5 {c |}{res}          6        0.81        0.94
+{txt}          7 {c |}{res}          8        1.08        2.02
+{txt}          9 {c |}{res}         10        1.35        3.37
+{txt}         10 {c |}{res}         11        1.48        4.85
+{txt}         13 {c |}{res}         14        1.89        6.74
+{txt}         19 {c |}{res}         20        2.70        9.43
+{txt}         25 {c |}{res}         26        3.50       12.94
+{txt}         27 {c |}{res}         28        3.77       16.71
+{txt}         29 {c |}{res}         30        4.04       20.75
+{txt}         34 {c |}{res}         35        4.72       25.47
+{txt}         38 {c |}{res}         39        5.26       30.73
+{txt}         48 {c |}{res}         98       13.21       43.94
+{txt}         51 {c |}{res}         52        7.01       50.94
+{txt}         65 {c |}{res}         66        8.89       59.84
+{txt}         74 {c |}{res}         75       10.11       69.95
+{txt}         94 {c |}{res}         95       12.80       82.75
+{txt}        127 {c |}{res}        128       17.25      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        742      100.00
+{txt}
+{com}. drop dup
+{txt}
+{com}. 
+. duplicates tag tract stplfips, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} tract stplfips{p_end}
+{txt}
+{com}. tab dup
+
+        {txt}dup {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        742      100.00      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        742      100.00
+{txt}
+{com}. 
+. keep tract stplfips city stcofips county afact
+{txt}
+{com}. 
+. * keep only tracts in unincorporated places
+. merge m:1 tract using "census/all_tract_data.dta", nogen keep(match)
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}             742{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. *===================================
+. * ALLOCATE
+. *===================================
+. 
+. * snapshot save
+. 
+. * reshape for convenience
+. reshape long age_, i(tract stplfips city) j(agevar) string
+{txt}(note: j = ct_se2over65 ct_se2under18 ctover65 ctunder18 share_se2over65 share_se2under18 shareover65 shareunder18)
+
+Data{col 36}wide{col 43}->{col 48}long
+{hline 77}
+Number of obs.                 {res}     742   {txt}->{res}    5936
+{txt}Number of variables            {res}      43   {txt}->{res}      37
+{txt}j variable (8 values)                     ->   {res}agevar
+{txt}xij variables:
+{res}age_ct_se2over65 age_ct_se2under18 ... age_shareunder18{txt}->{res}age_
+{txt}{hline 77}
+
+{com}. reshape long race_, i(tract stplfips city agevar) j(racevar) string
+{txt}(note: j = ct_se2asian_nh ct_se2black_nh ct_se2hisp ct_se2white_nh ctasian_nh ctblack_nh cthisp ctwhite_nh share_se2asian_nh share_se2black_nh share_se2hisp share_se2white_nh shareasian_nh shareblack_nh sharehisp sharewhite_nh)
+
+Data{col 36}wide{col 43}->{col 48}long
+{hline 77}
+Number of obs.                 {res}    5936   {txt}->{res}   94976
+{txt}Number of variables            {res}      37   {txt}->{res}      23
+{txt}j variable (16 values)                    ->   {res}racevar
+{txt}xij variables:
+{res}race_ct_se2asian_nh race_ct_se2black_nh ... race_sharewhite_nh{txt}->{res}race_
+{txt}{hline 77}
+
+{com}. 
+. * multiply by the allocation factor
+. replace age_ = afact * age_
+{txt}(91136 real changes made)
+
+{com}. replace race_ = afact * race_
+{txt}(89392 real changes made)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD10336.000000"
+{txt}
+{com}. /*================================================================= *
+> * TERNER HOUSING SURVEY DATA: ALLOCATE TRACT DATA 
+> *       
+> *       Cecile Murray
+> *       Stata 13.1 on Mac
+> *       Created: 2019-01-09
+> * ================================================================= */
+. 
+. set more off
+{txt}
+{com}. clear all
+{txt}
+{com}. 
+. capture cd "/Users/cecilemurray/Documents/coding/Terner"
+{txt}
+{com}. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/unincorporated_allocation-01-22.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}22 Jan 2019, 21:45:29
+{txt}
+{com}. 
+. * convert csvs into Stata files
+. 
+. import delimited "R/temp/BA_plus_share_tracts.csv", clear
+{res}{text}(7 vars, 8057 obs)
+
+{com}. save "census/BA_plus_share_CA_tracts_2013-17.dta", replace
+{txt}file census/BA_plus_share_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/temp/median_income_tracts.csv", clear
+{res}{text}(3 vars, 8057 obs)
+
+{com}. save "census/median_hh_income_CA_tracts_2013-17.dta", replace
+{txt}file census/median_hh_income_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/temp/race_ethnicity_tracts.csv", clear
+{res}{text}(8 vars, 32228 obs)
+
+{com}. save "census/race_ethnicity_CA_tracts_2013-17.dta", replace
+{txt}file census/race_ethnicity_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/temp/age_composition_tracts.csv", clear
+{res}{text}(8 vars, 16114 obs)
+
+{com}. save "census/age_composition_CA_tracts_2013-17.dta", replace
+{txt}file census/age_composition_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/data_pulls/value_data_by_tract.csv", clear
+{res}{text}(3 vars, 8057 obs)
+
+{com}. save "census/housing_value_CA_tracts_2013-17.dta", replace
+{txt}file census/housing_value_CA_tracts_2013-17.dta saved
+
+{com}. 
+. 
+. * now merge all files together and reshape wide
+. use "census/median_hh_income_CA_tracts_2013-17.dta", clear
+{txt}
+{com}. merge 1:1 tract using "census/BA_plus_share_CA_tracts_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           8,057{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. merge 1:1 tract using "census/housing_value_CA_tracts_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           8,057{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. merge 1:m tract using "census/race_ethnicity_CA_tracts_2013-17.dta", nogen
+{res}{txt}{p 0 7 2}
+(note: variable
+total was 
+int, now long to accommodate using data's values)
+{p_end}
+
+{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}          32,228{txt}  
+{col 5}{hline 41}
+
+{com}. reshape wide race_ct* race_share*, i(tract) j(race) string
+{txt}(note: j = asian_nh black_nh hisp white_nh)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}   32228   {txt}->{res}    8057
+{txt}Number of variables            {res}      16   {txt}->{res}      27
+{txt}j variable (4 values)              {res}race   {txt}->   (dropped)
+xij variables:
+                                {res}race_ct   {txt}->   {res}race_ctasian_nh race_ctblack_nh ... race_ctwhite_nh
+                            race_ct_se2   {txt}->   {res}race_ct_se2asian_nh race_ct_se2black_nh ... race_ct_se2white_nh
+                             race_share   {txt}->   {res}race_shareasian_nh race_shareblack_nh ... race_sharewhite_nh
+                         race_share_se2   {txt}->   {res}race_share_se2asian_nh race_share_se2black_nh ... race_share_se2white_nh
+{txt}{hline 77}
+
+{com}. 
+. merge 1:m tract using "census/age_composition_CA_tracts_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}          16,114{txt}  
+{col 5}{hline 41}
+
+{com}. reshape wide age_ct* age_share*, i(tract) j(agecat) string
+{txt}(note: j = over65 under18)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}   16114   {txt}->{res}    8057
+{txt}Number of variables            {res}      32   {txt}->{res}      35
+{txt}j variable (2 values)            {res}agecat   {txt}->   (dropped)
+xij variables:
+                                 {res}age_ct   {txt}->   {res}age_ctover65 age_ctunder18
+                             age_ct_se2   {txt}->   {res}age_ct_se2over65 age_ct_se2under18
+                              age_share   {txt}->   {res}age_shareover65 age_shareunder18
+                          age_share_se2   {txt}->   {res}age_share_se2over65 age_share_se2under18
+{txt}{hline 77}
+
+{com}. 
+. * fix the FIPS codes
+. tostring tract, format(%011.0f) replace
+{txt}tract was {res:double} now {res:str11}
+
+{com}. 
+. save "census/all_tract_data.dta", replace
+{txt}file census/all_tract_data.dta saved
+
+{com}. 
+. *===================================
+. * MERGE DATA WITH UNINCORPORATED
+. *===================================
+. 
+. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:m stplfips using "temp/unincorporated_tract_xwalk.dta", nogen keep(match)
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}             742{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. duplicates tag stplfips, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} stplfips{p_end}
+{txt}
+{com}. tab dup
+
+        {txt}dup {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}          1        0.13        0.13
+{txt}          5 {c |}{res}          6        0.81        0.94
+{txt}          7 {c |}{res}          8        1.08        2.02
+{txt}          9 {c |}{res}         10        1.35        3.37
+{txt}         10 {c |}{res}         11        1.48        4.85
+{txt}         13 {c |}{res}         14        1.89        6.74
+{txt}         19 {c |}{res}         20        2.70        9.43
+{txt}         25 {c |}{res}         26        3.50       12.94
+{txt}         27 {c |}{res}         28        3.77       16.71
+{txt}         29 {c |}{res}         30        4.04       20.75
+{txt}         34 {c |}{res}         35        4.72       25.47
+{txt}         38 {c |}{res}         39        5.26       30.73
+{txt}         48 {c |}{res}         98       13.21       43.94
+{txt}         51 {c |}{res}         52        7.01       50.94
+{txt}         65 {c |}{res}         66        8.89       59.84
+{txt}         74 {c |}{res}         75       10.11       69.95
+{txt}         94 {c |}{res}         95       12.80       82.75
+{txt}        127 {c |}{res}        128       17.25      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        742      100.00
+{txt}
+{com}. drop dup
+{txt}
+{com}. 
+. duplicates tag tract stplfips, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} tract stplfips{p_end}
+{txt}
+{com}. tab dup
+
+        {txt}dup {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        742      100.00      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        742      100.00
+{txt}
+{com}. 
+. keep tract stplfips city stcofips county afact
+{txt}
+{com}. 
+. * keep only tracts in unincorporated places
+. merge m:1 tract using "census/all_tract_data.dta", nogen keep(match)
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}             742{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. *===================================
+. * ALLOCATE
+. *===================================
+. 
+. * snapshot save
+. 
+. * reshape for convenience
+. reshape long age_, i(tract stplfips city) j(agevar) string
+{txt}(note: j = ct_se2over65 ct_se2under18 ctover65 ctunder18 share_se2over65 share_se2under18 shareover65 shareunder18)
+
+Data{col 36}wide{col 43}->{col 48}long
+{hline 77}
+Number of obs.                 {res}     742   {txt}->{res}    5936
+{txt}Number of variables            {res}      40   {txt}->{res}      34
+{txt}j variable (8 values)                     ->   {res}agevar
+{txt}xij variables:
+{res}age_ct_se2over65 age_ct_se2under18 ... age_shareunder18{txt}->{res}age_
+{txt}{hline 77}
+
+{com}. reshape long race_, i(tract stplfips city agevar) j(racevar) string
+{txt}(note: j = ct_se2asian_nh ct_se2black_nh ct_se2hisp ct_se2white_nh ctasian_nh ctblack_nh cthisp ctwhite_nh share_se2asian_nh share_se2black_nh share_se2hisp share_se2white_nh shareasian_nh shareblack_nh sharehisp sharewhite_nh)
+
+Data{col 36}wide{col 43}->{col 48}long
+{hline 77}
+Number of obs.                 {res}    5936   {txt}->{res}   94976
+{txt}Number of variables            {res}      34   {txt}->{res}      20
+{txt}j variable (16 values)                    ->   {res}racevar
+{txt}xij variables:
+{res}race_ct_se2asian_nh race_ct_se2black_nh ... race_sharewhite_nh{txt}->{res}race_
+{txt}{hline 77}
+
+{com}. 
+. * multiply by the allocation factor
+. replace age_ = afact * age_
+{txt}(91136 real changes made)
+
+{com}. replace race_ = afact * race_
+{txt}(89392 real changes made)
+
+{com}. 
+. foreach v of varlist medhhinc* tot* baplus* agg_* {c -(}
+{txt}  2{com}.         replace `v' = `v' * afact
+{txt}  3{com}. {c )-}
+{txt}medhhinc was {res}long{txt} now {res}double
+{txt}(90880 real changes made)
+(90752 real changes made)
+total was {res}long{txt} now {res}double
+{txt}(91264 real changes made)
+(91392 real changes made)
+baplus was {res}int{txt} now {res}float
+{txt}(91264 real changes made)
+(91392 real changes made)
+(91264 real changes made)
+(91264 real changes made)
+agg_rent was {res}long{txt} now {res}double
+{txt}(90880 real changes made)
+(49024 real changes made)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD10336.000000"
+{txt}
+{com}. * now collapse by place
+. collapse (sum) age_ race_ baplus* tot* agg*, by(stplfips city agevar racevar)
+{txt}
+{com}. 
+. * actually going to drop all the se2s and previusly computed shares
+. drop baplus_share_se2 baplus_se2 total_se2
+{txt}
+{com}. drop if substr(agevar, 1, 5) == "share"
+{txt}(1216 observations deleted)
+
+{com}. drop if substr(agevar, 4, 3) == "se2"
+{txt}(608 observations deleted)
+
+{com}. drop if substr(racevar, 1, 5) == "share"
+{txt}(304 observations deleted)
+
+{com}. drop if substr(racevar, 4, 3) == "se2"
+{txt}(152 observations deleted)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD10336.000000"
+{txt}
+{com}. *===================================
+. * RESHAPE WIDE (horribly)
+. *===================================
+. 
+. * currently snapshot 1 (formerly 14!)
+. snapshot save
+{txt}{p 0 2}snapshot {res:1} created at {res:22 Jan 2019 21:46}{p_end}
+
+{com}. 
+. keep stplfips city baplus* total*
+{txt}
+{com}. duplicates drop stplfips, force
+
+{p 0 4}{txt}Duplicates in terms of {res} stplfips{p_end}
+
+{txt}(133 observations deleted)
+
+{com}. 
+. * fix the shares
+. replace baplus_share = baplus / total
+{txt}(19 real changes made)
+
+{com}. 
+. * save this extract
+. save "temp/unincorporated_place_basic_wide.dta", replace
+{txt}file temp/unincorporated_place_basic_wide.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD10336.000000"
+{txt}
+{com}. snapshot restore 1 
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD10336.000000"
+{txt}
+{com}. /*================================================================= *
+> * TERNER HOUSING SURVEY DATA: ALLOCATE TRACT DATA 
+> *       
+> *       Cecile Murray
+> *       Stata 13.1 on Mac
+> *       Created: 2019-01-09
+> * ================================================================= */
+. 
+. set more off
+{txt}
+{com}. clear all
+{txt}
+{com}. 
+. capture cd "/Users/cecilemurray/Documents/coding/Terner"
+{txt}
+{com}. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/unincorporated_allocation-01-22.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}22 Jan 2019, 21:54:30
+{txt}
+{com}. 
+. * convert csvs into Stata files
+. 
+. import delimited "R/temp/BA_plus_share_tracts.csv", clear
+{res}{text}(7 vars, 8057 obs)
+
+{com}. save "census/BA_plus_share_CA_tracts_2013-17.dta", replace
+{txt}file census/BA_plus_share_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/temp/median_income_tracts.csv", clear
+{res}{text}(3 vars, 8057 obs)
+
+{com}. save "census/median_hh_income_CA_tracts_2013-17.dta", replace
+{txt}file census/median_hh_income_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/temp/race_ethnicity_tracts.csv", clear
+{res}{text}(8 vars, 32228 obs)
+
+{com}. save "census/race_ethnicity_CA_tracts_2013-17.dta", replace
+{txt}file census/race_ethnicity_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/temp/age_composition_tracts.csv", clear
+{res}{text}(8 vars, 16114 obs)
+
+{com}. save "census/age_composition_CA_tracts_2013-17.dta", replace
+{txt}file census/age_composition_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/data_pulls/value_data_by_tract.csv", clear
+{res}{text}(3 vars, 8057 obs)
+
+{com}. save "census/housing_value_CA_tracts_2013-17.dta", replace
+{txt}file census/housing_value_CA_tracts_2013-17.dta saved
+
+{com}. 
+. 
+. * now merge all files together and reshape wide
+. use "census/median_hh_income_CA_tracts_2013-17.dta", clear
+{txt}
+{com}. merge 1:1 tract using "census/BA_plus_share_CA_tracts_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           8,057{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. merge 1:1 tract using "census/housing_value_CA_tracts_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           8,057{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. merge 1:m tract using "census/race_ethnicity_CA_tracts_2013-17.dta", nogen
+{res}{txt}{p 0 7 2}
+(note: variable
+total was 
+int, now long to accommodate using data's values)
+{p_end}
+
+{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}          32,228{txt}  
+{col 5}{hline 41}
+
+{com}. reshape wide race_ct* race_share*, i(tract) j(race) string
+{txt}(note: j = asian_nh black_nh hisp white_nh)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}   32228   {txt}->{res}    8057
+{txt}Number of variables            {res}      16   {txt}->{res}      27
+{txt}j variable (4 values)              {res}race   {txt}->   (dropped)
+xij variables:
+                                {res}race_ct   {txt}->   {res}race_ctasian_nh race_ctblack_nh ... race_ctwhite_nh
+                            race_ct_se2   {txt}->   {res}race_ct_se2asian_nh race_ct_se2black_nh ... race_ct_se2white_nh
+                             race_share   {txt}->   {res}race_shareasian_nh race_shareblack_nh ... race_sharewhite_nh
+                         race_share_se2   {txt}->   {res}race_share_se2asian_nh race_share_se2black_nh ... race_share_se2white_nh
+{txt}{hline 77}
+
+{com}. 
+. merge 1:m tract using "census/age_composition_CA_tracts_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}          16,114{txt}  
+{col 5}{hline 41}
+
+{com}. reshape wide age_ct* age_share*, i(tract) j(agecat) string
+{txt}(note: j = over65 under18)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}   16114   {txt}->{res}    8057
+{txt}Number of variables            {res}      32   {txt}->{res}      35
+{txt}j variable (2 values)            {res}agecat   {txt}->   (dropped)
+xij variables:
+                                 {res}age_ct   {txt}->   {res}age_ctover65 age_ctunder18
+                             age_ct_se2   {txt}->   {res}age_ct_se2over65 age_ct_se2under18
+                              age_share   {txt}->   {res}age_shareover65 age_shareunder18
+                          age_share_se2   {txt}->   {res}age_share_se2over65 age_share_se2under18
+{txt}{hline 77}
+
+{com}. 
+. * fix the FIPS codes
+. tostring tract, format(%011.0f) replace
+{txt}tract was {res:double} now {res:str11}
+
+{com}. 
+. save "census/all_tract_data.dta", replace
+{txt}file census/all_tract_data.dta saved
+
+{com}. 
+. *===================================
+. * MERGE DATA WITH UNINCORPORATED
+. *===================================
+. 
+. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:m stplfips using "temp/unincorporated_tract_xwalk.dta", nogen keep(match)
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}             742{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. duplicates tag stplfips, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} stplfips{p_end}
+{txt}
+{com}. tab dup
+
+        {txt}dup {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}          1        0.13        0.13
+{txt}          5 {c |}{res}          6        0.81        0.94
+{txt}          7 {c |}{res}          8        1.08        2.02
+{txt}          9 {c |}{res}         10        1.35        3.37
+{txt}         10 {c |}{res}         11        1.48        4.85
+{txt}         13 {c |}{res}         14        1.89        6.74
+{txt}         19 {c |}{res}         20        2.70        9.43
+{txt}         25 {c |}{res}         26        3.50       12.94
+{txt}         27 {c |}{res}         28        3.77       16.71
+{txt}         29 {c |}{res}         30        4.04       20.75
+{txt}         34 {c |}{res}         35        4.72       25.47
+{txt}         38 {c |}{res}         39        5.26       30.73
+{txt}         48 {c |}{res}         98       13.21       43.94
+{txt}         51 {c |}{res}         52        7.01       50.94
+{txt}         65 {c |}{res}         66        8.89       59.84
+{txt}         74 {c |}{res}         75       10.11       69.95
+{txt}         94 {c |}{res}         95       12.80       82.75
+{txt}        127 {c |}{res}        128       17.25      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        742      100.00
+{txt}
+{com}. drop dup
+{txt}
+{com}. 
+. duplicates tag tract stplfips, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} tract stplfips{p_end}
+{txt}
+{com}. tab dup
+
+        {txt}dup {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        742      100.00      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        742      100.00
+{txt}
+{com}. 
+. keep tract stplfips city stcofips county afact
+{txt}
+{com}. 
+. * keep only tracts in unincorporated places
+. merge m:1 tract using "census/all_tract_data.dta", nogen keep(match)
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}             742{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. *===================================
+. * ALLOCATE
+. *===================================
+. 
+. * snapshot save
+. 
+. * reshape for convenience
+. reshape long age_, i(tract stplfips city) j(agevar) string
+{txt}(note: j = ct_se2over65 ct_se2under18 ctover65 ctunder18 share_se2over65 share_se2under18 shareover65 shareunder18)
+
+Data{col 36}wide{col 43}->{col 48}long
+{hline 77}
+Number of obs.                 {res}     742   {txt}->{res}    5936
+{txt}Number of variables            {res}      40   {txt}->{res}      34
+{txt}j variable (8 values)                     ->   {res}agevar
+{txt}xij variables:
+{res}age_ct_se2over65 age_ct_se2under18 ... age_shareunder18{txt}->{res}age_
+{txt}{hline 77}
+
+{com}. reshape long race_, i(tract stplfips city agevar) j(racevar) string
+{txt}(note: j = ct_se2asian_nh ct_se2black_nh ct_se2hisp ct_se2white_nh ctasian_nh ctblack_nh cthisp ctwhite_nh share_se2asian_nh share_se2black_nh share_se2hisp share_se2white_nh shareasian_nh shareblack_nh sharehisp sharewhite_nh)
+
+Data{col 36}wide{col 43}->{col 48}long
+{hline 77}
+Number of obs.                 {res}    5936   {txt}->{res}   94976
+{txt}Number of variables            {res}      34   {txt}->{res}      20
+{txt}j variable (16 values)                    ->   {res}racevar
+{txt}xij variables:
+{res}race_ct_se2asian_nh race_ct_se2black_nh ... race_sharewhite_nh{txt}->{res}race_
+{txt}{hline 77}
+
+{com}. 
+. * multiply by the allocation factor
+. replace age_ = afact * age_
+{txt}(91136 real changes made)
+
+{com}. replace race_ = afact * race_
+{txt}(89392 real changes made)
+
+{com}. 
+. foreach v of varlist medhhinc* tot* baplus* agg_* {c -(}
+{txt}  2{com}.         replace `v' = `v' * afact
+{txt}  3{com}. {c )-}
+{txt}medhhinc was {res}long{txt} now {res}double
+{txt}(90880 real changes made)
+(90752 real changes made)
+total was {res}long{txt} now {res}double
+{txt}(91264 real changes made)
+(91392 real changes made)
+baplus was {res}int{txt} now {res}float
+{txt}(91264 real changes made)
+(91392 real changes made)
+(91264 real changes made)
+(91264 real changes made)
+agg_rent was {res}long{txt} now {res}double
+{txt}(90752 real changes made)
+(48640 real changes made)
+
+{com}. 
+. * now collapse by place
+. collapse (sum) age_ race_ baplus* tot* agg*, by(stplfips city agevar racevar)
+{txt}
+{com}. 
+. * actually going to drop all the se2s and previusly computed shares
+. drop baplus_share_se2 baplus_se2 total_se2
+{txt}
+{com}. drop if substr(agevar, 1, 5) == "share"
+{txt}(1216 observations deleted)
+
+{com}. drop if substr(agevar, 4, 3) == "se2"
+{txt}(608 observations deleted)
+
+{com}. drop if substr(racevar, 1, 5) == "share"
+{txt}(304 observations deleted)
+
+{com}. drop if substr(racevar, 4, 3) == "se2"
+{txt}(152 observations deleted)
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. browse city agg_
+{err}agg_ ambiguous abbreviation
+{txt}{search r(111):r(111);}
+
+{com}. browse city agg*
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD10336.000000"
+{txt}
+{com}. *===================================
+. * RESHAPE WIDE (horribly)
+. *===================================
+. 
+. * currently snapshot 2 (formerly 14!)
+. snapshot save
+{txt}{p 0 2}snapshot {res:2} created at {res:22 Jan 2019 21:55}{p_end}
+
+{com}. 
+. keep stplfips city baplus* total*
+{txt}
+{com}. duplicates drop stplfips, force
+
+{p 0 4}{txt}Duplicates in terms of {res} stplfips{p_end}
+
+{txt}(133 observations deleted)
+
+{com}. 
+. * fix the shares
+. replace baplus_share = baplus / total
+{txt}(19 real changes made)
+
+{com}. 
+. * save this extract
+. save "temp/unincorporated_place_basic_wide.dta", replace
+{txt}file temp/unincorporated_place_basic_wide.dta saved
+
+{com}. 
+. snapshot restore 2 
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD10336.000000"
+{txt}
+{com}. 
+. foreach v in age race {c -(}
+{txt}  2{com}.         keep stplfips `v'_ `v'var total
+{txt}  3{com}.         drop if substr(`v'var, 4, 3) == "se2"
+{txt}  4{com}.         duplicates drop stplfips `v'var, force
+{txt}  5{com}.         gen `v'_share = `v'_ / total
+{txt}  6{com}.         keep stplfips `v'var `v'_share
+{txt}  7{com}.         reshape wide `v'_share, i(stplfips) j(`v'var) string
+{txt}  8{com}.         save "temp/unincorporated_place_`v'_data.dta", replace
+{txt}  9{com}.         snapshot restore 2
+{txt} 10{com}. {c )-}
+{txt}(0 observations deleted)
+
+{p 0 4}{txt}Duplicates in terms of {res} stplfips agevar{p_end}
+
+{txt}(114 observations deleted)
+(note: j = ctover65 ctunder18)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}      38   {txt}->{res}      19
+{txt}Number of variables            {res}       3   {txt}->{res}       3
+{txt}j variable (2 values)            {res}agevar   {txt}->   (dropped)
+xij variables:
+                              {res}age_share   {txt}->   {res}age_sharectover65 age_sharectunder18
+{txt}{hline 77}
+file temp/unincorporated_place_age_data.dta saved
+(0 observations deleted)
+
+{p 0 4}{txt}Duplicates in terms of {res} stplfips racevar{p_end}
+
+{txt}(76 observations deleted)
+(note: j = ctasian_nh ctblack_nh cthisp ctwhite_nh)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}      76   {txt}->{res}      19
+{txt}Number of variables            {res}       3   {txt}->{res}       5
+{txt}j variable (4 values)           {res}racevar   {txt}->   (dropped)
+xij variables:
+                             {res}race_share   {txt}->   {res}race_sharectasian_nh race_sharectblack_nh ... race_sharectwhite_nh
+{txt}{hline 77}
+file temp/unincorporated_place_race_data.dta saved
+
+{com}. 
+. use "temp/unincorporated_place_basic_wide.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. merge 1:1 stplfips using "temp/unincorporated_place_age_data.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}              19{txt}  
+{col 5}{hline 41}
+
+{com}. merge 1:1 stplfips using "temp/unincorporated_place_race_data.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}              19{txt}  
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. snapshot restore 2
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD10336.000000"
+{txt}
+{com}. keep stplfips city baplus* total* agg*
+{txt}
+{com}. duplicates drop stplfips, force
+
+{p 0 4}{txt}Duplicates in terms of {res} stplfips{p_end}
+
+{txt}(133 observations deleted)
+
+{com}. 
+. * fix the shares
+. replace baplus_share = baplus / total
+{txt}(19 real changes made)
+
+{com}. 
+. * save this extract
+. save "temp/unincorporated_place_basic_wide.dta", replace
+{txt}file temp/unincorporated_place_basic_wide.dta saved
+
+{com}. 
+. snapshot restore 2 
+{txt}
+{com}. 
+. foreach v in age race {c -(}
+{txt}  2{com}.         keep stplfips `v'_ `v'var total
+{txt}  3{com}.         drop if substr(`v'var, 4, 3) == "se2"
+{txt}  4{com}.         duplicates drop stplfips `v'var, force
+{txt}  5{com}.         gen `v'_share = `v'_ / total
+{txt}  6{com}.         keep stplfips `v'var `v'_share
+{txt}  7{com}.         reshape wide `v'_share, i(stplfips) j(`v'var) string
+{txt}  8{com}.         save "temp/unincorporated_place_`v'_data.dta", replace
+{txt}  9{com}.         snapshot restore 2
+{txt} 10{com}. {c )-}
+{txt}(0 observations deleted)
+
+{p 0 4}{txt}Duplicates in terms of {res} stplfips agevar{p_end}
+
+{txt}(114 observations deleted)
+(note: j = ctover65 ctunder18)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}      38   {txt}->{res}      19
+{txt}Number of variables            {res}       3   {txt}->{res}       3
+{txt}j variable (2 values)            {res}agevar   {txt}->   (dropped)
+xij variables:
+                              {res}age_share   {txt}->   {res}age_sharectover65 age_sharectunder18
+{txt}{hline 77}
+file temp/unincorporated_place_age_data.dta saved
+(0 observations deleted)
+
+{p 0 4}{txt}Duplicates in terms of {res} stplfips racevar{p_end}
+
+{txt}(76 observations deleted)
+(note: j = ctasian_nh ctblack_nh cthisp ctwhite_nh)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}      76   {txt}->{res}      19
+{txt}Number of variables            {res}       3   {txt}->{res}       5
+{txt}j variable (4 values)           {res}racevar   {txt}->   (dropped)
+xij variables:
+                             {res}race_share   {txt}->   {res}race_sharectasian_nh race_sharectblack_nh ... race_sharectwhite_nh
+{txt}{hline 77}
+file temp/unincorporated_place_race_data.dta saved
+
+{com}. 
+. use "temp/unincorporated_place_basic_wide.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. merge 1:1 stplfips using "temp/unincorporated_place_age_data.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}              19{txt}  
+{col 5}{hline 41}
+
+{com}. merge 1:1 stplfips using "temp/unincorporated_place_race_data.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}              19{txt}  
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD10336.000000"
+{txt}
+{com}. *===================================
+. * RENAME AND SAVE
+. *===================================
+. 
+. rename *ct* **
+{res}{txt}
+{com}. drop city baplus
+{txt}
+{com}. 
+. save "census/unincorporated_place_acs_data_final.dta", replace
+{txt}file census/unincorporated_place_acs_data_final.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD10336.000000"
+{txt}
+{com}. /*================================================================= *
+> * TERNER HOUSING SURVEY DATA: MERGE ACS DATA
+> *       
+> *       Cecile Murray
+> *       Stata 13.1 on Mac
+> *       Created: 2019-01-07
+> * ================================================================= */
+. 
+. clear all 
+{txt}
+{com}. set more off
+{txt}
+{com}. 
+. capture cd "/Users/cecilemurray/Documents/coding/Terner"
+{txt}
+{com}. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/unincorporated_allocation-01-22.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}24 Jan 2019, 09:26:33
+{txt}
+{com}. 
+. * convert csvs into Stata files
+. 
+. import delimited "R/temp/BA_plus_share_tracts.csv", clear
+{res}{text}(7 vars, 8057 obs)
+
+{com}. save "census/BA_plus_share_CA_tracts_2013-17.dta", replace
+{txt}file census/BA_plus_share_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/temp/median_income_tracts.csv", clear
+{res}{text}(3 vars, 8057 obs)
+
+{com}. save "census/median_hh_income_CA_tracts_2013-17.dta", replace
+{txt}file census/median_hh_income_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/temp/race_ethnicity_tracts.csv", clear
+{res}{text}(8 vars, 32228 obs)
+
+{com}. save "census/race_ethnicity_CA_tracts_2013-17.dta", replace
+{txt}file census/race_ethnicity_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/temp/age_composition_tracts.csv", clear
+{res}{text}(8 vars, 16114 obs)
+
+{com}. save "census/age_composition_CA_tracts_2013-17.dta", replace
+{txt}file census/age_composition_CA_tracts_2013-17.dta saved
+
+{com}. 
+. import delimited "R/data_pulls/value_data_by_tract.csv", clear
+{res}{text}(3 vars, 8057 obs)
+
+{com}. save "census/housing_value_CA_tracts_2013-17.dta", replace
+{txt}file census/housing_value_CA_tracts_2013-17.dta saved
+
+{com}. 
+. 
+. * now merge all files together and reshape wide
+. use "census/median_hh_income_CA_tracts_2013-17.dta", clear
+{txt}
+{com}. merge 1:1 tract using "census/BA_plus_share_CA_tracts_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           8,057{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. merge 1:1 tract using "census/housing_value_CA_tracts_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           8,057{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. merge 1:m tract using "census/race_ethnicity_CA_tracts_2013-17.dta", nogen
+{res}{txt}{p 0 7 2}
+(note: variable
+total was 
+int, now long to accommodate using data's values)
+{p_end}
+
+{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}          32,228{txt}  
+{col 5}{hline 41}
+
+{com}. reshape wide race_ct* race_share*, i(tract) j(race) string
+{txt}(note: j = asian_nh black_nh hisp white_nh)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}   32228   {txt}->{res}    8057
+{txt}Number of variables            {res}      16   {txt}->{res}      27
+{txt}j variable (4 values)              {res}race   {txt}->   (dropped)
+xij variables:
+                                {res}race_ct   {txt}->   {res}race_ctasian_nh race_ctblack_nh ... race_ctwhite_nh
+                            race_ct_se2   {txt}->   {res}race_ct_se2asian_nh race_ct_se2black_nh ... race_ct_se2white_nh
+                             race_share   {txt}->   {res}race_shareasian_nh race_shareblack_nh ... race_sharewhite_nh
+                         race_share_se2   {txt}->   {res}race_share_se2asian_nh race_share_se2black_nh ... race_share_se2white_nh
+{txt}{hline 77}
+
+{com}. 
+. merge 1:m tract using "census/age_composition_CA_tracts_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}          16,114{txt}  
+{col 5}{hline 41}
+
+{com}. reshape wide age_ct* age_share*, i(tract) j(agecat) string
+{txt}(note: j = over65 under18)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}   16114   {txt}->{res}    8057
+{txt}Number of variables            {res}      32   {txt}->{res}      35
+{txt}j variable (2 values)            {res}agecat   {txt}->   (dropped)
+xij variables:
+                                 {res}age_ct   {txt}->   {res}age_ctover65 age_ctunder18
+                             age_ct_se2   {txt}->   {res}age_ct_se2over65 age_ct_se2under18
+                              age_share   {txt}->   {res}age_shareover65 age_shareunder18
+                          age_share_se2   {txt}->   {res}age_share_se2over65 age_share_se2under18
+{txt}{hline 77}
+
+{com}. 
+. * fix the FIPS codes
+. tostring tract, format(%011.0f) replace
+{txt}tract was {res:double} now {res:str11}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16262.000000"
+{txt}
+{com}. import delimited "R/data_pulls/value_data_by_tract.csv", clear
+{res}{text}(3 vars, 8057 obs)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16262.000000"
+{txt}
+{com}. import delimited "R/data_pulls/value_data_by_tract.csv", clear
+{res}{text}(3 vars, 8057 obs)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16262.000000"
+{txt}
+{com}. import delimited "R/data_pulls/value_data_by_tract.csv", clear
+{res}{text}(3 vars, 8057 obs)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16262.000000"
+{txt}
+{com}. clear all 
+{txt}
+{com}. set more off
+{txt}
+{com}. 
+. capture cd "/Users/cecilemurray/Documents/coding/Terner"
+{txt}
+{com}. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}

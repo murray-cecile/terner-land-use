@@ -9,7 +9,7 @@
 library(here)
 source("scripts/setup.R")
 
-censuskey <- Sys.getenv("CENSUSAPI_KEY")
+censuskey <- Sys.getenv("CENSUS_API_KEY")
 
 #===============================================================================#
 # PULL PLACE DATA

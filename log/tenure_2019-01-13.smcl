@@ -1,0 +1,87 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/tenure_2019-01-13.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}13 Jan 2019, 10:43:27
+{txt}
+{com}. 
+. import delimited "R/data_pulls/CA_tenure_by_place_2013-17.csv"
+{res}{err}file R/data_pulls/CA_tenure_by_place_2013-17.csv not found
+{txt}{search r(601):r(601);}
+
+end of do-file
+
+{search r(601):r(601);}
+
+{com}. clear
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. import delimited "R/data_pulls/CA_tenure_by_units_2013-17.csv"
+{res}{text}(9 vars, 33484 obs)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. * keep only unit shares and total count
+. keep stplfips varname share total
+{txt}
+{com}. 
+. * reshape wide
+. reshape wide share, i(stplfips) j(varnames) string
+{err}variable varnames not found
+{p 4 4 2}
+Data are already wide.
+{p_end}
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. * reshape wide
+. reshape wide share, i(stplfips) j(varname) string
+{txt}(note: j = own_10to19 own_1att own_1det own_2 own_20to49 own_3to4 own_50plus own_5to9 own_boatrv own_mobile ownocc rent_10to19 rent_1att rent_1det rent_2 rent_20to49 rent_3to4 rent_50plus rent_5to9 rent_boatrv rent_mobile rentocc)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}   33484   {txt}->{res}    1522
+{txt}Number of variables            {res}       4   {txt}->{res}      24
+{txt}j variable (22 values)          {res}varname   {txt}->   (dropped)
+xij variables:
+                                  {res}share   {txt}->   {res}shareown_10to19 shareown_1att ... sharerentocc
+{txt}{hline 77}
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. * rename total variable
+. rename total tot_unit_ct
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. * save 
+. save "census/units_by_tenure.dta", replace
+{txt}(note: file census/units_by_tenure.dta not found)
+file census/units_by_tenure.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. capture log close
+{smcl}
+{com}{sf}{ul off}

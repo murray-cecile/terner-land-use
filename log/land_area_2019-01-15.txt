@@ -1,0 +1,136 @@
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+browse if lnd_lb > 1
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+sort lb_share
+browse
+browse
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+set more off
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+tab _merge has_demo
+browse if _merge < 3
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+clear
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+brwse
+browse
+clear
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+browse
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+browse
+snapshot restore 2
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+browse
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+browse
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD15610.000000"
+browse
+di 1550 * 12
+exit, clear
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+browse
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+browse
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+tab dup_place
+browse if dup_place > 0
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+drop dup_place
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+tab dup_place
+browse if dup > 0
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+tab dup_place
+browse if dup_place>1
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+browse if dup_place > 0
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+drop dup_place
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+browse
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+browse
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+help sort
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+browse
+browse cbsaname zone lb_share ub_share lnd landsqmi
+browse cbsaname zone lb_share ub_share lnd landsqmi if zone == "_mf"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+browse cbsaname zone lb_share ub_share lnd landsqmi if zone == "_mf"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+browse cbsaname zone lb_share ub_share lnd landsqmi if zone == "_mf"
+browse cbsaname zone lb_share ub_share landsqmi if zone == "_mf"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+browse if substr(stplfips, 6, 3) == "999"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+use "xwalks/place_county_CBSA_xwalk.dta", clear
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD21551.000000"
+exit, clear

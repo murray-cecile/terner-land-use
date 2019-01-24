@@ -1,0 +1,171 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/medinc_2019-01-13.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}13 Jan 2019, 12:29:17
+{txt}
+{com}. 
+. use "output/FINAL_merged_TCRLUS_census_buildperm.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. keep stplfips city medhhinc total
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. browse if medhhinc == .
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. snapshot restore 2
+
+. browse
+
+. sort stplfips
+
+. browse
+
+. browse stplfips city
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. * MERGE IN ACS DEMOGRAPHIC DATA
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,270
+{txt}{col 9}from master{col 30}{res}               0{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             271{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. drop if _merge == 2
+{txt}(1270 observations deleted)
+
+{com}. rename _merge has_demo
+{res}{txt}
+{com}. 
+. * MERGE IN ACS TENURE DATA
+. merge 1:1 stplfips using "census/units_by_tenure.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,270
+{txt}{col 9}from master{col 30}{res}               0{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             271{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. tab _merge
+
+                 {txt}_merge {c |}      Freq.     Percent        Cum.
+{hline 24}{c +}{hline 35}
+         using only (2) {c |}{res}      1,270       82.41       82.41
+{txt}            matched (3) {c |}{res}        271       17.59      100.00
+{txt}{hline 24}{c +}{hline 35}
+                  Total {c |}{res}      1,541      100.00
+{txt}
+{com}. rename _merge has_tenure
+{res}{txt}
+{com}. drop if has_tenure < 3
+{txt}(1270 observations deleted)
+
+{com}. 
+. * MERGE IN PERMIT DATA
+. merge 1:1 stplfips using "census/merged_building_permits_2013-17.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}             260
+{txt}{col 9}from master{col 30}{res}               5{txt}  (_merge==1)
+{col 9}from using{col 30}{res}             255{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             266{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. rename _merge has_buildperm
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. * snapshot 2
+. snapshot save
+{txt}{p 0 2}snapshot {res:3} created at {res:13 Jan 2019 12:57}{p_end}
+
+{com}. 
+. * save extract of the observations that won't merge (unincorporated + a few others)
+. keep if has_buildperm == 1
+{txt}(521 observations deleted)
+
+{com}. keep stplfips county has_buildperm 
+{txt}
+{com}. save "temp/five_unmerged_places.dta", replace 
+{txt}file temp/five_unmerged_places.dta saved
+
+{com}. // Clayton, Fort Bragg, Farmersville, Moraga, Tehama???
+. 
+. snapshot restore 2
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. drop if has_buildperm < 3
+{txt}(260 observations deleted)
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse stplfips city total medhhinc
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. save "output/FINAL_merged_TCRLUS_census_buildperm.dta", replace
+{txt}file output/FINAL_merged_TCRLUS_census_buildperm.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. use "output/FINAL_merged_TCRLUS_census_buildperm.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. keep stplfips city medhhinc total
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD98141.000000"
+{txt}
+{com}. browse if medhhinc == .
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. exit, clear

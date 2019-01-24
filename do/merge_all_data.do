@@ -41,7 +41,7 @@ keep stplfips county has_buildperm
 save "temp/five_unmerged_places.dta", replace 
 // Clayton, Fort Bragg, Farmersville, Moraga, Tehama???
 
-snapshot restore 2
+snapshot restore 1
 
 drop if has_buildperm < 3
 

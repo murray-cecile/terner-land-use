@@ -1,0 +1,2078 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/data_merges_2019-01-07.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 7 Jan 2019, 12:29:32
+{txt}
+{com}. 
+. use "R/data_pulls/median_hh_income_CA_places_2013-17.dta"
+{txt}(Written by R)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD29833.000000"
+{txt}
+{com}. merge 1:1 "R/data_pulls/BA_plus_share_CA_places_2013-17.dta" 
+{res}{err}factor variables and time-series operators not allowed
+{txt}{search r(101):r(101);}
+
+end of do-file
+
+{search r(101):r(101);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD29833.000000"
+{txt}
+{com}. use "R/data_pulls/BA_plus_share_CA_places_2013-17.dta", clear 
+{txt}(Written by R)
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD29833.000000"
+{txt}
+{com}. merge 1:1 "R/data_pulls/BA_plus_share_CA_places_2013-17.dta" 
+{res}{err}factor variables and time-series operators not allowed
+{txt}{search r(101):r(101);}
+
+end of do-file
+
+{search r(101):r(101);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD29833.000000"
+{txt}
+{com}. use "R/data_pulls/median_hh_income_CA_places_2013-17.dta", clear
+{txt}(Written by R)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD29833.000000"
+{txt}
+{com}. merge stplfips 1:1 "R/data_pulls/BA_plus_share_CA_places_2013-17.dta", nogen 
+{txt}{p}
+(note: you are using old
+{bf:merge} syntax; see
+{bf:{help merge:[D] merge}} for new syntax)
+{p_end}
+{err}1 invalid name
+{txt}{search r(198):r(198);}
+
+end of do-file
+
+{search r(198):r(198);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD29833.000000"
+{txt}
+{com}. merge 1:1 stplfips "R/data_pulls/BA_plus_share_CA_places_2013-17.dta", nogen 
+{res}{err}factor variables and time-series operators not allowed
+{txt}{search r(101):r(101);}
+
+end of do-file
+
+{search r(101):r(101);}
+
+{com}. browse
+
+. clear
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD29833.000000"
+{txt}
+{com}. use "R/data_pulls/median_hh_income_CA_places_2013-17.dta", clear
+{txt}(Written by R)
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. clear
+
+. use "R/data_pulls/median_hh_income_CA_places_2013-17.dta", clear
+{txt}(Written by R)
+
+{com}. 
+. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD29833.000000"
+{txt}
+{com}. use "R/data_pulls/median_hh_income_CA_places_2013-17.dta", clear
+{txt}(Written by R)
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. use "R/data_pulls/median_hh_income_CA_places_2013-17.dta", clear
+{txt}(Written by R)
+
+{com}. browse
+
+. clear
+
+. import excel "R/data_pulls/median_hh_income_CA_places_2013-17.dta"
+{res}{err}file R/data_pulls/median_hh_income_CA_places_2013-17.dta could not be loaded
+{txt}{search r(603):r(603);}
+
+{com}. import excel "R/data_pulls/median_hh_income_CA_places_2013-17.xlsx"
+{res}{err}file R/data_pulls/median_hh_income_CA_places_2013-17.xlsx not found
+{txt}{search r(601):r(601);}
+
+{com}. use "R/data_pulls/BA_plus_share_2013-17.dta", clear
+{err}{p 0 4 2}
+file R/data_pulls/BA_plus_share_2013-17.dta
+not found
+{p_end}
+{txt}{search r(601):r(601);}
+
+{com}. use "R/data_pulls/BA_plus_share_CA_places_2013-17.dta", clear
+{txt}(Written by R)
+
+{com}. browse
+
+. clear
+
+. import excel "R/data_pulls/BA_plus_share_CA_places_2013-17.dta"
+{res}{err}file R/data_pulls/BA_plus_share_CA_places_2013-17.dta could not be loaded
+{txt}{search r(603):r(603);}
+
+{com}. import excel "R/data_pulls/BA_plus_share_CA_places_2013-17.xlsx"
+{res}{err}file R/data_pulls/BA_plus_share_CA_places_2013-17.xlsx could not be loaded
+{txt}{search r(603):r(603);}
+
+{com}. 
+. pwd
+{res}/Users/cecilemurray/Documents/coding/Terner
+
+{com}. 
+. use "/Users/cecilemurray/Documents/coding/Terner/temp/place_land_area.dta"
+
+. clear
+
+. use "/Users/cecilemurray/Documents/coding/Terner/R/data_pulls/BA_plus_share_CA_places_2013-17.dta"
+{txt}(Written by R)
+
+{com}. browse
+
+. help use
+
+. 
+. exit
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/data_merges_2019-01-07.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 7 Jan 2019, 13:31:51
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. import delimited "R/data_pulls/BA_plus_share_CA_places_2013-17.csv", clear
+{res}{text}(7 vars, 1522 obs)
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. save "census/BA_plus_share_CA_places_2013-17.dta", replace
+{txt}(note: file census/BA_plus_share_CA_places_2013-17.dta not found)
+file census/BA_plus_share_CA_places_2013-17.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. import delimited "R/data_pulls/median_hh_income_CA_places_2013-17.csv", clear
+{res}{text}(3 vars, 1522 obs)
+
+{com}. save "census/median_hh_income_CA_places_2013-17.dta", replace
+{txt}(note: file census/median_hh_income_CA_places_2013-17.dta not found)
+file census/median_hh_income_CA_places_2013-17.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. import delimited "R/data_pulls/race_ethnicity_CA_places_2013-17.csv", clear
+{res}{text}(8 vars, 6088 obs)
+
+{com}. save "census/race_ethnicity_CA_places_2013-17.dta", replace
+{txt}(note: file census/race_ethnicity_CA_places_2013-17.dta not found)
+file census/race_ethnicity_CA_places_2013-17.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. import delimited "R/data_pulls/age_composition_CA_places_2013-17.csv", clear
+{res}{text}(7 vars, 3044 obs)
+
+{com}. save "census/age_composition_CA_places_2013-17.dta", replace
+{txt}(note: file census/age_composition_CA_places_2013-17.dta not found)
+file census/age_composition_CA_places_2013-17.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "census/median_hh_income_CA_places_2013-17.dta", clear
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge 1:1 stplfips "R/data_pulls/BA_plus_share_CA_places_2013-17.dta", nogen 
+{res}{err}factor variables and time-series operators not allowed
+{txt}{search r(101):r(101);}
+
+end of do-file
+
+{search r(101):r(101);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge 1:1 stplfips "census/BA_plus_share_CA_places_2013-17.dta", nogen 
+{res}{err}factor variables and time-series operators not allowed
+{txt}{search r(101):r(101);}
+
+end of do-file
+
+{search r(101):r(101);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge 1:1 stplfips "census/BA_plus_share_CA_places_2013-17" 
+{res}{err}"census/BA_plus_share_CA_places_ invalid name
+{txt}{search r(198):r(198);}
+
+end of do-file
+
+{search r(198):r(198);}
+
+{com}. help merge
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge 1:1 stplfips "census/BA_plus_share_CA_places_2013-17.dta" 
+{res}{err}factor variables and time-series operators not allowed
+{txt}{search r(101):r(101);}
+
+end of do-file
+
+{search r(101):r(101);}
+
+{com}. use "census/median_hh_income_CA_places_2013-17.dta", clear
+
+. 
+. browse
+
+. use "census/BA_plus_share_CA_places_2013-17.dta", clear
+
+. 
+. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "census/median_hh_income_CA_places_2013-17.dta", clear
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge 1:1 stplfips "census/BA_plus_share_CA_places_2013-17.dta" 
+{res}{err}factor variables and time-series operators not allowed
+{txt}{search r(101):r(101);}
+
+end of do-file
+
+{search r(101):r(101);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge 1:1 stplfips using "census/BA_plus_share_CA_places_2013-17.dta" 
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           1,522{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. drop _merge
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge 1:m stplfips using "census/race_ethnicity_CA_places_2013-17.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           6,088{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. drop _merge
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge m:m stplfips using "census/BA_plus_share_CA_places_2013-17.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           6,088{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. drop _merge
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge m:m stplfips using "census/age_composition_CA_places_2013-17.dta", nogen
+{res}{txt}{p 0 7 2}
+(note: variable
+total_se2 was 
+float, now double to accommodate using data's values)
+{p_end}
+
+{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           6,088{txt}  
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. help reshape
+
+. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. import delimited "R/data_pulls/age_composition_CA_places_2013-17.csv", clear
+{res}{text}(8 vars, 3044 obs)
+
+{com}. save "census/age_composition_CA_places_2013-17.dta", replace
+{txt}file census/age_composition_CA_places_2013-17.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * now merge all files together
+. use "census/median_hh_income_CA_places_2013-17.dta", clear
+{txt}
+{com}. merge 1:1 stplfips using "census/BA_plus_share_CA_places_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           1,522{txt}  
+{col 5}{hline 41}
+
+{com}. merge 1:m stplfips using "census/race_ethnicity_CA_places_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           6,088{txt}  
+{col 5}{hline 41}
+
+{com}. merge m:m stplfips using "census/age_composition_CA_places_2013-17.dta", nogen
+{res}{txt}{p 0 7 2}
+(note: variable
+total_se2 was 
+float, now double to accommodate using data's values)
+{p_end}
+
+{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           6,088{txt}  
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. reshape wide race_ct*, i(stplfips) j(race)
+{err}variable {bf:race} is string; specify {bf:string} option
+{txt}{search r(109):r(109);}
+
+end of do-file
+
+{search r(109):r(109);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. reshape wide race_ct*, i(stplfips) j(race) string
+{txt}(note: j = asian_nh black_nh hisp white_nh)
+{err}variable {bf:race_share} not constant within {bf:stplfips}
+variable {bf:race_share_se2} not constant within {bf:stplfips}
+variable {bf:agecat} not constant within {bf:stplfips}
+variable {bf:age_ct} not constant within {bf:stplfips}
+variable {bf:age_ct_se2} not constant within {bf:stplfips}
+variable {bf:age_share} not constant within {bf:stplfips}
+variable {bf:age_share_se2} not constant within {bf:stplfips}
+{p 4 4 2}
+Your data are currently long.
+You are performing a {bf:reshape wide}.
+You typed something like
+
+{p 8 8 2}
+{bf:. reshape wide a b, i(stplfips) j(race)}
+
+{p 4 4 2}
+There are variables other than {bf:a},
+{bf:b}, {bf:stplfips}, {bf:race} in your data.
+They must be constant within
+{bf:stplfips} because that is the only way they can
+fit into wide data without loss of information.
+
+{p 4 4 2}
+The variable or variables listed above are
+not constant within {bf:stplfips}.
+Perhaps the values are in error.
+Type {bf:reshape error} for a list of the
+problem observations.
+
+{p 4 4 2}
+Either that, or the values vary because
+they should vary, in which
+case you must either add the variables
+to the list of xij variables to be reshaped,
+or {bf:drop} them.
+{p_end}
+{txt}{search r(9):r(9);}
+
+end of do-file
+
+{search r(9):r(9);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. reshape wide race_ct* age_ct*, i(stplfips) j(race age) string
+{err}variable {bf:race_share} not constant within {bf:stplfips}
+variable {bf:race_share_se2} not constant within {bf:stplfips}
+variable {bf:agecat} not constant within {bf:stplfips}
+variable {bf:age_share} not constant within {bf:stplfips}
+variable {bf:age_share_se2} not constant within {bf:stplfips}
+{p 4 4 2}
+Your data are currently long.
+You are performing a {bf:reshape wide}.
+You typed something like
+
+{p 8 8 2}
+{bf:. reshape wide a b, i(stplfips) j(race)}
+
+{p 4 4 2}
+There are variables other than {bf:a},
+{bf:b}, {bf:stplfips}, {bf:race} in your data.
+They must be constant within
+{bf:stplfips} because that is the only way they can
+fit into wide data without loss of information.
+
+{p 4 4 2}
+The variable or variables listed above are
+not constant within {bf:stplfips}.
+Perhaps the values are in error.
+Type {bf:reshape error} for a list of the
+problem observations.
+
+{p 4 4 2}
+Either that, or the values vary because
+they should vary, in which
+case you must either add the variables
+to the list of xij variables to be reshaped,
+or {bf:drop} them.
+{p_end}
+{txt}{search r(9):r(9);}
+
+end of do-file
+
+{search r(9):r(9);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * now merge all files together
+. use "census/median_hh_income_CA_places_2013-17.dta", clear
+{txt}
+{com}. merge 1:1 stplfips using "census/BA_plus_share_CA_places_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           1,522{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. merge 1:m stplfips using "census/race_ethnicity_CA_places_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           6,088{txt}  
+{col 5}{hline 41}
+
+{com}. reshape wide race_ct*, i(stplfips) j(race) string
+{txt}(note: j = asian_nh black_nh hisp white_nh)
+{err}variable {bf:race_share} not constant within {bf:stplfips}
+variable {bf:race_share_se2} not constant within {bf:stplfips}
+{p 4 4 2}
+Your data are currently long.
+You are performing a {bf:reshape wide}.
+You typed something like
+
+{p 8 8 2}
+{bf:. reshape wide a b, i(stplfips) j(race)}
+
+{p 4 4 2}
+There are variables other than {bf:a},
+{bf:b}, {bf:stplfips}, {bf:race} in your data.
+They must be constant within
+{bf:stplfips} because that is the only way they can
+fit into wide data without loss of information.
+
+{p 4 4 2}
+The variable or variables listed above are
+not constant within {bf:stplfips}.
+Perhaps the values are in error.
+Type {bf:reshape error} for a list of the
+problem observations.
+
+{p 4 4 2}
+Either that, or the values vary because
+they should vary, in which
+case you must either add the variables
+to the list of xij variables to be reshaped,
+or {bf:drop} them.
+{p_end}
+{txt}{search r(9):r(9);}
+
+end of do-file
+
+{search r(9):r(9);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * now merge all files together
+. use "census/median_hh_income_CA_places_2013-17.dta", clear
+{txt}
+{com}. merge 1:1 stplfips using "census/BA_plus_share_CA_places_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           1,522{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. merge 1:m stplfips using "census/race_ethnicity_CA_places_2013-17.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           6,088{txt}  
+{col 5}{hline 41}
+
+{com}. reshape wide race_ct* race_share*, i(stplfips) j(race) string
+{txt}(note: j = asian_nh black_nh hisp white_nh)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}    6088   {txt}->{res}    1522
+{txt}Number of variables            {res}      14   {txt}->{res}      25
+{txt}j variable (4 values)              {res}race   {txt}->   (dropped)
+xij variables:
+                                {res}race_ct   {txt}->   {res}race_ctasian_nh race_ctblack_nh ... race_ctwhite_nh
+                            race_ct_se2   {txt}->   {res}race_ct_se2asian_nh race_ct_se2black_nh ... race_ct_se2white_nh
+                             race_share   {txt}->   {res}race_shareasian_nh race_shareblack_nh ... race_sharewhite_nh
+                         race_share_se2   {txt}->   {res}race_share_se2asian_nh race_share_se2black_nh ... race_share_se2white_nh
+{txt}{hline 77}
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge 1:m stplfips using "census/age_composition_CA_places_2013-17.dta", nogen
+{res}{txt}{p 0 7 2}
+(note: variable
+total_se2 was 
+float, now double to accommodate using data's values)
+{p_end}
+
+{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               0
+{txt}{col 5}matched{col 30}{res}           3,044{txt}  
+{col 5}{hline 41}
+
+{com}. reshape wide age_ct* age_share*, i(stplfips) j(agecat) string
+{txt}(note: j = over65 under18)
+
+Data{col 36}long{col 43}->{col 48}wide
+{hline 77}
+Number of obs.                 {res}    3044   {txt}->{res}    1522
+{txt}Number of variables            {res}      30   {txt}->{res}      33
+{txt}j variable (2 values)            {res}agecat   {txt}->   (dropped)
+xij variables:
+                                 {res}age_ct   {txt}->   {res}age_ctover65 age_ctunder18
+                             age_ct_se2   {txt}->   {res}age_ct_se2over65 age_ct_se2under18
+                              age_share   {txt}->   {res}age_shareover65 age_shareunder18
+                          age_share_se2   {txt}->   {res}age_share_se2over65 age_share_se2under18
+{txt}{hline 77}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. save "census/all_census_data_CA_places", replace
+{txt}(note: file census/all_census_data_CA_places.dta not found)
+file census/all_census_data_CA_places.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. /*================================================================= *
+> * TERNER HOUSING SURVEY DATA: MERGE ACS DATA
+> *       
+> *       Cecile Murray
+> *       Stata 13.1 on Mac
+> *       Created: 2019-01-07
+> * ================================================================= */
+. 
+. clear all 
+{txt}
+{com}. set more off
+{txt}
+{com}. 
+. capture cd "/Users/cecilemurray/Documents/coding/Terner"
+{txt}
+{com}. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/data_merges_2019-01-07.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 7 Jan 2019, 13:51:20
+{txt}
+{com}. 
+. foreach y in "2013" "2014" "2015" "2016" "2017" {c -(}
+{txt}  2{com}.         use "census/CA_places_building_permits_`y'.dta, clear"
+{txt}  3{com}.         gen year = `y'
+{txt}  4{com}.         save "census/CA_places_building_permits_`y'.dta, clear"
+{txt}  5{com}. {c )-}
+{err}{p 0 4 2}
+file census/CA_places_building_permits_2013.dta, clear
+not found
+{p_end}
+{txt}{search r(601):r(601);}
+
+end of do-file
+
+{search r(601):r(601);}
+
+{com}. pwd
+{res}/Users/cecilemurray/Documents/coding/Terner
+
+{com}. use "census/CA_places_building_permits_2013.dta
+{txt}(Written by R)
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. foreach y in "2013" "2014" "2015" "2016" "2017" {c -(}
+{txt}  2{com}.         use "census/CA_places_building_permits_`y'.dta", clear
+{txt}  3{com}.         gen year = `y'
+{txt}  4{com}.         save "census/CA_places_building_permits_`y'.dta", clear
+{txt}  5{com}. {c )-}
+{txt}(Written by R)
+{err}option {bf:clear} not allowed
+{txt}{search r(198):r(198);}
+
+end of do-file
+
+{search r(198):r(198);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. foreach y in "2013" "2014" "2015" "2016" "2017" {c -(}
+{txt}  2{com}.         use "census/CA_places_building_permits_`y'.dta", clear
+{txt}  3{com}.         gen year = `y'
+{txt}  4{com}.         save "census/CA_places_building_permits_`y'.dta", replace
+{txt}  5{com}. {c )-}
+{txt}(Written by R)
+file census/CA_places_building_permits_2013.dta saved
+(Written by R)
+file census/CA_places_building_permits_2014.dta saved
+(Written by R)
+file census/CA_places_building_permits_2015.dta saved
+(Written by R)
+file census/CA_places_building_permits_2016.dta saved
+(Written by R)
+file census/CA_places_building_permits_2017.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "census/CA_places_building_permits_2013.dta", clear
+{txt}(Written by R)
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge 1:m stfips stcofips stplfips cofips plfips csa cbsa region ///
+> division place using "census/CA_places_building_permits_2014.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}             354
+{txt}{col 9}from master{col 30}{res}             177{txt}  (_merge==1)
+{col 9}from using{col 30}{res}             177{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             344{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse if _merge==1
+
+. sort stplfips
+
+. browse if _merge < 3
+
+. sort stplfips year
+
+. browse if _merge==1
+
+. drop cofips plfips region division
+
+. browse if _merge<3
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. foreach y in "2013" "2014" "2015" "2016" "2017" {c -(}
+{txt}  2{com}.         use "census/CA_places_building_permits_`y'.dta", clear
+{txt}  3{com}.         gen year = `y'
+{txt}  4{com}.         drop stfips cofips plfips region division csa cbsa
+{txt}  5{com}.         save "census/CA_places_building_permits_`y'.dta", replace
+{txt}  6{com}. {c )-}
+{txt}(Written by R)
+{err}year already defined
+{txt}{search r(110):r(110);}
+
+end of do-file
+
+{search r(110):r(110);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. foreach y in "2013" "2014" "2015" "2016" "2017" {c -(}
+{txt}  2{com}.         use "census/CA_places_building_permits_`y'.dta", clear
+{txt}  3{com}.         capture gen year = `y'
+{txt}  4{com}.         drop stfips cofips plfips region division csa cbsa
+{txt}  5{com}.         save "census/CA_places_building_permits_`y'.dta", replace
+{txt}  6{com}. {c )-}
+{txt}(Written by R)
+file census/CA_places_building_permits_2013.dta saved
+(Written by R)
+file census/CA_places_building_permits_2014.dta saved
+(Written by R)
+file census/CA_places_building_permits_2015.dta saved
+(Written by R)
+file census/CA_places_building_permits_2016.dta saved
+(Written by R)
+file census/CA_places_building_permits_2017.dta saved
+
+{com}. 
+. use "census/CA_places_building_permits_2013.dta", clear
+{txt}(Written by R)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge 1:m stcofips stplfips using "census/CA_places_building_permits_2014.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               8
+{txt}{col 9}from master{col 30}{res}               4{txt}  (_merge==1)
+{col 9}from using{col 30}{res}               4{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             517{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse if _merge <3
+
+. browse if _merge <3
+
+. drop _merge
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge m:m stcofips stplfips using "census/CA_places_building_permits_2015.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               4
+{txt}{col 9}from master{col 30}{res}               4{txt}  (_merge==1)
+{col 9}from using{col 30}{res}               0{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             521{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. drop _merge
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge m:m stcofips stplfips using "census/CA_places_building_permits_2016.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               4
+{txt}{col 9}from master{col 30}{res}               4{txt}  (_merge==1)
+{col 9}from using{col 30}{res}               0{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             521{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. drop _merge
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge m:m stcofips stplfips using "census/CA_places_building_permits_2017.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               4
+{txt}{col 9}from master{col 30}{res}               4{txt}  (_merge==1)
+{col 9}from using{col 30}{res}               0{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             521{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. drop  _merge
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. collapse (sum) x*, by(stcofips stplfips place year)
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. /*================================================================= *
+> * TERNER HOUSING SURVEY DATA: MERGE ACS DATA
+> *       
+> *       Cecile Murray
+> *       Stata 13.1 on Mac
+> *       Created: 2019-01-07
+> * ================================================================= */
+. 
+. clear all 
+{txt}
+{com}. set more off
+{txt}
+{com}. 
+. capture cd "/Users/cecilemurray/Documents/coding/Terner"
+{txt}
+{com}. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/data_merges_2019-01-07.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 7 Jan 2019, 22:03:02
+{txt}
+{com}. 
+. * add year indicators and drop extraneous geographic indicatorss
+. foreach y in "2013" "2014" "2015" "2016" "2017" {c -(}
+{txt}  2{com}.         use "census/CA_places_building_permits_`y'.dta", clear
+{txt}  3{com}.         capture gen year = `y'
+{txt}  4{com}.         drop stfips cofips plfips region division csa cbsa
+{txt}  5{com}.         save "census/CA_places_building_permits_`y'.dta", replace
+{txt}  6{com}. {c )-}
+{txt}(Written by R)
+{err}variable stfips not found
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. 
+. * merge all years together
+. merge 1:m stcofips stplfips using "census/CA_places_building_permits_2014.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               8
+{txt}{col 9}from master{col 30}{res}               4{txt}  
+{col 9}from using{col 30}{res}               4{txt}  
+
+{col 5}matched{col 30}{res}             517{txt}  
+{col 5}{hline 41}
+
+{com}. merge m:m stcofips stplfips using "census/CA_places_building_permits_2015.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               4
+{txt}{col 9}from master{col 30}{res}               4{txt}  
+{col 9}from using{col 30}{res}               0{txt}  
+
+{col 5}matched{col 30}{res}             521{txt}  
+{col 5}{hline 41}
+
+{com}. merge m:m stcofips stplfips using "census/CA_places_building_permits_2016.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               4
+{txt}{col 9}from master{col 30}{res}               4{txt}  
+{col 9}from using{col 30}{res}               0{txt}  
+
+{col 5}matched{col 30}{res}             521{txt}  
+{col 5}{hline 41}
+
+{com}. merge m:m stcofips stplfips using "census/CA_places_building_permits_2017.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               4
+{txt}{col 9}from master{col 30}{res}               4{txt}  
+{col 9}from using{col 30}{res}               0{txt}  
+
+{col 5}matched{col 30}{res}             521{txt}  
+{col 5}{hline 41}
+
+{com}. 
+. collapse (sum) x*, by(stcofips stplfips place)
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "census/CA_places_building_permits_2013.dta", clear
+{txt}(Written by R)
+
+{com}. 
+. * merge all years together
+. merge 1:m stcofips stplfips using "census/CA_places_building_permits_2014.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               8
+{txt}{col 9}from master{col 30}{res}               4{txt}  
+{col 9}from using{col 30}{res}               4{txt}  
+
+{col 5}matched{col 30}{res}             517{txt}  
+{col 5}{hline 41}
+
+{com}. merge m:m stcofips stplfips using "census/CA_places_building_permits_2015.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               4
+{txt}{col 9}from master{col 30}{res}               4{txt}  
+{col 9}from using{col 30}{res}               0{txt}  
+
+{col 5}matched{col 30}{res}             521{txt}  
+{col 5}{hline 41}
+
+{com}. merge m:m stcofips stplfips using "census/CA_places_building_permits_2016.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               4
+{txt}{col 9}from master{col 30}{res}               4{txt}  
+{col 9}from using{col 30}{res}               0{txt}  
+
+{col 5}matched{col 30}{res}             521{txt}  
+{col 5}{hline 41}
+
+{com}. merge m:m stcofips stplfips using "census/CA_places_building_permits_2017.dta", nogen
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}               4
+{txt}{col 9}from master{col 30}{res}               4{txt}  
+{col 9}from using{col 30}{res}               0{txt}  
+
+{col 5}matched{col 30}{res}             521{txt}  
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. sort place
+
+. order stcofips stplfips place year x*
+
+. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "census/CA_places_building_permits_2013.dta", clear
+{txt}(Written by R)
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. help append
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "census/CA_places_building_permits_2013.dta", clear
+{txt}(Written by R)
+
+{com}. 
+. * merge all years together
+. append using "census/CA_places_building_permits_2014.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2015.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2016.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2017.dta"
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. sort place
+
+. order stcofips stplfips place year
+
+. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. collapse (sum) x*, by(stcofips stplfips place)
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "census/CA_places_building_permits_2013.dta", clear
+{txt}(Written by R)
+
+{com}. 
+. * merge all years together
+. append using "census/CA_places_building_permits_2014.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2015.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2016.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2017.dta"
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. sort place
+{txt}
+{com}. order stcofips stplfips place year
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. duplicates tag place, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} place{p_end}
+
+{com}. browse
+
+. browse if dup < 4
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. replace place = "Truckee" if place == "Truckee town"
+{txt}(2 real changes made)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. drop dup
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. collapse (sum) x*, by(stcofips stplfips place)
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. sort place
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. save "census/merged_building_permits_2013-17.dta", replace
+{txt}(note: file census/merged_building_permits_2013-17.dta not found)
+file census/merged_building_permits_2013-17.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. /*================================================================= *
+> * TERNER HOUSING SURVEY DATA: MERGE ALL DATA
+> *       
+> *       Cecile Murray
+> *       Stata 13.1 on Mac
+> *       Created: 2019-01-07
+> * ================================================================= */
+. 
+. clear all 
+{txt}
+{com}. set more off
+{txt}
+{com}. 
+. capture cd "/Users/cecilemurray/Documents/coding/Terner"
+{txt}
+{com}. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/data_merges_2019-01-07.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 7 Jan 2019, 22:17:34
+{txt}
+{com}. 
+. use "TCRLUS_data13_2018-11-12.dta", clear
+{err}{p 0 4 2}
+file TCRLUS_data13_2018-11-12.dta
+not found
+{p_end}
+{txt}{search r(601):r(601);}
+
+end of do-file
+
+{search r(601):r(601);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}{err}variable stplfips not found
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. rename FIPS stplfips
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}{err}{p 0 2 2}
+key variable
+stplfips is
+str50 in master but
+long in using data
+{p_end}
+{p 4 4 2}
+Each key variable -- the variables on
+which observations are
+matched -- must be of the same generic
+type in the master and using datasets.
+Same generic type means both numeric or
+both string.
+{p_end}
+{txt}{search r(106):r(106);}
+
+end of do-file
+
+{search r(106):r(106);}
+
+{com}. use "census/all_census_data_CA_places", clear
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * fix the FIPS codes
+. tostring stplfips, replace
+{txt}stplfips was {res:long} now {res:str6}
+
+{com}. format stplfips %05.0f
+{err}string %fmt required for string variables
+{txt}{search r(120):r(120);}
+
+end of do-file
+
+{search r(120):r(120);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. format stplfips %06.0f
+{err}string %fmt required for string variables
+{txt}{search r(120):r(120);}
+
+end of do-file
+
+{search r(120):r(120);}
+
+{com}. help format
+
+. use "census/all_census_data_CA_places", clear
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. tostring stplfips, format(%07.0f) replace
+{txt}stplfips was {res:long} now {res:str7}
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * save final merged dataset
+. save "census/all_census_data_CA_places", replace
+{txt}file census/all_census_data_CA_places.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. * MERGE IN ACS DATA
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,289
+{txt}{col 9}from master{col 30}{res}              19{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             252{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse if _merge==1
+
+. browse if _merge==1
+
+. browse if _merge==2
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. drop if _merge == 2
+{txt}(1270 observations deleted)
+
+{com}. rename _merge has_acs
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge 1:1 stplfips using "census/merged_building_permits.dta"
+{res}{err}{p 0 4 2}
+file census/merged_building_permits.dta
+not found
+{p_end}
+{txt}{search r(601):r(601);}
+
+end of do-file
+
+{search r(601):r(601);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge 1:1 stplfips using "census/merged_building_permits_2013-17.dta"
+{res}{err}{p 0 4 2}
+variable{err} stplfips
+does not uniquely identify observations in the
+using data
+{p_end}
+{txt}{search r(459):r(459);}
+
+end of do-file
+
+{search r(459):r(459);}
+
+{com}. browse county
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * add year indicators and drop extraneous geographic indicatorss
+. foreach y in "2013" "2014" "2015" "2016" "2017" {c -(}
+{txt}  2{com}.         use "census/CA_places_building_permits_`y'.dta", clear
+{txt}  3{com}.         capture gen year = `y'
+{txt}  4{com}.         capture drop stfips cofips plfips region division csa cbsa
+{txt}  5{com}.         save "census/CA_places_building_permits_`y'.dta", replace
+{txt}  6{com}. {c )-}
+{txt}(Written by R)
+file census/CA_places_building_permits_2013.dta saved
+(Written by R)
+file census/CA_places_building_permits_2014.dta saved
+(Written by R)
+file census/CA_places_building_permits_2015.dta saved
+(Written by R)
+file census/CA_places_building_permits_2016.dta saved
+(Written by R)
+file census/CA_places_building_permits_2017.dta saved
+
+{com}. 
+. use "census/CA_places_building_permits_2013.dta", clear
+{txt}(Written by R)
+
+{com}. 
+. * merge all years together
+. append using "census/CA_places_building_permits_2014.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2015.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2016.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2017.dta"
+{txt}
+{com}. 
+. sort place
+{txt}
+{com}. order stcofips stplfips place year
+{txt}
+{com}. 
+. * check for anomalies and correct Truckee
+. duplicates tag place, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} place{p_end}
+{txt}
+{com}. browse if dup < 4
+{txt}
+{com}. replace place = "Truckee" if place == "Truckee town"
+{txt}(2 real changes made)
+
+{com}. drop dup
+{txt}
+{com}. 
+. collapse (sum) x*, by(stplfips place)
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. save "census/merged_building_permits_2013-17.dta", replace
+{txt}file census/merged_building_permits_2013-17.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. * MERGE IN ACS DATA
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,289
+{txt}{col 9}from master{col 30}{res}              19{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             252{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. drop if _merge == 2
+{txt}(1270 observations deleted)
+
+{com}. rename _merge has_acs
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. merge 1:1 stplfips using "census/merged_building_permits_2013-17.dta"
+{res}{err}{p 0 4 2}
+variable{err} stplfips
+does not uniquely identify observations in the
+using data
+{p_end}
+{txt}{search r(459):r(459);}
+
+end of do-file
+
+{search r(459):r(459);}
+
+{com}. use "census/merged_building_permits_2013-17.dta", clear
+{txt}(Written by R)
+
+{com}. duplicates tag stplfips, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} stplfips{p_end}
+
+{com}. browse if dup
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "census/CA_places_building_permits_2013.dta", clear
+{txt}(Written by R)
+
+{com}. 
+. * merge all years together
+. append using "census/CA_places_building_permits_2014.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2015.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2016.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2017.dta"
+{txt}
+{com}. 
+. sort place
+{txt}
+{com}. order stcofips stplfips place year
+{txt}
+{com}. 
+. * check for anomalies and correct Truckee
+. duplicates tag place, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} place{p_end}
+{txt}
+{com}. browse if dup < 4
+{txt}
+{com}. replace place = "Truckee" if place == "Truckee town"
+{txt}(2 real changes made)
+
+{com}. drop dup
+{txt}
+{com}. 
+. collapse (sum) x*, by(stplfips place)
+{txt}
+{com}. 
+. save "census/merged_building_permits_2013-17.dta", replace
+{txt}file census/merged_building_permits_2013-17.dta saved
+
+{com}. 
+. * save alternative version with no incorporated counties
+. duplicates tag place, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} place{p_end}
+{txt}
+{com}. drop if dup
+{txt}(8 observations deleted)
+
+{com}. save "census/merged_building_permits_nocounty_2013-17.dta"
+{txt}file census/merged_building_permits_nocounty_2013-17.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. 
+. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. * MERGE IN ACS DATA
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,289
+{txt}{col 9}from master{col 30}{res}              19{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             252{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. drop if _merge == 2
+{txt}(1270 observations deleted)
+
+{com}. rename _merge has_acs
+{res}{txt}
+{com}. 
+. * MERGE IN PERMIT DATA
+. merge 1:1 stplfips using "census/merged_building_permits_nocounty_2013-17.dta"
+{res}{err}{p 0 4 2}
+variable{err} stplfips
+does not uniquely identify observations in the
+using data
+{p_end}
+{txt}{search r(459):r(459);}
+
+end of do-file
+
+{search r(459):r(459);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "census/CA_places_building_permits_2013.dta", clear
+{txt}(Written by R)
+
+{com}. 
+. * merge all years together
+. append using "census/CA_places_building_permits_2014.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2015.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2016.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2017.dta"
+{txt}
+{com}. 
+. sort place
+{txt}
+{com}. order stcofips stplfips place year
+{txt}
+{com}. 
+. * check for anomalies and correct Truckee
+. duplicates tag place, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} place{p_end}
+{txt}
+{com}. browse if dup < 4
+{txt}
+{com}. replace place = "Truckee" if place == "Truckee town"
+{txt}(2 real changes made)
+
+{com}. drop dup
+{txt}
+{com}. 
+. collapse (sum) x*, by(stplfips place)
+{txt}
+{com}. 
+. save "census/merged_building_permits_2013-17.dta", replace
+{txt}file census/merged_building_permits_2013-17.dta saved
+
+{com}. 
+. * save alternative version with no incorporated counties
+. duplicates tag stplfips, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} stplfips{p_end}
+{txt}
+{com}. drop if dup
+{txt}(61 observations deleted)
+
+{com}. save "census/merged_building_permits_nocounty_2013-17.dta"
+{err}{p 0 4 2}
+file census/merged_building_permits_nocounty_2013-17.dta
+already exists
+{p_end}
+{txt}{search r(602):r(602);}
+
+end of do-file
+
+{search r(602):r(602);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. * MERGE IN ACS DATA
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,289
+{txt}{col 9}from master{col 30}{res}              19{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             252{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. drop if _merge == 2
+{txt}(1270 observations deleted)
+
+{com}. rename _merge has_acs
+{res}{txt}
+{com}. 
+. * MERGE IN PERMIT DATA
+. merge 1:1 stplfips using "census/merged_building_permits_nocounty_2013-17.dta"
+{res}{err}{p 0 4 2}
+variable{err} stplfips
+does not uniquely identify observations in the
+using data
+{p_end}
+{txt}{search r(459):r(459);}
+
+end of do-file
+
+{search r(459):r(459);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "census/CA_places_building_permits_2013.dta", clear
+{txt}(Written by R)
+
+{com}. 
+. * merge all years together
+. append using "census/CA_places_building_permits_2014.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2015.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2016.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2017.dta"
+{txt}
+{com}. 
+. sort place
+{txt}
+{com}. order stcofips stplfips place year
+{txt}
+{com}. 
+. * check for anomalies and correct Truckee
+. duplicates tag place, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} place{p_end}
+{txt}
+{com}. * browse if dup < 4
+. replace place = "Truckee" if place == "Truckee town"
+{txt}(2 real changes made)
+
+{com}. drop dup
+{txt}
+{com}. 
+. collapse (sum) x*, by(stplfips place)
+{txt}
+{com}. 
+. save "census/merged_building_permits_2013-17.dta", replace
+{txt}file census/merged_building_permits_2013-17.dta saved
+
+{com}. 
+. * save alternative version with no incorporated counties
+. duplicates tag stplfips, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} stplfips{p_end}
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. drop if dup==1
+{txt}(0 observations deleted)
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse stplfips
+
+. browse
+
+. tab dup
+
+        {txt}dup {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        464       88.38       88.38
+{txt}          3 {c |}{res}          4        0.76       89.14
+{txt}         56 {c |}{res}         57       10.86      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        525      100.00
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. drop if dup > 0
+{txt}(61 observations deleted)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. drop dup
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. save "census/merged_building_permits_nocounty_2013-17.dta"
+{err}{p 0 4 2}
+file census/merged_building_permits_nocounty_2013-17.dta
+already exists
+{p_end}
+{txt}{search r(602):r(602);}
+
+end of do-file
+
+{search r(602):r(602);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. save "census/merged_building_permits_nocounty_2013-17.dta", replace
+{txt}file census/merged_building_permits_nocounty_2013-17.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. use "raw/TCRLUS_data13_2018-11-12.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. * MERGE IN ACS DATA
+. rename FIPS stplfips
+{res}{txt}
+{com}. merge 1:1 stplfips using "census/all_census_data_CA_places.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,289
+{txt}{col 9}from master{col 30}{res}              19{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,270{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             252{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. drop if _merge == 2
+{txt}(1270 observations deleted)
+
+{com}. rename _merge has_acs
+{res}{txt}
+{com}. 
+. * MERGE IN PERMIT DATA
+. merge 1:1 stplfips using "census/merged_building_permits_nocounty_2013-17.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}             241
+{txt}{col 9}from master{col 30}{res}              24{txt}  (_merge==1)
+{col 9}from using{col 30}{res}             217{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             247{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse if _merge==1
+
+. tab has_acs _merge
+
+                      {txt}{c |}        _merge
+              has_acs {c |} master on  matched ( {c |}     Total
+{hline 22}{c +}{hline 22}{c +}{hline 10}
+      master only (1) {c |}{res}        19          0 {txt}{c |}{res}        19 
+{txt}          matched (3) {c |}{res}         5        247 {txt}{c |}{res}       252 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+                Total {c |}{res}        24        247 {txt}{c |}{res}       271 
+
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. snapshot save
+{txt}{p 0 2}snapshot {res:1} created at {res: 8 Jan 2019 20:53}{p_end}
+
+{com}. 
+. * save extract of the observations that won't merge (unincorporated + a few others)
+. keep if _merge == 1
+{txt}(464 observations deleted)
+
+{com}. keep stplfips county has_acs 
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. save using "temp/unincorporated_unmerged.dta", replace
+{err}invalid '"temp/unincorporated_unmerged.dta' 
+{txt}{search r(198):r(198);}
+
+end of do-file
+
+{search r(198):r(198);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. save "temp/unincorporated_unmerged.dta", replace
+{txt}(note: file temp/unincorporated_unmerged.dta not found)
+file temp/unincorporated_unmerged.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. set more off
+{txt}
+{com}. clear all
+{txt}
+{com}. 
+. capture cd "/Users/cecilemurray/Documents/coding/Terner"
+{txt}
+{com}. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/data_merges_2019-01-07.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}10 Jan 2019, 15:16:19
+{txt}
+{com}. 
+. * add year indicators and drop extraneous geographic indicatorss
+. foreach y in "2013" "2014" "2015" "2016" "2017" {c -(}
+{txt}  2{com}.         use "census/CA_places_building_permits_`y'.dta", clear
+{txt}  3{com}.         capture gen year = `y'
+{txt}  4{com}.         capture drop stfips cofips plfips region division csa cbsa
+{txt}  5{com}.         save "census/CA_places_building_permits_`y'.dta", replace
+{txt}  6{com}. {c )-}
+{txt}(Written by R)
+file census/CA_places_building_permits_2013.dta saved
+(Written by R)
+file census/CA_places_building_permits_2014.dta saved
+(Written by R)
+file census/CA_places_building_permits_2015.dta saved
+(Written by R)
+file census/CA_places_building_permits_2016.dta saved
+(Written by R)
+file census/CA_places_building_permits_2017.dta saved
+
+{com}. 
+. use "census/CA_places_building_permits_2013.dta", clear
+{txt}(Written by R)
+
+{com}. 
+. * merge all years together
+. append using "census/CA_places_building_permits_2014.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2015.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2016.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2017.dta"
+{txt}
+{com}. 
+. sort place
+{txt}
+{com}. order stcofips stplfips place year
+{txt}
+{com}. 
+. * check for anomalies and correct Truckee
+. duplicates tag place, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} place{p_end}
+{txt}
+{com}. * browse if dup < 4
+. replace place = "Truckee" if place == "Truckee town"
+{txt}(2 real changes made)
+
+{com}. drop dup
+{txt}
+{com}. 
+. collapse (sum) x*, by(stplfips place)
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * add year indicators and drop extraneous geographic indicatorss
+. foreach y in "2013" "2014" "2015" "2016" "2017" {c -(}
+{txt}  2{com}.         use "census/CA_places_building_permits_`y'.dta", clear
+{txt}  3{com}.         capture gen year = `y'
+{txt}  4{com}.         capture drop stfips cofips plfips region division csa cbsa
+{txt}  5{com}.         save "census/CA_places_building_permits_`y'.dta", replace
+{txt}  6{com}. {c )-}
+{txt}(Written by R)
+file census/CA_places_building_permits_2013.dta saved
+(Written by R)
+file census/CA_places_building_permits_2014.dta saved
+(Written by R)
+file census/CA_places_building_permits_2015.dta saved
+(Written by R)
+file census/CA_places_building_permits_2016.dta saved
+(Written by R)
+file census/CA_places_building_permits_2017.dta saved
+
+{com}. 
+. use "census/CA_places_building_permits_2013.dta", clear
+{txt}(Written by R)
+
+{com}. 
+. * merge all years together
+. append using "census/CA_places_building_permits_2014.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2015.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2016.dta"
+{txt}
+{com}. append using "census/CA_places_building_permits_2017.dta"
+{txt}
+{com}. 
+. sort place
+{txt}
+{com}. order stcofips stplfips place year
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. * check for anomalies and correct Truckee
+. duplicates tag place, gen(dup)
+
+{p 0 4}{txt}Duplicates in terms of {res} place{p_end}
+{txt}
+{com}. * browse if dup < 4
+. replace place = "Truckee" if place == "Truckee town"
+{txt}(2 real changes made)
+
+{com}. drop dup
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. replace stplfips = stcofips + "999" if stplfips == "0699990"
+{txt}stplfips was {res}str7{txt} now {res}str8
+{txt}(269 real changes made)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. collapse (sum) x*, by(stplfips place)
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. save "census/merged_building_permits_2013-17.dta", replace
+{txt}file census/merged_building_permits_2013-17.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD30127.000000"
+{txt}
+{com}. capture log close
+{smcl}
+{com}{sf}{ul off}

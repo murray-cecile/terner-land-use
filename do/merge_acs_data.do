@@ -29,6 +29,9 @@ save "census/race_ethnicity_CA_places_2013-17.dta", replace
 import delimited "R/data_pulls/age_composition_CA_places_2013-17.csv", clear
 save "census/age_composition_CA_places_2013-17.dta", replace
 
+import delimited "R/data_pulls/value_data_by_place.csv", clear
+save "census/value_data_CA_places_2013-17.dta", replace
+
 *===============================
 
 * now merge all files together and reshape wide
@@ -37,6 +40,8 @@ merge 1:1 stplfips using "census/BA_plus_share_CA_places_2013-17.dta", nogen
 
 * drop extraneous vars
 keep stplfips total baplus_share medhhinc
+
+merge 1:1 stplfips using "census/value_data_CA_places_2013-17.dta", nogen
 
 merge 1:m stplfips using "census/race_ethnicity_CA_places_2013-17.dta", nogen
 drop race_ct* race_share_se2 total_se2
