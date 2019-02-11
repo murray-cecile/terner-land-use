@@ -47,9 +47,6 @@ map(stplfips_list, function(x) which(is.na(x)))
 stplfips_list[26, ]
 # one NA on aggregate rent in Bradbury CA... small place, probably okay
 
-write_excel_csv(filter(place_data, stplfips %in% master$stplfips),
-                "data_pulls/rent0812_data_by_place.csv",
-                na = ".")
 
 #===============================================================================#
 # PULL TRACT DATA
@@ -65,7 +62,25 @@ tract_data <- get_acs(geography = "tract", variables = tract_vars,
   dplyr::rename(agg_rent = B25065_001, agg_homeval = B25079_001) %>% 
   select(-agg_homeval)
 
-# grab unincorporated 
+# grab unincorporated tract place crosswalk
+setwd(MAIN_DIR)
+xwalk <- read.dta13("temp/unincorporated_tract_xwalk.dta")
+setwd(here::here())
 
-write_excel_csv(tract_data, "data_pulls/rent0812_data_by_tract.csv",
+uninc_data <- left_join(xwalk, tract_data, by = "tract") %>% 
+  filter(stplfips %in% master$stplfips) %>% 
+  mutate(alloc_agg_rent = agg_rent * afact) %>% 
+  select(stplfips, alloc_agg_rent) %>% 
+  group_by(stplfips) %>% summarize_all(sum, na.rm=TRUE)
+
+#===============================================================================#
+# EXPORT
+#===============================================================================#
+
+final_rent0812 <- bind_rows(uninc_data, 
+                            filter(place_data, stplfips %in% master$stplfips))
+
+write_excel_csv(filter(place_data, stplfips %in% master$stplfips),
+                "data_pulls/rent0812_data_all_places.csv",
                 na = ".")
+
