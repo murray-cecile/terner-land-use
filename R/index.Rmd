@@ -161,3 +161,35 @@ ggplot(partitions) +
        x = "Color", y = "Pixel Share") 
   
 ```
+
+```{r single_partition}
+
+simi30 <- partitions %>% filter(partition_N == 30) 
+
+top_colors <- simi30 %>% select(rgb_color, color_share2) %>% 
+  arrange(-color_share2) 
+top_colors <- top_colors[1:5, ]
+
+color_labels <- simi30 %>% select(rgb_color) %>% 
+  mutate(color_label = ifelse(rgb_color %in% top_colors$rgb_color, rgb_color, ""))
+
+ggplot(simi30) +
+  geom_col(aes(x = reorder(rgb_color, color_share2), y = color_share2),
+           fill = simi30$color_hex) +
+  scale_y_continuous(labels = scales::percent) +
+  scale_x_discrete(labels = color_labels$color_label) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        panel.background = element_rect(fill = NA),
+        panel.grid.major.y = element_line(color = "gray85", linetype = "dotted"),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = "none",
+        axis.ticks = element_blank(),
+        text = element_text(family = "Lucida Grande")) +
+  labs(title = "Simi Valley's zoning map doesn't match its response in TCRLUS",
+    subtitle = paste0("Share of pixels of each color in ", CITY2, " excluding white"),
+       x = "Color", y = "Pixel Share",
+    caption = "Source: City of Simi Valley Zoning Districts map") 
+
+ggsave("R/plots/FINAL_Simi_Valley.png")
+```

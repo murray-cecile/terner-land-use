@@ -12,7 +12,7 @@ libs <- c("tidyverse", "magrittr", "stringr", "readr", "openxlsx", "janitor", "s
 lapply(libs, library, character.only=TRUE)
 
 MAIN_DIR <- "/Users/cecilemurray/Documents/coding/Terner"
-UTILS <- "/Users/cecilemurray/Documents/coding/R/utils"
+UTILS <- "/Users/cecilemurray/Documents/coding/R/r_utils"
 CENSUS_DIR <- "/Users/cecilemurray/Documents/coding/Terner/census"
 RAW_DIR <- "/Users/cecilemurray/Documents/coding/Terner/raw"
 
