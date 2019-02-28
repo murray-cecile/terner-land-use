@@ -30,7 +30,10 @@ edited_png_path <- paste0("raw/", CITY, "_edited.png")
 
 ```
 
-The Terner Center Land Use Survey (TCRLUS) asked respondents to estimate the share of land in their municipality that is zoned to permit multifamily housing. However, visually comparing some respondents' published zoning maps with their survey responses suggested that there might be some discrepancies between the actual land share and the share reported on the survey. To investigate this potential discrepancy, I used computer image analysis on a couple of selected zoning maps to generate estimates of the area zoned for multifamily housing on those maps as a way of validating the survey responses. This document describes the image analysis methodology and provides illustrative findings for Simi Valley, CA, where I found notable differences between the land share reported in the survey and the land share indicated by the image analysis. 
+The Terner Center Land Use Survey (TCRLUS) asked respondents to estimate the share of land in their municipality that is zoned to permit multifamily housing. However, visually comparing some respondents' published zoning maps with their survey responses suggested that there might be some discrepancies between the actual land share and the share reported on the survey. To investigate this potential discrepancy, I used computer image analysis on a couple of selected zoning maps to generate estimates of the area zoned for multifamily housing on those maps as a way of validating the survey responses. 
+
+In TCRLUS, Simi Valley reported that 76 to 95 percent of its land allows the construction of multifamily units. However, the results of a computer indicated that Simi Valley’s self-reported multifamily land share of more than 75% does not align with the published map: as open space appears to comprise 25% of the map area, every other zoning category would need to allow multifamily housing in order to match the reported result. 
+
 
 #### Simi Valley's zoning map
 
@@ -162,6 +165,10 @@ ggplot(partitions) +
   
 ```
 
+### Final results: 
+
+The graph below shows the area occupied by each of the five zoning color categories with the largest pixel shares. Open space occupies the largest share, with about 25% of the image; the next largest category is residential moderate, which occupies between 20 and 25%. 
+
 ```{r single_partition}
 
 simi30 <- partitions %>% filter(partition_N == 30) 
@@ -171,14 +178,24 @@ top_colors <- simi30 %>% select(rgb_color, color_share2) %>%
 top_colors <- top_colors[1:5, ]
 
 color_labels <- simi30 %>% select(rgb_color) %>% 
-  mutate(color_label = ifelse(rgb_color %in% top_colors$rgb_color, rgb_color, ""))
+  mutate(color_label = ifelse(rgb_color %in% top_colors$rgb_color, rgb_color, ""),
+         zone_label = case_when(
+           color_label == "R75-200-13" ~ "Open space",
+           color_label == "R221-185-117" ~ "Residental\n medium",
+           color_label == "R220-220-14" ~ "Residential\n low",
+           color_label == "R220-204-167" ~ "Residential\n estates",
+           color_label == "R201-201-52" ~ "Residential \n planned\n development",
+           color_label == "" ~ ""
+         ))
 
-ggplot(simi30) +
+top5 <- filter(simi30, rgb_color %in% top_colors$rgb_color)
+
+ggplot(top5) +
   geom_col(aes(x = reorder(rgb_color, color_share2), y = color_share2),
-           fill = simi30$color_hex) +
+           fill = top5$color_hex) +
   scale_y_continuous(labels = scales::percent) +
-  scale_x_discrete(labels = color_labels$color_label) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+  scale_x_discrete(labels = color_labels$zone_label[25:30]) +
+  theme( #axis.text.x = element_text(angle = 45, hjust = 1),
         panel.background = element_rect(fill = NA),
         panel.grid.major.y = element_line(color = "gray85", linetype = "dotted"),
         panel.grid.major.x = element_blank(),
@@ -191,5 +208,5 @@ ggplot(simi30) +
        x = "Color", y = "Pixel Share",
     caption = "Source: City of Simi Valley Zoning Districts map") 
 
-ggsave("R/plots/FINAL_Simi_Valley.png")
+ggsave("R/plots/5bar_Simi_Valley.png")
 ```
