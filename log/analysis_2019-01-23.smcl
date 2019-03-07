@@ -1,0 +1,738 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/analysis_2019-01-23.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}24 Jan 2019, 11:29:49
+{txt}
+{com}. 
+. use "output/FINAL_merged_TCRLUS_census_buildperm.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. tabstat x*_unit_units, s(sum) 
+
+{txt}{ralign 12:variable} {...}
+{c |}       sum
+{hline 13}{c +}{hline 10}
+{ralign 12:x1_unit_un~s} {...}
+{c |}{...}
+ {res}   145221
+{txt}{hline 13}{c BT}{hline 10}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. snapshot save
+{txt}{p 0 2}snapshot {res:1} created at {res:24 Jan 2019 11:37}{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. keep stplfips city x*_units*
+{txt}
+{com}. reshape long x*units_*, i(stplfips city) j(unit_type)
+{err}no xij variables found
+{p 4 4 2}
+You typed something like
+{bf:reshape wide a b, i(i) j(j)}.{break}
+{bf:reshape} looked for existing variables
+named {bf:a}{it:#} and {bf:b}{it:#} but
+could not find any.  Remember this picture:
+
+{col 9} {it:long}                                {it:wide}
+{col 9}{c TLC}{hline 15}{c TRC}                   {c TLC}{hline 18}{c TRC}
+{col 9}{c |} {it:i   j}   a   b {c |}                   {c |} {it:i}   a1 a2  b1 b2 {c |}
+{col 9}{c |}{hline 15}{c |} <--- {bf:reshape} ---> {c |}{hline 18}{c |}
+{col 9}{c |} 1   1   1   2 {c |}                   {c |} 1   1   3   2  4 {c |}
+{col 9}{c |} 1   2   3   4 {c |}                   {c |} 2   5   7   6  8 {c |}
+{col 9}{c |} 2   1   5   6 {c |}                   {c BLC}{hline 18}{c BRC}
+{col 9}{c |} 2   2   7   8 {c |}
+{col 9}{c BLC}{hline 15}{c BRC}
+
+{col 9}long to wide: {bf:reshape wide a b, i(}{it:i}{bf:) j(}{it:j}{bf:)}    ({it:j} existing variable)
+{col 9}wide to long: {bf:reshape long a b, i(}{it:i}{bf:) j(}{it:j}{bf:)}    ({it:j}    new   variable)
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. keep stplfips city x*_units_unit*
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. snapshot restore 1
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. keep stplfips city x*_unit_unit*
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. snapshot restore 1
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. keep stplfips city x*_unit_unit* x*_units_unit*
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. reshape long x*unit*, i(stplfips city) j(unit_type)
+{err}no xij variables found
+{p 4 4 2}
+You typed something like
+{bf:reshape wide a b, i(i) j(j)}.{break}
+{bf:reshape} looked for existing variables
+named {bf:a}{it:#} and {bf:b}{it:#} but
+could not find any.  Remember this picture:
+
+{col 9} {it:long}                                {it:wide}
+{col 9}{c TLC}{hline 15}{c TRC}                   {c TLC}{hline 18}{c TRC}
+{col 9}{c |} {it:i   j}   a   b {c |}                   {c |} {it:i}   a1 a2  b1 b2 {c |}
+{col 9}{c |}{hline 15}{c |} <--- {bf:reshape} ---> {c |}{hline 18}{c |}
+{col 9}{c |} 1   1   1   2 {c |}                   {c |} 1   1   3   2  4 {c |}
+{col 9}{c |} 1   2   3   4 {c |}                   {c |} 2   5   7   6  8 {c |}
+{col 9}{c |} 2   1   5   6 {c |}                   {c BLC}{hline 18}{c BRC}
+{col 9}{c |} 2   2   7   8 {c |}
+{col 9}{c BLC}{hline 15}{c BRC}
+
+{col 9}long to wide: {bf:reshape wide a b, i(}{it:i}{bf:) j(}{it:j}{bf:)}    ({it:j} existing variable)
+{col 9}wide to long: {bf:reshape long a b, i(}{it:i}{bf:) j(}{it:j}{bf:)}    ({it:j}    new   variable)
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. reshape long x*unit* units, i(stplfips city) j(unit_type)
+{err}no xij variables found
+{p 4 4 2}
+You typed something like
+{bf:reshape wide a b, i(i) j(j)}.{break}
+{bf:reshape} looked for existing variables
+named {bf:a}{it:#} and {bf:b}{it:#} but
+could not find any.  Remember this picture:
+
+{col 9} {it:long}                                {it:wide}
+{col 9}{c TLC}{hline 15}{c TRC}                   {c TLC}{hline 18}{c TRC}
+{col 9}{c |} {it:i   j}   a   b {c |}                   {c |} {it:i}   a1 a2  b1 b2 {c |}
+{col 9}{c |}{hline 15}{c |} <--- {bf:reshape} ---> {c |}{hline 18}{c |}
+{col 9}{c |} 1   1   1   2 {c |}                   {c |} 1   1   3   2  4 {c |}
+{col 9}{c |} 1   2   3   4 {c |}                   {c |} 2   5   7   6  8 {c |}
+{col 9}{c |} 2   1   5   6 {c |}                   {c BLC}{hline 18}{c BRC}
+{col 9}{c |} 2   2   7   8 {c |}
+{col 9}{c BLC}{hline 15}{c BRC}
+
+{col 9}long to wide: {bf:reshape wide a b, i(}{it:i}{bf:) j(}{it:j}{bf:)}    ({it:j} existing variable)
+{col 9}wide to long: {bf:reshape long a b, i(}{it:i}{bf:) j(}{it:j}{bf:)}    ({it:j}    new   variable)
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. /*================================================================= *
+> * TERNER HOUSING SURVEY DATA: EXPLORE DATA
+> *       
+> *       Cecile Murray
+> *       Stata 13.1 on Mac
+> *       Created: 2019-01-23
+> * ================================================================= */
+. 
+. clear all 
+{txt}
+{com}. set more off
+{txt}
+{com}. 
+. capture cd "/Users/cecilemurray/Documents/coding/Terner"
+{txt}
+{com}. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/cecilemurray/Documents/coding/Terner/log/analysis_2019-01-23.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}24 Jan 2019, 11:40:46
+{txt}
+{com}. 
+. use "output/FINAL_merged_TCRLUS_census_buildperm.dta", clear
+{txt}(Terner California Residential Land Use Survey, prepared by Sarah Mawhorter, 2018)
+
+{com}. 
+. * snapshot 1
+. snapshot save
+{txt}{p 0 2}snapshot {res:2} created at {res:24 Jan 2019 11:40}{p_end}
+
+{com}. 
+. * COMPARE SHARES OF UNITS AND BUILDINGS
+. keep stplfips city x*_unit_unit* x*_units_unit*
+{txt}
+{com}. reshape long x*unit*, i(stplfips city) j(units)
+{err}no xij variables found
+{p 4 4 2}
+You typed something like
+{bf:reshape wide a b, i(i) j(j)}.{break}
+{bf:reshape} looked for existing variables
+named {bf:a}{it:#} and {bf:b}{it:#} but
+could not find any.  Remember this picture:
+
+{col 9} {it:long}                                {it:wide}
+{col 9}{c TLC}{hline 15}{c TRC}                   {c TLC}{hline 18}{c TRC}
+{col 9}{c |} {it:i   j}   a   b {c |}                   {c |} {it:i}   a1 a2  b1 b2 {c |}
+{col 9}{c |}{hline 15}{c |} <--- {bf:reshape} ---> {c |}{hline 18}{c |}
+{col 9}{c |} 1   1   1   2 {c |}                   {c |} 1   1   3   2  4 {c |}
+{col 9}{c |} 1   2   3   4 {c |}                   {c |} 2   5   7   6  8 {c |}
+{col 9}{c |} 2   1   5   6 {c |}                   {c BLC}{hline 18}{c BRC}
+{col 9}{c |} 2   2   7   8 {c |}
+{col 9}{c BLC}{hline 15}{c BRC}
+
+{col 9}long to wide: {bf:reshape wide a b, i(}{it:i}{bf:) j(}{it:j}{bf:)}    ({it:j} existing variable)
+{col 9}wide to long: {bf:reshape long a b, i(}{it:i}{bf:) j(}{it:j}{bf:)}    ({it:j}    new   variable)
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. help reshape
+
+. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. reshape long *_units, i(stplfips city) j(units) string
+{err}no xij variables found
+{p 4 4 2}
+You typed something like
+{bf:reshape wide a b, i(i) j(j)}.{break}
+{bf:reshape} looked for existing variables
+named {bf:a}{it:#} and {bf:b}{it:#} but
+could not find any.  Remember this picture:
+
+{col 9} {it:long}                                {it:wide}
+{col 9}{c TLC}{hline 15}{c TRC}                   {c TLC}{hline 18}{c TRC}
+{col 9}{c |} {it:i   j}   a   b {c |}                   {c |} {it:i}   a1 a2  b1 b2 {c |}
+{col 9}{c |}{hline 15}{c |} <--- {bf:reshape} ---> {c |}{hline 18}{c |}
+{col 9}{c |} 1   1   1   2 {c |}                   {c |} 1   1   3   2  4 {c |}
+{col 9}{c |} 1   2   3   4 {c |}                   {c |} 2   5   7   6  8 {c |}
+{col 9}{c |} 2   1   5   6 {c |}                   {c BLC}{hline 18}{c BRC}
+{col 9}{c |} 2   2   7   8 {c |}
+{col 9}{c BLC}{hline 15}{c BRC}
+
+{col 9}long to wide: {bf:reshape wide a b, i(}{it:i}{bf:) j(}{it:j}{bf:)}    ({it:j} existing variable)
+{col 9}wide to long: {bf:reshape long a b, i(}{it:i}{bf:) j(}{it:j}{bf:)}    ({it:j}    new   variable)
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. help reshape
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. reshape long *_units, i(stplfips city) j(type) string
+{err}no xij variables found
+{p 4 4 2}
+You typed something like
+{bf:reshape wide a b, i(i) j(j)}.{break}
+{bf:reshape} looked for existing variables
+named {bf:a}{it:#} and {bf:b}{it:#} but
+could not find any.  Remember this picture:
+
+{col 9} {it:long}                                {it:wide}
+{col 9}{c TLC}{hline 15}{c TRC}                   {c TLC}{hline 18}{c TRC}
+{col 9}{c |} {it:i   j}   a   b {c |}                   {c |} {it:i}   a1 a2  b1 b2 {c |}
+{col 9}{c |}{hline 15}{c |} <--- {bf:reshape} ---> {c |}{hline 18}{c |}
+{col 9}{c |} 1   1   1   2 {c |}                   {c |} 1   1   3   2  4 {c |}
+{col 9}{c |} 1   2   3   4 {c |}                   {c |} 2   5   7   6  8 {c |}
+{col 9}{c |} 2   1   5   6 {c |}                   {c BLC}{hline 18}{c BRC}
+{col 9}{c |} 2   2   7   8 {c |}
+{col 9}{c BLC}{hline 15}{c BRC}
+
+{col 9}long to wide: {bf:reshape wide a b, i(}{it:i}{bf:) j(}{it:j}{bf:)}    ({it:j} existing variable)
+{col 9}wide to long: {bf:reshape long a b, i(}{it:i}{bf:) j(}{it:j}{bf:)}    ({it:j}    new   variable)
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. reshape long x, i(stplfips city) j(unit_type) string
+{txt}(note: j = 1_unit_units 2_units_units 3_4_units_units 5_units_units)
+
+Data{col 36}wide{col 43}->{col 48}long
+{hline 77}
+Number of obs.                 {res}     266   {txt}->{res}    1064
+{txt}Number of variables            {res}       6   {txt}->{res}       4
+{txt}j variable (4 values)                     ->   {res}unit_type
+{txt}xij variables:
+{res}x1_unit_units x2_units_units ... x5_units_units{txt}->{res}x
+{txt}{hline 77}
+
+{com}. 
+{txt}end of do-file
+
+{com}. snapshot restore 1
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. keep stplfips city x*_unit_unit* x*_units_unit*
+{txt}
+{com}. reshape long x@, i(stplfips city) j(unit_type) string
+{txt}(note: j = 1_unit_units 2_units_units 3_4_units_units 5_units_units)
+
+Data{col 36}wide{col 43}->{col 48}long
+{hline 77}
+Number of obs.                 {res}     266   {txt}->{res}    1064
+{txt}Number of variables            {res}       6   {txt}->{res}       4
+{txt}j variable (4 values)                     ->   {res}unit_type
+{txt}xij variables:
+{res}x1_unit_units x2_units_units ... x5_units_units{txt}->{res}x
+{txt}{hline 77}
+
+{com}. 
+{txt}end of do-file
+
+{com}. browse
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. tabstat x, s(sum) by(unit_type) 
+
+{txt}Summary for variables: x
+{col 6}by categories of: unit_type 
+
+{ralign 15:unit_type} {...}
+{c |}       sum
+{hline 16}{c +}{hline 10}
+{ralign 15:1_unit_units} {...}
+{c |}{...}
+ {res}   145221
+{txt}{ralign 15:2_units_units} {...}
+{c |}{...}
+ {res}     6262
+{txt}{ralign 15:3_4_units_units} {...}
+{c |}{...}
+ {res}     5827
+{txt}{ralign 15:5_units_units} {...}
+{c |}{...}
+ {res}   203682
+{txt}{hline 16}{c +}{hline 10}
+{ralign 15:Total} {...}
+{c |}{...}
+ {res}   360992
+{txt}{hline 16}{c BT}{hline 10}
+
+{com}. 
+{txt}end of do-file
+
+{com}. snapshot restore 1
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. keep stplfips city x*_unit_bldgs* x*_units_bldgs* /// x*_unit_unit* x*_units_unit*
+
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. reshape long x@, i(stplfips city) j(unit_type) string
+{txt}(note: j = 1_unit_rep_units 1_unit_units 2_units_bldgs 2_units_rep_bldgs 2_units_rep_units 2_units_units 3_4_units_bldgs 3_4_units_rep_bldgs 3_4_units_rep_units 3_4_units_units 5_units_bldgs 5_units_rep_bldgs 5_units_rep_units 5_units_units)
+
+Data{col 36}wide{col 43}->{col 48}long
+{hline 77}
+Number of obs.                 {res}     266   {txt}->{res}    3724
+{txt}Number of variables            {res}     263   {txt}->{res}     251
+{txt}j variable (14 values)                    ->   {res}unit_type
+{txt}xij variables:
+{res}x1_unit_rep_units x1_unit_units ... x5_units_units{txt}->{res}x
+{txt}{hline 77}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. tabstat x, s(sum) by(unit_type) 
+
+{txt}Summary for variables: x
+{col 6}by categories of: unit_type 
+
+{ralign 16:unit_type} {...}
+{c |}       sum
+{hline 17}{c +}{hline 10}
+{ralign 16:1_unit_rep_units} {...}
+{c |}{...}
+ {res}   136960
+{txt}{ralign 16:1_unit_units} {...}
+{c |}{...}
+ {res}   145221
+{txt}{ralign 16:2_units_bldgs} {...}
+{c |}{...}
+ {res}     3131
+{txt}{ralign 16:2_units_rep_bldg} {...}
+{c |}{...}
+ {res}     3061
+{txt}{ralign 16:2_units_rep_unit} {...}
+{c |}{...}
+ {res}     6122
+{txt}{ralign 16:2_units_units} {...}
+{c |}{...}
+ {res}     6262
+{txt}{ralign 16:3_4_units_bldgs} {...}
+{c |}{...}
+ {res}     1702
+{txt}{ralign 16:3_4_units_rep_bl} {...}
+{c |}{...}
+ {res}     1624
+{txt}{ralign 16:3_4_units_rep_un} {...}
+{c |}{...}
+ {res}     5575
+{txt}{ralign 16:3_4_units_units} {...}
+{c |}{...}
+ {res}     5827
+{txt}{ralign 16:5_units_bldgs} {...}
+{c |}{...}
+ {res}     6031
+{txt}{ralign 16:5_units_rep_bldg} {...}
+{c |}{...}
+ {res}     5549
+{txt}{ralign 16:5_units_rep_unit} {...}
+{c |}{...}
+ {res}   198061
+{txt}{ralign 16:5_units_units} {...}
+{c |}{...}
+ {res}   203682
+{txt}{hline 17}{c +}{hline 10}
+{ralign 16:Total} {...}
+{c |}{...}
+ {res}   728808
+{txt}{hline 17}{c BT}{hline 10}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. drop *_rep_
+{err}variable *_rep_ not found
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. drop *_rep_*
+{err}variable *_rep_* not found
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. snapshot restore 1
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. snapshot restore 1
+{txt}
+{com}. keep stplfips city x*_unit_bldgs* x*_units_bldgs* /// x*_unit_unit* x*_units_unit*
+> drop *_rep_*
+{err}variable x*_unit_bldgs* not found
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. snapshot restore 1
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. keep stplfips city x*_units_bldgs* /// x*_unit_unit* x*_units_unit*
+> drop *_rep_*
+{err}variable drop not found
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. keep stplfips city x*_units_bldgs* // x*_unit_unit* x*_units_unit*
+{txt}
+{com}. drop *_rep_*
+{err}variable *_rep_* not found
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. reshape long x@, i(stplfips city) j(unit_type) string
+{txt}(note: j = 2_units_bldgs 3_4_units_bldgs 5_units_bldgs)
+
+Data{col 36}wide{col 43}->{col 48}long
+{hline 77}
+Number of obs.                 {res}     266   {txt}->{res}     798
+{txt}Number of variables            {res}       5   {txt}->{res}       4
+{txt}j variable (3 values)                     ->   {res}unit_type
+{txt}xij variables:
+{res}x2_units_bldgs x3_4_units_bldgs x5_units_bldgs{txt}->{res}x
+{txt}{hline 77}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. tabstat x, s(sum) by(unit_type) 
+
+{txt}Summary for variables: x
+{col 6}by categories of: unit_type 
+
+{ralign 15:unit_type} {...}
+{c |}       sum
+{hline 16}{c +}{hline 10}
+{ralign 15:2_units_bldgs} {...}
+{c |}{...}
+ {res}     3131
+{txt}{ralign 15:3_4_units_bldgs} {...}
+{c |}{...}
+ {res}     1702
+{txt}{ralign 15:5_units_bldgs} {...}
+{c |}{...}
+ {res}     6031
+{txt}{hline 16}{c +}{hline 10}
+{ralign 15:Total} {...}
+{c |}{...}
+ {res}    10864
+{txt}{hline 16}{c BT}{hline 10}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. snapshot restore 1
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. merge 1:1 stplfips using "xwalks/place_county_CBSA_xwalk.dta"
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}           1,304
+{txt}{col 9}from master{col 30}{res}               0{txt}  (_merge==1)
+{col 9}from using{col 30}{res}           1,304{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}             266{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. snapshot save
+{txt}{p 0 2}snapshot {res:3} created at {res:24 Jan 2019 11:54}{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. drop _merge
+
+. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. keep stplfips city cbsa* x*_units_bldgs* // x*_unit_unit* x*_units_unit*
+{txt}
+{com}. reshape long x@, i(stplfips city cbsa cbsaname) j(unit_type) string
+{txt}(note: j = 2_units_bldgs 3_4_units_bldgs 5_units_bldgs)
+
+Data{col 36}wide{col 43}->{col 48}long
+{hline 77}
+Number of obs.                 {res}    1570   {txt}->{res}    4710
+{txt}Number of variables            {res}       7   {txt}->{res}       6
+{txt}j variable (3 values)                     ->   {res}unit_type
+{txt}xij variables:
+{res}x2_units_bldgs x3_4_units_bldgs x5_units_bldgs{txt}->{res}x
+{txt}{hline 77}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. tabstat x, s(sum) by(unit_type cbsaname) 
+{err}by():  too many variables specified
+{txt}{search r(103):r(103);}
+
+end of do-file
+
+{search r(103):r(103);}
+
+{com}. do "/var/folders/wj/rc75bkr57y7brqn3ynq4bl2w0000gn/T//SD16617.000000"
+{txt}
+{com}. tabstat x, s(sum) by(cbsaname) 
+
+{txt}Summary for variables: x
+{col 6}by categories of: cbsaname 
+
+{ralign 16:cbsaname} {...}
+{c |}       sum
+{hline 17}{c +}{hline 10}
+{ralign 16:} {...}
+{c |}{...}
+ {res}        9
+{txt}{ralign 16:Bakersfield, CA } {...}
+{c |}{...}
+ {res}      176
+{txt}{ralign 16:Chico, CA (Metro} {...}
+{c |}{...}
+ {res}      132
+{txt}{ralign 16:Clearlake, CA (M} {...}
+{c |}{...}
+ {res}        0
+{txt}{ralign 16:Crescent City, C} {...}
+{c |}{...}
+ {res}        0
+{txt}{ralign 16:El Centro, CA (M} {...}
+{c |}{...}
+ {res}        7
+{txt}{ralign 16:Eureka-Arcata-Fo} {...}
+{c |}{...}
+ {res}       30
+{txt}{ralign 16:Fresno, CA (Metr} {...}
+{c |}{...}
+ {res}       24
+{txt}{ralign 16:Hanford-Corcoran} {...}
+{c |}{...}
+ {res}        0
+{txt}{ralign 16:Los Angeles-Long} {...}
+{c |}{...}
+ {res}     4735
+{txt}{ralign 16:Madera, CA (Metr} {...}
+{c |}{...}
+ {res}        0
+{txt}{ralign 16:Merced, CA (Metr} {...}
+{c |}{...}
+ {res}       25
+{txt}{ralign 16:Modesto, CA (Met} {...}
+{c |}{...}
+ {res}        9
+{txt}{ralign 16:Napa, CA (Metro)} {...}
+{c |}{...}
+ {res}       58
+{txt}{ralign 16:Oxnard-Thousand } {...}
+{c |}{...}
+ {res}      110
+{txt}{ralign 16:Red Bluff, CA (M} {...}
+{c |}{...}
+ {res}        8
+{txt}{ralign 16:Redding, CA (Met} {...}
+{c |}{...}
+ {res}       10
+{txt}{ralign 16:Riverside-San Be} {...}
+{c |}{...}
+ {res}      895
+{txt}{ralign 16:Sacramento--Rose} {...}
+{c |}{...}
+ {res}      338
+{txt}{ralign 16:Salinas, CA (Met} {...}
+{c |}{...}
+ {res}       36
+{txt}{ralign 16:San Diego-Carlsb} {...}
+{c |}{...}
+ {res}     1547
+{txt}{ralign 16:San Francisco-Oa} {...}
+{c |}{...}
+ {res}     1199
+{txt}{ralign 16:San Jose-Sunnyva} {...}
+{c |}{...}
+ {res}      810
+{txt}{ralign 16:San Luis Obispo-} {...}
+{c |}{...}
+ {res}      156
+{txt}{ralign 16:Santa Cruz-Watso} {...}
+{c |}{...}
+ {res}      108
+{txt}{ralign 16:Santa Maria-Sant} {...}
+{c |}{...}
+ {res}      140
+{txt}{ralign 16:Santa Rosa, CA (} {...}
+{c |}{...}
+ {res}       91
+{txt}{ralign 16:Sonora, CA (Micr} {...}
+{c |}{...}
+ {res}        0
+{txt}{ralign 16:Stockton-Lodi, C} {...}
+{c |}{...}
+ {res}       55
+{txt}{ralign 16:Susanville, CA (} {...}
+{c |}{...}
+ {res}        1
+{txt}{ralign 16:Truckee-Grass Va} {...}
+{c |}{...}
+ {res}       23
+{txt}{ralign 16:Ukiah, CA (Micro} {...}
+{c |}{...}
+ {res}        0
+{txt}{ralign 16:Vallejo-Fairfiel} {...}
+{c |}{...}
+ {res}       31
+{txt}{ralign 16:Visalia-Portervi} {...}
+{c |}{...}
+ {res}       81
+{txt}{ralign 16:Yuba City, CA (M} {...}
+{c |}{...}
+ {res}       20
+{txt}{hline 17}{c +}{hline 10}
+{ralign 16:Total} {...}
+{c |}{...}
+ {res}    10864
+{txt}{hline 17}{c BT}{hline 10}
+
+{com}. 
+{txt}end of do-file
+
+{com}. set more off
+
+. exit, clear
