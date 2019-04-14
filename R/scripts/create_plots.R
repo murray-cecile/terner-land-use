@@ -7,16 +7,26 @@
 library(here)
 source("scripts/setup.R")
 
+# bring in final dataset
 setwd(MAIN_DIR)
-tcrlus <- readstata13::read.dta13("output/FINAL_merged_TCRLUS_census_buildperm.dta")
+tcrlus <- haven::read_dta("output/FINAL_merged_TCRLUS_census_buildperm.dta")
 setwd(here())
+
+#===============================================================================#
+# THEMING /AESTHETICS
+#===============================================================================#
+
+# Terner colors
+terner_blue <- "#4F758B" # c(79, 117, 139)
+terner_gold <- "#F1A900" # c(241, 169, 0)
 
 chart_theme <- function(...) {
   theme(panel.background = element_blank(),
         panel.grid.major = element_line(color = "gray75",
                                         size = rel(0.75),
                                         linetype = "dotted"),
-        text = element_text(family = "Lucida Grande")) +
+        text = element_text(family = "Lucida Grande"),
+        legend.background = element_blank()) +
   theme(...)
 }
 
@@ -24,9 +34,9 @@ chart_theme <- function(...) {
 # BAR CHART: SHARE OF LAND ZONED FOR MF VS. SF
 #===============================================================================#
 
-land_share <- data.frame(sf = table(tcrlus$lnd_sf),
-                mf = table(tcrlus$lnd_mf),
-                nr = table(tcrlus$lnd_nr)) %>% 
+land_share <- data.frame(sf = table(haven::as_factor(tcrlus$lnd_sf)),
+                mf = table(haven::as_factor(tcrlus$lnd_mf)),
+                nr = table(haven::as_factor(tcrlus$lnd_nr))) %>% 
   select(sf.Var1, contains("Freq")) %>% 
   dplyr::rename(land_share = sf.Var1,
                 SF = sf.Freq,
@@ -47,15 +57,114 @@ ggplot(land_share, aes(x = land_share, y = ct, group = zone, fill = zone)) +
         legend.position = c(0.8, 0.85),
         legend.title = element_blank())
 
+#===============================================================================#
+# BAR CHART: MAX BUILDING HEIGHT
+#===============================================================================#
+
+# rounding max heights to nearest 5, capping at 50
+max_height <- tcrlus %>% select(contains("heightlimit")) %>% 
+  dplyr::rename(SF = zon_sfheightlimit,
+                MF = zon_mfheightlimit) %>% 
+  gather(key = "zone", value = "height") %>% 
+  mutate(limit = case_when(
+    height < 0 ~ height,
+    height < 50 ~ 5 * round(height / 5),
+    height >= 50 ~ 50)) %>% 
+  filter(limit > 0) %>% 
+  group_by(zone, limit) %>%
+  summarise(ct = n()) %>% 
+  bind_rows(data.frame(zone = c("SF", "MF"),
+                       limit = c(50, 15),
+                       ct = c(0, 0)))
+
+ggplot(max_height, aes(x = limit, y = ct, group = zone, fill = zone)) +
+  geom_col(position = "dodge") +
+  labs(title = "Most respondents restrict building heights to four stories or fewer",
+       subtitle = "Adjusted building height limits",
+       x = "Height limit", y = "Number of municipalities",
+       caption = "Source: Terner Center Land Use Survey") +
+  chart_theme(legend.title = element_blank(),
+              legend.position = c(0.8, 0.9))
+
+#===============================================================================#
+# HISTOGRAM: DU / ACRE
+#===============================================================================#
+
+density <- tcrlus %>% select(contains("maxdensity")) %>% 
+  dplyr::rename(SF = zon_sfmaxdensity,
+                MF = zon_mfmaxdensity) %>% 
+  gather(key = "zone", value = "max_density") %>% 
+  filter(max_density > 0, zone == "MF")
+
+ggplot(density, aes(x = max_density)) +
+  geom_histogram(fill = terner_blue, color = "white") +
+  labs(title = "Many municipalities restruct multifamily density",
+       subtitle = "Maximum multifamily dwelling units per acre",
+       source = "Terner Center Land Use Survey") +
+  chart_theme(legend.title = element_blank())
+
+#===============================================================================#
+# BAR CHART: APPROVAL TIMES
+#===============================================================================#
+
+approvals <- tcrlus %>% select(x5_units_units, apt_mfconsistent) %>% 
+  mutate(permit_level = ifelse(x5_units_units >= 66, 
+                               "Above median",
+                               "Below median"),
+         apt_mfconsistent = haven::as_factor(apt_mfconsistent)) %>% 
+  select(-x5_units_units) %>% 
+  group_by(apt_mfconsistent, permit_level) %>% 
+  summarize(ct = n()) %>% 
+  filter(!apt_mfconsistent %in% c("Missing", "Varies, inconsistent",
+                                  "N/A, none", NA))
+
+ggplot(approvals, aes(x = apt_mfconsistent, y = ct, group = permit_level,
+                      fill = permit_level)) +
+  scale_x_discrete(name = "Permit Level",
+                   labels = function(x) str_wrap(x, width = 10)) +
+  geom_col(position = "dodge") +
+  labs(title = "Municipalities that didn't permit many units reported \nshorter approval times",
+       subtitle = "Approval time for multifamily projects consistent with general zoning",
+       x = "Approval time", y = "Number of municipalities",
+       source = "Terner Center Land Use Survey") +
+  chart_theme(legend.position = c(0.8, 0.8))
+
+#===============================================================================#
+# BAR CHART: APPLICATIONS
+#===============================================================================#
+
+apps <- tcrlus %>% select(x5_units_units, apl_mf5to19) %>% 
+  mutate(permit_level = ifelse(x5_units_units >= 66, 
+                               "Above median",
+                               "Below median"),
+         apl_mf5to19 = haven::as_factor(apl_mf5to19)) %>% 
+  select(-x5_units_units) %>% 
+  group_by(apl_mf5to19, permit_level) %>% 
+  summarize(ct = n()) %>% 
+  filter(!apl_mf5to19 %in% c("Missing"))
+
+ggplot(apps, aes(x = apl_mf5to19, y = ct, group = permit_level,
+                      fill = permit_level)) +
+  scale_x_discrete(name = "Permit Level",
+                   labels = function(x) str_wrap(x, width = 10)) +
+  geom_col(position = "dodge") +
+  labs(title = "Municipalities that didn't permit many units reported \nless frequent applications",
+       subtitle = "Frequency of approvals for multifamily projects between 5 and 19 units",
+       x = "Application frequency", y = "Number of municipalities",
+       source = "Terner Center Land Use Survey") +
+  chart_theme(legend.position = c(0.8, 0.8))
+
 
 #===============================================================================#
 # SMALL MULTIPLES/SCATTER: PREDICTED CONSTRUCTION IN CA
 #===============================================================================#
 
+# bring in data, filter out other metros 
 setwd(MAIN_DIR)
 scatter_data <- data.table::fread('plots/fig4data.txt') %>% 
   mutate(metro_name = ifelse(big6 == 1, cbsaname, "Other")) %>% 
-  select(city, stplfips, metro_name, mf_new, rrent10)
+  filter(metro_name != "Other") %>% 
+  select(city, stplfips, metro_name, mf_new, rrent10) 
 
 ggplot(scatter_data, aes(x = rrent10, y = mf_new, color = metro_name)) +
   geom_point() +
@@ -65,8 +174,8 @@ ggplot(scatter_data, aes(x = rrent10, y = mf_new, color = metro_name)) +
        subtitle = "New multifamily permits versus rents in California municipalities",
        x = "Median gross rent, 2008-2012", y = "New multifamily permits, 2013-2017",
        colour = "Metro Name") +
-  theme(legend.position = c(0.8, 0.15),
+  theme(legend.position = "none",
         text = element_text(family='Lucida Grande'))
-ggsave('plots/fig4_small_multiples.png', width = 11, height = 8.5)
+ggsave('plots/fig4_small_multiples_v2.png', width = 11, height = 8.5)
 
 
