@@ -97,7 +97,12 @@ ggplot(max_height, aes(x = limit, y = ct, group = zone, fill = zone)) +
 # HISTOGRAM: DU / ACRE
 #===============================================================================#
 
-density <- tcrlus %>% select(contains("maxdensity")) %>% 
+# correct for erroneous outlier in Concord and reshape for ggplot
+density <- tcrlus %>% select(city, contains("maxdensity")) %>% 
+  mutate(zon_mfmaxdensity = ifelse(city == "Concord",
+                                   100,
+                                   zon_mfmaxdensity)) %>% 
+  select(-city) %>% 
   dplyr::rename(SF = zon_sfmaxdensity,
                 MF = zon_mfmaxdensity) %>% 
   gather(key = "zone", value = "max_density") %>% 
@@ -106,12 +111,12 @@ density <- tcrlus %>% select(contains("maxdensity")) %>%
 ggplot(density, aes(x = max_density)) +
   geom_histogram(binwidth = 5, fill = terner_blue, color = "white") +
   scale_x_continuous(breaks = seq(0, 200, 25)) +
-  labs(title = "Many municipalities restruct multifamily density",
+  labs(title = "Many municipalities restrict multifamily density",
        x = "Maximum dwelling units per acre", y = "Number of municipalities",
        subtitle = "Maximum multifamily dwelling units per acre",
        source = "Terner Center Land Use Survey") +
   chart_theme(legend.title = element_blank())
-# ggsave("plots/max_du_acre_histogram.png", width = 7, height = 5, units = c("in"))
+ggsave("plots/max_du_acre_histogram.png", width = 7, height = 5, units = c("in"))
 
 #===============================================================================#
 # BAR CHART: APPROVAL TIMES
