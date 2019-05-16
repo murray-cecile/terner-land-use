@@ -181,7 +181,15 @@ setwd(MAIN_DIR)
 scatter_data <- data.table::fread('plots/fig4data.txt') %>% 
   mutate(metro_name = ifelse(big6 == 1, cbsaname, "Other")) %>% 
   filter(metro_name != "Other") %>% 
-  select(city, stplfips, metro_name, mf_new, rrent10) 
+  select(city, stplfips, metro_name, mf_new, rrent10) %>% 
+  mutate(metro_name = case_when(
+    metro_name == "San Francisco-Oakland-Hayward, CA (Metro)" ~ "San Francisco (Metro)",
+    metro_name == "San Jose-Sunnyvale-Santa Clara, CA (Metro)" ~ "San Jose (Metro)",
+    metro_name == "Los Angeles-Long Beach-Anaheim, CA (Metro)" ~ "Los Angeles (Metro)",
+    metro_name == "San Diego-Carlsbad, CA (Metro)" ~ "San Diego (Metro)",
+    metro_name == "Riverside-San Bernardino-Ontario, CA (Metro)" ~ "Riverside (Metro)",
+    metro_name == "Sacramento--Roseville--Arden-Arcade, CA (Metro)" ~ "Sacramento (Metro)",
+  ))
 
 ggplot(scatter_data, aes(x = rrent10, y = mf_new, color = metro_name)) +
   geom_point() +
@@ -189,9 +197,9 @@ ggplot(scatter_data, aes(x = rrent10, y = mf_new, color = metro_name)) +
   facet_wrap(facets = vars(metro_name), 
              nrow = 3,
              ncol = 2,
-             scales = "free") +
-  labs(title = 'Rents do not necessarily predict construction in California municipalities',
-       subtitle = "New multifamily permits versus rents in California municipalities",
+             scales = "free_y") +
+  labs(title = 'Rents do not necessarily predict construction in California \n municipalities',
+       subtitle = "New multifamily permits versus rents in California municipalities by metro area",
        x = "Median gross rent, 2008-2012", y = "New multifamily permits, 2013-2017",
        colour = "Metro Name") +
   theme(legend.position = "none",
@@ -200,6 +208,6 @@ ggplot(scatter_data, aes(x = rrent10, y = mf_new, color = metro_name)) +
         panel.grid.major = element_line(linetype = 'dotted', color = 'gray60'),
         panel.grid.minor = element_line(linetype = 'dotted', color = 'gray60')
         )
-ggsave('plots/fig4_small_multiples_v3.png', width = 8.5, height = 11)
+ggsave('plots/fig4_small_multiples_v5.png', width = 8.5, height = 11)
 
 
