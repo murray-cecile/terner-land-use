@@ -186,13 +186,20 @@ scatter_data <- data.table::fread('plots/fig4data.txt') %>%
 ggplot(scatter_data, aes(x = rrent10, y = mf_new, color = metro_name)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
-  facet_wrap(facets = vars(metro_name)) +
+  facet_wrap(facets = vars(metro_name), 
+             nrow = 3,
+             ncol = 2,
+             scales = "free") +
   labs(title = 'Rents do not necessarily predict construction in California municipalities',
        subtitle = "New multifamily permits versus rents in California municipalities",
        x = "Median gross rent, 2008-2012", y = "New multifamily permits, 2013-2017",
        colour = "Metro Name") +
   theme(legend.position = "none",
-        text = element_text(family='Lucida Grande'))
-ggsave('plots/fig4_small_multiples_v2.png', width = 11, height = 8.5)
+        text = element_text(family='Lucida Grande', size = 14),
+        panel.background = element_blank(),
+        panel.grid.major = element_line(linetype = 'dotted', color = 'gray60'),
+        panel.grid.minor = element_line(linetype = 'dotted', color = 'gray60')
+        )
+ggsave('plots/fig4_small_multiples_v3.png', width = 8.5, height = 11)
 
 
