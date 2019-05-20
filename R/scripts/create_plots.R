@@ -198,12 +198,13 @@ ggplot(scatter_data, aes(x = rrent10, y = mf_new, color = metro_name)) +
              nrow = 3,
              ncol = 2,
              scales = "free_y") +
-  labs(title = 'Rents do not necessarily predict construction in California \n municipalities',
+  labs(title = 'Rents do not consistently predict apartment development in California',
        subtitle = "New multifamily permits versus rents in California municipalities by metro area",
-       x = "Median gross rent, 2008-2012", y = "New multifamily permits, 2013-2017",
+       x = "Median gross rent, 2008-2012", y = "New multifamily permits per existing housing units, 2013-2017",
        colour = "Metro Name") +
   theme(legend.position = "none",
         text = element_text(family='Lucida Grande', size = 14),
+        strip.text = element_text(size = 16),
         panel.background = element_blank(),
         panel.grid.major = element_line(linetype = 'dotted', color = 'gray60'),
         panel.grid.minor = element_line(linetype = 'dotted', color = 'gray60')
