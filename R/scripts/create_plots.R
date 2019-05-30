@@ -211,4 +211,19 @@ ggplot(scatter_data, aes(x = rrent10, y = mf_new, color = metro_name)) +
         )
 ggsave('plots/fig4_small_multiples_v5.png', width = 8.5, height = 11)
 
+#===============================================================================#
+# PERMITS VS RENTS
+#===============================================================================#
+
+perm_rent_data <- data.table::fread("R/temp/metro_graph.txt") %>% 
+  mutate(color = ifelse(ca == 1, terner_blue, terner_gold))
+
+ggplot(perm_rent_data,
+       aes(x = medrent, y = pnewmf)) +
+  geom_point(color = perm_rent_data$color) +
+  geom_smooth(method = "lm", color = terner_blue, se = FALSE) +
+  labs(title = "CA metros underbuild MF relative to rent levels",
+       subtitle = "New multifamily growth in 100 largest metros",
+       x = "Median rent", y = "MF permits/old housing") +
+  chart_theme()
 
