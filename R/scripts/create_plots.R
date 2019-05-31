@@ -16,8 +16,8 @@ tcrlus <- haven::read_dta("output/FINAL_merged_TCRLUS_census_buildperm.dta")
 #===============================================================================#
 
 # Terner colors
-terner_blue <- "#4F758B" # c(79, 117, 139)
-terner_gold <- "#F1A900" # c(241, 169, 0)
+terner_blue <- "#011E41" 
+terner_gold <- "#B7B09D" 
 
 # define theme
 chart_theme <- function(...) {
@@ -25,7 +25,7 @@ chart_theme <- function(...) {
         panel.grid.major = element_line(color = "gray75",
                                         size = rel(0.75),
                                         linetype = "dotted"),
-        text = element_text(family = "Lucida Grande"),
+        text = element_text(family = "Georgia"),
         legend.background = element_blank()) +
   theme(...)
 }
@@ -51,7 +51,8 @@ land_share <- data.frame(sf = table(haven::as_factor(tcrlus$lnd_sf)),
 ggplot(land_share, aes(x = land_share, y = ct, group = zone, fill = zone)) +
   geom_col(position = "dodge") +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 10)) +
-  scale_fill_discrete(labels = c("Multifamily", "Single-family")) +
+  scale_fill_manual(values = c("SF" = terner_gold, 'MF' = terner_blue),
+                    labels = c("Multifamily", "Single-family")) +
   labs(title = "Most municipalities reserve most of their land for single-family units",
        subtitle = "Share of land zoned to allow multifamily vs. single-family construction",
        x = "Share of land zoned", y = "Number of municipalities",
@@ -59,7 +60,7 @@ ggplot(land_share, aes(x = land_share, y = ct, group = zone, fill = zone)) +
   chart_theme(axis.ticks.x = element_blank(),
         legend.position = c(0.8, 0.85),
         legend.title = element_blank())
-# ggsave("plots/fig2_land_share.png", width = 7, height = 5, units = c("in"))
+# ggsave("plots/fig2_land_share.png", width = 7, height = 5, units = c("in"), dpi = 600)
 
 #===============================================================================#
 # BAR CHART: MAX BUILDING HEIGHT
@@ -84,14 +85,15 @@ max_height <- tcrlus %>% select(contains("heightlimit")) %>%
 ggplot(max_height, aes(x = limit, y = ct, group = zone, fill = zone)) +
   geom_col(position = "dodge") +
   scale_x_continuous(breaks = seq(0, 50, 5)) +
-  scale_fill_discrete(labels = c("Multifamily", "Single-family")) +
+  scale_fill_manual(labels = c("Multifamily", "Single-family"),
+                    values = c("SF" = terner_gold, 'MF' = terner_blue)) +
   labs(title = "Most respondents restrict building heights to four stories or fewer",
        subtitle = "Adjusted building height limits",
        x = "Height limit", y = "Number of municipalities",
        caption = "Source: Terner Center Land Use Survey") +
   chart_theme(legend.title = element_blank(),
               legend.position = c(0.8, 0.9))
-# ggsave("plots/fig3_bld_hgt.png", width = 7, height = 5, units = c("in"))
+# ggsave("plots/fig3_bld_hgt.png", width = 7, height = 5, units = c("in"), dpi= 600)
 
 #===============================================================================#
 # HISTOGRAM: DU / ACRE
@@ -116,7 +118,7 @@ ggplot(density, aes(x = max_density)) +
        subtitle = "Maximum multifamily dwelling units per acre",
        source = "Terner Center Land Use Survey") +
   chart_theme(legend.title = element_blank())
-ggsave("plots/max_du_acre_histogram.png", width = 7, height = 5, units = c("in"))
+# ggsave("plots/max_du_acre_histogram.png", width = 7, height = 5, units = c("in"), dpi = 600)
 
 #===============================================================================#
 # BAR CHART: APPROVAL TIMES
@@ -136,14 +138,16 @@ approvals <- tcrlus %>% select(x5_units_units, apt_mfconsistent) %>%
 ggplot(approvals, aes(x = apt_mfconsistent, y = ct, group = permit_level,
                       fill = permit_level)) +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 10)) +
-  scale_fill_discrete(name = "Permits issued") +
+  scale_fill_manual(name = "Permits issued",
+                    values = c("Above median" = terner_gold,
+                               'Below median' = terner_blue),) +
   geom_col(position = "dodge") +
   labs(title = "Municipalities that didn't permit many units reported \nshorter approval times",
        subtitle = "Approval time for multifamily projects consistent with general zoning",
        x = "Approval time", y = "Number of municipalities",
        source = "Terner Center Land Use Survey") +
   chart_theme(legend.position = c(0.8, 0.8))
-ggsave("plots/fig4_approval_times.png", width = 7, height = 5, units = c("in"))
+# ggsave("plots/fig4_approval_times.png", width = 7, height = 5, units = c("in"), dpi = 600)
 
 #===============================================================================#
 # BAR CHART: APPLICATIONS
@@ -157,19 +161,33 @@ apps <- tcrlus %>% select(x5_units_units, apl_mf5to19) %>%
   select(-x5_units_units) %>% 
   group_by(apl_mf5to19, permit_level) %>% 
   summarize(ct = n()) %>% 
-  filter(!apl_mf5to19 %in% c("Missing"))
+  filter(!apl_mf5to19 %in% c("Missing")) %>% 
+  bind_rows(data.frame(apl_mf5to19 = c("Most months"),
+                             permit_level = c("Below median"),
+                             ct = c(0))) %>% 
+  mutate(order = case_when(
+    apl_mf5to19 == "Never" ~ 0,
+    apl_mf5to19 == "Once per year or less" ~ 1,
+    apl_mf5to19 == "Several times per year" ~ 2,
+    apl_mf5to19 == "Most months" ~ 3,
+    apl_mf5to19 == "Most weeks" ~ 4,
+  ))
 
-ggplot(apps, aes(x = apl_mf5to19, y = ct, group = permit_level,
-                      fill = permit_level)) +
+ggplot(apps, aes(x = reorder(apl_mf5to19, order),
+                 y = ct,
+                 group = permit_level,
+                 fill = permit_level)) +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 10)) +
-  scale_fill_discrete(name = "Permits issued") +
+  scale_fill_manual(name = "Permits issued",
+                    values = c("Above median" = terner_gold,
+                               'Below median' = terner_blue),) +
   geom_col(position = "dodge") +
   labs(title = "Municipalities that didn't permit many units reported \nless frequent applications",
        subtitle = "Frequency of approvals for multifamily projects between 5 and 19 units",
        x = "Application frequency", y = "Number of municipalities",
        source = "Terner Center Land Use Survey") +
   chart_theme(legend.position = c(0.8, 0.8))
-ggsave("plots/fig8_applications.png", width = 7, height = 5, units = c("in"))
+# ggsave("plots/fig8_applications.png", width = 7, height = 5, units = c("in"), dpi = 600)
 
 
 #===============================================================================#
@@ -209,10 +227,10 @@ ggplot(scatter_data, aes(x = rrent10, y = mf_new, color = metro_name)) +
         panel.grid.major = element_line(linetype = 'dotted', color = 'gray60'),
         panel.grid.minor = element_line(linetype = 'dotted', color = 'gray60')
         )
-ggsave('plots/fig4_small_multiples_v5.png', width = 8.5, height = 11)
+# ggsave('plots/fig4_small_multiples_v5.png', width = 8.5, height = 11)
 
 #===============================================================================#
-# PERMITS VS RENTS
+# SCATTER: PERMITS VS RENTS
 #===============================================================================#
 
 perm_rent_data <- data.table::fread("R/temp/metro_graph.txt") %>% 
@@ -226,4 +244,27 @@ ggplot(perm_rent_data,
        subtitle = "New multifamily growth in 100 largest metros",
        x = "Median rent", y = "MF permits/old housing") +
   chart_theme()
+# ggsave("plots/CA_metros_underbuild.png")
+
+#===============================================================================#
+# SCATTER: MAX UNITS PER ACRE VS PERMITS
+#===============================================================================#
+
+zoning_permits <- data.table::fread("R/temp/city_dense_graph.txt") 
+
+ggplot(zoning_permits, aes(x = mfdense, y = mf_new)) +
+  geom_point(color = terner_blue) +
+  geom_smooth(method = "lm", se = FALSE, color = terner_blue) +
+  labs(title = "Less restrictive zoning predicts more multifamily permits",
+       subtitle = "Maximum allowed multifamily units per acre v. new multifamily permits 
+in California municipalities",
+       x = "Maximum units per acre", y = "MF permits per 1,000 old housing units") +
+  chart_theme()
+ggsave("plots/restrictive_zoning_permits.png")
+
+
+
+
+
+
 
