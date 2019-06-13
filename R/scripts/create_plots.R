@@ -155,7 +155,7 @@ ggplot(approvals, aes(x = apt_mfconsistent, y = ct, group = permit_level,
                                'Below median' = terner_gold)) +
   geom_col(position = "dodge") +
   labs(title = "Reported approval times vary little by number of permits issued",
-       subtitle = "Approval time for multifamily projects consistent with general zoning",
+       subtitle = "Estimated time for multifamily projects consistent with general zoning",
        x = "Approval time", y = "Number of municipalities",
        caption = "Source: Terner Center Land Use Survey") +
   chart_theme(legend.position = c(0.8, 0.8))
@@ -195,13 +195,13 @@ ggplot(apps, aes(x = reorder(apl_mf5to19, order),
                     values = c("Above median" = terner_blue,
                                'Below median' = terner_gold)) +
   geom_col(position = "dodge") +
-  labs(title = "Municipalities that didn't permit many units reported fewer permit applications",
+  labs(title = "Municipalities that permitted few apartments reported fewer permit applications",
        subtitle = "Frequency of permit approvals for multifamily projects (5-19 units per building)",
        x = "Application frequency", y = "Number of municipalities",
        caption = "Source: Terner Center Land Use Survey") +
   chart_theme(legend.position = c(0.8, 0.8))
-# ggsave("final_plots/fig8_applications.png",
-#        width = 7, height = 5, units = c("in"), dpi = 600)
+ggsave("final_plots/fig8_applications.png",
+       width = 7, height = 5, units = c("in"), dpi = 600)
 
 
 #===============================================================================#
@@ -258,14 +258,18 @@ ggplot(perm_rent_data,
                      values = c("California metro" = terner_red,
                                 "Other large metro" = terner_blue)) +
   geom_smooth(method = "lm", color = terner_blue, se = FALSE) +
-  labs(title = "California metros underbuild multifamily units",
+  labs(title = "California metros underbuild multifamily housing",
        subtitle = "New multifamily housing and initial rent levels, 100 largest metropolitan areas",
        x = "Median rent ($)", y = "MF permits/old housing",
        caption = "Source: Median rent and housing count for 100 largest metros as of 2010 (Census 2010), total multifamily permits
 as of 2013-2017 from Census Bureau’s Residential Construction series") +
   chart_theme(legend.position = c(0.8, 0.85),
               legend.text = element_text(size = 11),
-              legend.key = element_rect(colour = "white", fill = NA))
+              legend.key = element_rect(colour = "white", fill = NA)) +
+  annotate(geom = "segment", x = 1145, xend = 1170, y = 3.8,
+           yend = 3.8, color = terner_blue) +
+  annotate(geom = "text", label = "Predicted multifamily",
+           x = 1302, y = 3.82, family = "Minion Pro")
 # ggsave("final_plots/fig1_CA_metros_underbuild.png",
 #        width = 7, height = 5, units = "in", dpi = 600)
 
