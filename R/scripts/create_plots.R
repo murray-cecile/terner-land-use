@@ -157,7 +157,8 @@ ggplot(approvals, aes(x = apt_mfconsistent, y = ct, group = permit_level,
   labs(title = "Reported approval times vary little by number of permits issued",
        subtitle = "Estimated time for multifamily projects consistent with general zoning",
        x = "Approval time", y = "Number of municipalities",
-       caption = "Source: Terner Center Land Use Survey") +
+       caption = "Source: Approval times from Terner Center Residential Land Use Survey. Permit data from 2012-2017 Census Residential
+  Construction Series") +
   chart_theme(legend.position = c(0.8, 0.8))
 # ggsave("final_plots/fig5_approval_times.png",
 #        width = 7, height = 5, units = c("in"), dpi = 600)
@@ -198,10 +199,11 @@ ggplot(apps, aes(x = reorder(apl_mf5to19, order),
   labs(title = "Municipalities that permitted few apartments reported fewer permit applications",
        subtitle = "Frequency of permit approvals for multifamily projects (5-19 units per building)",
        x = "Application frequency", y = "Number of municipalities",
-       caption = "Source: Terner Center Land Use Survey") +
+       caption = "Source: Application data from Terner Center Residential Land Use Survey. Permit data from 2012-2017 Census Residential
+  Construction Series.") +
   chart_theme(legend.position = c(0.8, 0.8))
-ggsave("final_plots/fig8_applications.png",
-       width = 7, height = 5, units = c("in"), dpi = 600)
+# ggsave("final_plots/fig8_applications.png",
+#        width = 7, height = 5, units = c("in"), dpi = 600)
 
 
 #===============================================================================#
@@ -244,6 +246,28 @@ ggplot(scatter_data, aes(x = rrent10, y = mf_new, color = metro_name)) +
 # ggsave('final_plots/fig7_small_multiples_v5.png',
 #        width = 8.5, height = 11, dpi = 600)
 
+# plot for APPAM slides
+scatter_data %>% 
+  filter(metro_name %in% c("Los Angeles (Metro)", "San Jose (Metro)")) %>% 
+  ggplot(aes(x = rrent10, y = mf_new, color = metro_name)) +
+  geom_point(color = terner_blue) +
+  geom_smooth(method = "lm", se = FALSE, color = terner_blue) +
+  facet_wrap(facets = vars(metro_name), 
+             nrow = 1,
+             ncol = 2) +
+  labs(title = 'Rents do not consistently predict apartment development in California',
+       subtitle = "New multifamily permits versus rents in California municipalities by metro area",
+       x = "Median gross rent, 2008-2012", y = "New multifamily permits per existing housing units, 2013-2017",
+       colour = "Metro Name",
+       caption = "Source: Median rent and housing count from ACS 2008-2012, total multifamily permits 2013-2017 from Census Bureau’s Residential Construction series") +
+  chart_theme(legend.position = "none",
+              strip.text = element_text(size = 14),
+              panel.background = element_blank(),
+              panel.grid.major = element_line(linetype = 'dotted', color = 'gray60'),
+              panel.grid.minor = element_line(linetype = 'dotted', color = 'gray60')
+  )
+
+
 #===============================================================================#
 # SCATTER: PERMITS VS RENTS
 #===============================================================================#
@@ -282,8 +306,8 @@ zoning_permits <- data.table::fread("R/temp/city_dense_graph.txt")
 ggplot(zoning_permits, aes(x = mfdense, y = mf_new)) +
   geom_point(color = terner_blue) +
   geom_smooth(method = "lm", se = FALSE, color = terner_blue) +
-  labs(title = "Less restrictive zoning predicts more multifamily permits",
-       subtitle = "Maximum allowed multifamily units per acre vs. new multifamily permits in CA municipalities",
+  labs(title = "Cities with less restrictive zoning build more apartments",
+       subtitle = "Multifamily permits and maximum density allowed by zoning in CA municipalities",
        x = "Maximum units per acre", y = "MF permits per 1,000 old housing units",
        caption = "Source: Vertical axis shows multifamily permits from 2013-2017 normalized by 2010 housing units.
 Permit data from Census Bureau’s New Residential Construction Series, housing unit counts from 2008-2012 ACS.

@@ -6,6 +6,8 @@ output:
     code_folding: hide
 fig_width: 10
 fig_height: 6
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, message=FALSE, warning=FALSE, error=FALSE}
@@ -154,14 +156,17 @@ ggplot(partitions) +
            fill = partitions$color_hex) +
   scale_y_continuous(labels = scales::percent) +
   facet_wrap(facets = vars(partition_N), scales = "free") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+  chart_theme(axis.text.x = element_blank(),
         panel.background = element_rect(fill = NA),
-        panel.grid.major = element_line(color = "gray85", linetype = "dotted"),
-        panel.grid.minor = element_line(color = "gray85", linetype = "dotted"),
         legend.position = "none",
-        axis.ticks = element_blank()) +
-  labs(title = paste0("Share of pixels of each color in ", CITY2, "\nexcluding white"),
-       x = "Color", y = "Pixel Share") 
+        axis.ticks = element_blank(),
+        text = element_text(size = 14)) +
+  labs(title = paste0("Share of pixels of each color in ", CITY2, ", excluding white,
+by number of color partitions"),
+       x = "Color", y = "Pixel Share",
+       caption = "Source: City of Simi Valley Zoning Districts map") 
+setwd(MAIN_DIR)
+# ggsave("final_plots/simi_valley_4partition.png", width = 7, height = 7, dpi = 600)
   
 ```
 
@@ -202,11 +207,13 @@ ggplot(top5) +
         panel.grid.minor = element_blank(),
         legend.position = "none",
         axis.ticks = element_blank(),
-        text = element_text(family = "Lucida Grande")) +
-  labs(title = "Simi Valley's zoning map doesn't match its response in TCRLUS",
-    subtitle = paste0("Share of pixels of each color in ", CITY2, " excluding white"),
-       x = "Color", y = "Pixel Share",
+        text = element_text(family = "Minion Pro")) +
+  labs(title = "Simi Valley's zoning map doesn't match its response in the land use survey",
+    subtitle = paste0("Share of pixels corresponding to each zone in ", CITY2, " excluding white"),
+       x = "Zone", y = "Pixel Share",
     caption = "Source: City of Simi Valley Zoning Districts map") 
 
-ggsave("R/plots/5bar_Simi_Valley.png")
+setwd(MAIN_DIR)
+# ggsave("final_plots/fig6_Simi_Valley.png",
+#        width = 7, height = 5, units = c("in"), dpi = 600)
 ```

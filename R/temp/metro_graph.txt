@@ -1,0 +1,355 @@
+cbsa	cbsa_name	medrent	ca	pnewmf
+10180	"Abilene, TX"	751	0	
+10420	"Akron, OH Metro Area"	702	0	.0745361
+10500	"Albany, GA"	715	0	
+10580	"Albany-Schenectady-Troy, NY Metro Area"	846	0	1.274899
+10740	"Albuquerque, NM Metro Area"	748	0	.3485697
+10780	"Alexandria, LA"	661	0	
+10900	"Allentown-Bethlehem-Easton, PA-NJ Metro Area"	848	0	.426654
+11020	"Altoona, PA"	586	0	
+11100	"Amarillo, TX"	682	0	
+11180	"Ames, IA"	686	0	
+11260	"Anchorage,* AK"	981	0	
+11460	"Ann Arbor, MI"	839	0	
+11500	"Anniston-Oxford-Jacksonville, AL"	607	0	
+11540	"Appleton, WI"	676	0	
+11700	"Asheville, NC"	730	0	
+12020	"Athens-Clarke County, GA"	749	0	
+12060	"Atlanta-Sandy Springs-Roswell, GA Metro Area"	910	0	1.908931
+12100	"Atlantic City-Hammonton,* NJ"	993	0	
+12220	"Auburn-Opelika,* AL"	696	0	
+12260	"Augusta-Richmond County, GA-SC Metro Area"	704	0	.7055442
+12420	"Austin-Round Rock, TX Metro Area"	919	0	5.190061
+12540	"Bakersfield, CA Metro Area"	821	1	.1770446
+12580	"Baltimore-Columbia-Towson, MD Metro Area"	1048	0	.9657444
+12620	"Bangor, ME"	662	0	
+12700	"Barnstable Town, MA"	1104	0	
+12940	"Baton Rouge, LA Metro Area"	756	0	.116177
+12980	"Battle Creek, MI"	624	0	
+13020	"Bay City, MI"	556	0	
+13140	"Beaumont-Port Arthur, TX"	717	0	
+13380	"Bellingham, WA"	826	0	
+13460	"Bend-Redmond,* OR"	870	0	
+13740	"Billings, MT"	671	0	
+13780	"Binghamton, NY"	652	0	
+13820	"Birmingham-Hoover, AL Metro Area"	749	0	.5652617
+13900	"Bismarck, ND"	575	0	
+13980	"Blacksburg-Christiansburg-Radford,"	750	0	
+14020	"Bloomington, IN"	669	0	
+14260	"Boise City, ID Metro Area"	743	0	1.837011
+14460	"Boston-Cambridge-Newton, MA-NH Metro Area"	1141	0	1.706368
+14500	"Boulder, CO"	996	0	
+14540	"Bowling Green, KY"	622	0	
+14740	"Bremerton-Silverdale, WA"	936	0	
+14860	"Bridgeport-Stamford-Norwalk, CT Metro Area"	1233	0	1.265238
+15180	"Brownsville-Harlingen, TX"	632	0	
+15260	"Brunswick, GA"	733	0	
+15380	"Buffalo-Cheektowaga-Niagara Falls, NY Metro Area"	672	0	.5863679
+15500	"Burlington, NC"	663	0	
+15540	"Burlington-South Burlington, VT"	904	0	
+15940	"Canton-Massillon, OH"	635	0	
+15980	"Cape Coral-Fort Myers, FL Metro Area"	873	0	1.685325
+16020	"Cape Girardeau, MO-IL"	658	0	
+16180	"Carson City,* NV"	851	0	
+16220	"Casper, WY"	760	0	
+16300	"Cedar Rapids, IA"	659	0	
+16580	"Champaign-Urbana, IL"	742	0	
+16620	"Charleston, WV"	604	0	
+16700	"Charleston-North Charleston, SC Metro Area"	890	0	2.888672
+16740	"Charlotte-Concord-Gastonia, NC-SC Metro Area"	787	0	3.765867
+16820	"Charlottesville, VA"	1043	0	
+16860	"Chattanooga, TN-GA Metro Area"	688	0	1.266023
+16940	"Cheyenne, WY"	642	0	
+16980	"Chicago-Naperville-Elgin, IL-IN-WI Metro Area"	913	0	1.013024
+17020	"Chico, CA"	862	1	
+17140	"Cincinnati, OH-KY-IN Metro Area"	710	0	.6975982
+17300	"Clarksville, TN-KY"	740	0	
+17420	"Cleveland, TN"	701	0	
+17460	"Cleveland-Elyria, OH Metro Area"	714	0	.1535889
+17660	"Coeur dAlene, ID"	753	0	
+17780	"College Station-Bryan, TX"	795	0	
+17820	"Colorado Springs, CO Metro Area"	807	0	1.612989
+17860	"Columbia,* MO"	726	0	
+17900	"Columbia, SC Metro Area"	763	0	.8792732
+17980	"Columbus, GA-AL"	756	0	
+18020	"Columbus, IN"	751	0	
+18140	"Columbus, OH Metro Area"	758	0	1.954151
+18580	"Corpus Christi, TX"	794	0	
+18700	"Corvallis, OR"	730	0	
+18880	"Crestview-Fort Walton Beach-Destin,"	991	0	
+19060	"Cumberland, MD-WV"	591	0	
+19100	"Dallas-Fort Worth-Arlington, TX Metro Area"	855	0	3.949531
+19140	"Dalton,* GA"	689	0	
+19180	"Danville, IL"	608	0	
+19340	"Davenport-Moline-Rock Island,* IA-IL"	636	0	
+19380	"Dayton, OH Metro Area"	705	0	.1482316
+19460	"Decatur, AL"	586	0	
+19500	"Decatur, IL"	618	0	
+19660	"Deltona-Daytona Beach-Ormond Beach, FL Metro Area"	876	0	.2918077
+19740	"Denver-Aurora-Lakewood, CO Metro Area"	879	0	3.577629
+19780	"Des Moines-West Des Moines, IA Metro Area"	718	0	3.722042
+19820	"Detroit-Warren-Dearborn, MI Metro Area"	793	0	.4051543
+20020	"Dothan, AL"	610	0	
+20100	"Dover,* DE"	959	0	
+20220	"Dubuque, IA"	629	0	
+20260	"Duluth, MN-WI"	630	0	
+20500	"Durham-Chapel Hill,* NC"	787	0	
+20740	"Eau Claire, WI"	614	0	
+20940	"El Centro, CA"	733	1	
+21060	"Elizabethtown-Fort Knox, KY"	646	0	
+21140	"Elkhart-Goshen, IN"	669	0	
+21300	"Elmira, NY"	624	0	
+21340	"El Paso, TX Metro Area"	666	0	1.387879
+21500	"Erie, PA"	626	0	
+21660	"Eugene, OR"	773	0	
+21780	"Evansville, IN-KY"	646	0	
+21820	"Fairbanks,* AK"	1124	0	
+22020	"Fargo, ND-MN"	616	0	
+22140	"Farmington,* NM"	742	0	
+22180	"Fayetteville, NC"	823	0	
+22220	"Fayetteville-Springdale-Rogers,"	675	0	
+22380	"Flagstaff, AZ"	958	0	
+22420	"Flint, MI"	681	0	
+22500	"Florence, SC"	600	0	
+22520	"Florence-Muscle Shoals, AL"	595	0	
+22540	"Fond du Lac, WI"	638	0	
+22660	"Fort Collins,* CO"	894	0	
+22900	"Fort Smith, AR-OK"	589	0	
+23060	"Fort Wayne,* IN"	610	0	
+23420	"Fresno, CA Metro Area"	825	1	.5775956
+23460	"Gadsden, AL"	609	0	
+23540	"Gainesville, FL"	883	0	
+23580	"Gainesville, GA"	806	0	
+24020	"Glens Falls, NY"	764	0	
+24140	"Goldsboro, NC"	621	0	
+24220	"Grand Forks, ND-MN"	639	0	
+24300	"Grand Junction,* CO"	834	0	
+24340	"Grand Rapids-Wyoming, MI Metro Area"	698	0	1.761323
+24500	"Great Falls, MT"	582	0	
+24540	"Greeley,* CO"	725	0	
+24580	"Green Bay, WI"	659	0	
+24660	"Greensboro-High Point, NC Metro Area"	680	0	1.180767
+24780	"Greenville, NC"	680	0	
+24860	"Greenville-Anderson-Mauldin, SC Metro Area"	692	0	1.976336
+25060	"Gulfport-Biloxi-Pascagoula, MS"	822	0	
+25180	"Hagerstown-Martinsburg, MD-WV"	710	0	
+25260	"Hanford-Corcoran, CA"	824	1	
+25420	"Harrisburg-Carlisle, PA Metro Area"	788	0	.5820732
+25500	"Harrisonburg,* VA"	738	0	
+25540	"Hartford-West Hartford-East Hartford, CT Metro Area"	919	0	.6102021
+25620	"Hattiesburg, MS"	701	0	
+25860	"Hickory-Lenoir-Morganton, NC"	623	0	
+25980	"Hinesville, GA"	890	0	
+26180	"Urban Honolulu, HI Metro Area"	1363	0	1.57078
+26300	"Hot Springs, AR"	682	0	
+26380	"Houma-Thibodaux, LA"	685	0	
+26420	"Houston-The Woodlands-Sugar Land, TX Metro Area"	846	0	2.575348
+26580	"Huntington-Ashland, WV-KY-OH"	570	0	
+26620	"Huntsville, AL"	689	0	
+26820	"Idaho Falls, ID"	647	0	
+26900	"Indianapolis-Carmel-Anderson, IN Metro Area"	746	0	1.305501
+26980	"Iowa City, IA"	807	0	
+27060	"Ithaca, NY"	890	0	
+27100	"Jackson, MI"	658	0	
+27140	"Jackson, MS Metro Area"	779	0	.0179537
+27180	"Jackson, TN"	701	0	
+27260	"Jacksonville, FL Metro Area"	908	0	1.597931
+27340	"Jacksonville, NC"	938	0	
+27500	"Janesville-Beloit, WI"	698	0	
+27620	"Jefferson City, MO"	590	0	
+27740	"Johnson City, TN"	596	0	
+27780	"Johnstown, PA"	550	0	
+27860	"Jonesboro, AR"	597	0	
+27900	"Joplin, MO"	592	0	
+28020	"Kalamazoo-Portage, MI"	683	0	
+28100	"Kankakee, IL"	707	0	
+28140	"Kansas City, MO-KS Metro Area"	766	0	1.723843
+28420	"Kennewick-Richland, WA"	717	0	
+28660	"Killeen-Temple, TX"	810	0	
+28700	"Kingsport-Bristol-Bristol, TN-VA"	553	0	
+28740	"Kingston, NY"	979	0	
+28940	"Knoxville, TN Metro Area"	690	0	1.063343
+29020	"Kokomo, IN"	604	0	
+29100	"La Crosse-Onalaska, WI-MN"	660	0	
+29180	"Lafayette, LA"	687	0	
+29340	"Lake Charles, LA"	726	0	
+29420	"Lake Havasu City-Kingman, AZ"	762	0	
+29460	"Lakeland-Winter Haven, FL Metro Area"	828	0	.4166696
+29540	"Lancaster, PA"	822	0	
+29620	"Lansing-East Lansing, MI"	760	0	
+29700	"Laredo,* TX"	677	0	
+29740	"Las Cruces,* NM"	641	0	
+29820	"Las Vegas-Henderson-Paradise, NV Metro Area"	986	0	1.738337
+29940	"Lawrence, KS"	820	0	
+30020	"Lawton, OK"	663	0	
+30140	"Lebanon, PA"	692	0	
+30300	"Lewiston, ID-WA"	636	0	
+30340	"Lewiston-Auburn, ME"	640	0	
+30460	"Lexington-Fayette, KY"	696	0	
+30620	"Lima, OH"	642	0	
+30700	"Lincoln, NE"	685	0	
+30780	"Little Rock-North Little Rock-Conway, AR Metro Area"	731	0	1.069955
+30860	"Logan, UT-ID"	581	0	
+30980	"Longview, TX"	726	0	
+31020	"Longview, WA"	691	0	
+31100	"Los Angeles-Long Beach-Anaheim, CA Metro Area"	1196	1	1.823964
+31140	"Louisville/Jefferson County, KY-IN Metro Area"	671	0	1.228866
+31180	"Lubbock, TX"	757	0	
+31340	"Lynchburg, VA"	679	0	
+31420	"Macon, GA"	684	0	
+31460	"Madera, CA"	877	1	
+31540	"Madison, WI Metro Area"	824	0	4.105107
+31700	"Manchester-Nashua, NH"	1019	0	
+31740	"Manhattan, KS"	811	0	
+31860	"Mankato-North Mankato, MN"	721	0	
+31900	"Mansfield, OH"	573	0	
+32580	"McAllen-Edinburg-Mission, TX Metro Area"	608	0	1.208889
+32780	"Medford, OR"	818	0	
+32820	"Memphis, TN-MS-AR Metro Area"	793	0	.7036338
+32900	"Merced, CA"	807	1	
+33100	"Miami-Fort Lauderdale-West Palm Beach, FL Metro Area"	1063	0	2.023124
+33140	"Michigan City-La Porte, IN"	667	0	
+33260	"Midland,* TX"	848	0	
+33340	"Milwaukee-Waukesha-West Allis, WI Metro Area"	764	0	1.025833
+33460	"Minneapolis-St. Paul-Bloomington, MN-WI Metro Area"	845	0	1.591406
+33540	"Missoula,* MT"	744	0	
+33660	"Mobile, AL"	695	0	
+33700	"Modesto, CA"	978	1	
+33740	"Monroe, LA"	657	0	
+33780	"Monroe, MI"	757	0	
+33860	"Montgomery, AL"	781	0	
+34060	"Morgantown, WV"	683	0	
+34100	"Morristown, TN"	600	0	
+34580	"Mount Vernon-Anacortes, WA"	897	0	
+34620	"Muncie, IN"	638	0	
+34740	"Muskegon, MI"	649	0	
+34820	"Myrtle Beach-Conway-North Myrtle Beac"	780	0	
+34900	"Napa, CA"	1186	1	
+34940	"Naples-Immokalee-Marco Island,* FL"	942	0	
+34980	"Nashville-Davidson--Murfreesboro--Franklin, TN Metro Area"	783	0	3.961909
+35300	"New Haven-Milford, CT Metro Area"	1015	0	.569943
+35380	"New Orleans-Metairie, LA Metro Area"	884	0	.215132
+35620	"New York-Newark-Jersey City, NY-NJ-PA Metro Area"	1150	0	2.303688
+35660	"Niles-Benton Harbor, MI"	586	0	
+35840	"North Port-Sarasota-Bradenton, FL Metro Area"	913	0	1.745477
+35980	"Norwich-New London, CT"	955	0	
+36100	"Ocala,* FL"	821	0	
+36140	"Ocean City,* NJ"	1007	0	
+36220	"Odessa,* TX"	638	0	
+36260	"Ogden-Clearfield, UT Metro Area"	784	0	1.566421
+36420	"Oklahoma City, OK Metro Area"	713	0	.6538484
+36500	"Olympia-Tumwater, WA"	934	0	
+36540	"Omaha-Council Bluffs, NE-IA Metro Area"	753	0	1.583001
+36740	"Orlando-Kissimmee-Sanford, FL Metro Area"	976	0	2.885489
+36780	"Oshkosh-Neenah, WI"	620	0	
+36980	"Owensboro, KY"	561	0	
+37100	"Oxnard-Thousand Oaks-Ventura, CA Metro Area"	1381	1	1.271651
+37340	"Palm Bay-Melbourne-Titusville, FL Metro Area"	873	0	.6122789
+37460	"Panama City, FL"	919	0	
+37620	"Parkersburg-Vienna, WV"	570	0	
+37860	"Pensacola-Ferry Pass-Brent,* FL"	825	0	
+37900	"Peoria, IL"	658	0	
+37980	"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD Metro Area"	945	0	.8867855
+38060	"Phoenix-Mesa-Scottsdale, AZ Metro Area"	883	0	1.768612
+38220	"Pine Bluff, AR"	615	0	
+38300	"Pittsburgh, PA Metro Area"	656	0	.4545566
+38340	"Pittsfield, MA"	730	0	
+38540	"Pocatello, ID"	575	0	
+38860	"Portland-South Portland, ME"	833	0	
+38900	"Portland-Vancouver-Hillsboro, OR-WA Metro Area"	867	0	3.222967
+38940	"Port St. Lucie,* FL"	908	0	
+39140	"Prescott, AZ"	782	0	
+39300	"Providence-Warwick, RI-MA Metro Area"	831	0	.1792673
+39340	"Provo-Orem, UT Metro Area"	797	0	4.03996
+39380	"Pueblo,* CO"	642	0	
+39460	"Punta Gorda,* FL"	931	0	
+39540	"Racine, WI"	719	0	
+39580	"Raleigh, NC Metro Area"	851	0	3.140528
+39660	"Rapid City, SD"	739	0	
+39740	"Reading, PA"	785	0	
+39820	"Redding, CA"	885	1	
+39900	"Reno,* NV"	873	0	
+40060	"Richmond, VA Metro Area"	903	0	.9928266
+40140	"Riverside-San Bernardino-Ontario, CA Metro Area"	1078	1	.6485898
+40220	"Roanoke, VA"	704	0	
+40340	"Rochester, MN"	715	0	
+40380	"Rochester, NY Metro Area"	735	0	.5820985
+40420	"Rockford, IL"	691	0	
+40580	"Rocky Mount, NC"	706	0	
+40660	"Rome, GA"	703	0	
+40900	"Sacramento--Roseville--Arden-Arcade, CA Metro Area"	1005	1	.5575901
+40980	"Saginaw, MI"	686	0	
+41060	"St. Cloud, MN"	658	0	
+41100	"St. George, UT"	851	0	
+41140	"St. Joseph, MO-KS"	579	0	
+41180	"St. Louis, MO-IL Metro Area"	734	0	.6915041
+41420	"Salem, OR"	763	0	
+41500	"Salinas, CA"	1157	1	
+41540	"Salisbury, MD-DE"	882	0	
+41620	"Salt Lake City, UT Metro Area"	835	0	2.731806
+41660	"San Angelo,* TX"	627	0	
+41700	"San Antonio-New Braunfels, TX Metro Area"	788	0	1.80051
+41740	"San Diego-Carlsbad, CA Metro Area"	1249	1	2.072971
+41860	"San Francisco-Oakland-Hayward, CA Metro Area"	1314	1	2.061963
+41940	"San Jose-Sunnyvale-Santa Clara, CA Metro Area"	1412	1	3.32266
+42020	"San Luis Obispo-Paso Robles-Arroyo Gr"	1137	0	
+42100	"Santa Cruz-Watsonville, CA"	1284	1	
+42140	"Santa Fe,* NM"	829	0	
+42220	"Santa Rosa, CA"	1204	1	
+42340	"Savannah, GA"	873	0	
+42540	"Scranton--Wilkes-Barre--Hazleton, PA Metro Area"	632	0	.1403522
+42660	"Seattle-Tacoma-Bellevue, WA Metro Area"	1017	0	4.031304
+42680	"Sebastian-Vero Beach,* FL"	877	0	
+43100	"Sheboygan, WI"	633	0	
+43300	"Sherman-Denison, TX"	766	0	
+43340	"Shreveport-Bossier City, LA"	691	0	
+43580	"Sioux City, IA-NE-SD"	586	0	
+43620	"Sioux Falls, SD"	653	0	
+43780	"South Bend-Mishawaka, IN-MI"	670	0	
+43900	"Spartanburg, SC"	639	0	
+44060	"Spokane-Spokane Valley, WA Metro Area"	718	0	2.655341
+44100	"Springfield, IL"	664	0	
+44140	"Springfield, MA Metro Area"	780	0	.0558018
+44180	"Springfield, MO"	638	0	
+44220	"Springfield, OH"	641	0	
+44300	"State College, PA"	826	0	
+44700	"Stockton-Lodi, CA Metro Area"	995	1	.6426565
+44940	"Sumter,* SC"	680	0	
+45060	"Syracuse, NY Metro Area"	704	0	.8057343
+45220	"Tallahassee, FL"	894	0	
+45300	"Tampa-St. Petersburg-Clearwater, FL Metro Area"	900	0	1.693458
+45460	"Terre Haute, IN"	615	0	
+45500	"Texarkana, TX-AR"	670	0	
+45780	"Toledo, OH Metro Area"	645	0	.2349966
+45820	"Topeka, KS"	649	0	
+45940	"Trenton,* NJ"	1082	0	
+46060	"Tucson, AZ Metro Area"	768	0	.6134928
+46140	"Tulsa, OK Metro Area"	688	0	.7560534
+46220	"Tuscaloosa, AL"	738	0	
+46340	"Tyler, TX"	798	0	
+46540	"Utica-Rome, NY"	653	0	
+46660	"Valdosta, GA"	730	0	
+46700	"Vallejo-Fairfield, CA"	1201	1	
+47020	"Victoria,* TX"	660	0	
+47220	"Vineland-Bridgeton,* NJ"	903	0	
+47260	"Virginia Beach-Norfolk-Newport News, VA-NC Metro Area"	1022	0	1.162935
+47300	"Visalia-Porterville, CA"	798	1	
+47380	"Waco, TX"	743	0	
+47580	"Warner Robins, GA"	806	0	
+47900	"Washington-Arlington-Alexandria, DC-VA-MD-WV Metro Area"	1351	0	2.1441
+47940	"Waterloo-Cedar Falls, IA"	622	0	
+48140	"Wausau, WI"	629	0	
+48300	"Wenatchee, WA"	714	0	
+48540	"Wheeling, WV-OH"	500	0	
+48620	"Wichita, KS Metro Area"	654	0	.6948935
+48660	"Wichita Falls, TX"	667	0	
+48700	"Williamsport, PA"	602	0	
+48900	"Wilmington,* NC"	842	0	
+49020	"Winchester, VA-WV"	804	0	
+49180	"Winston-Salem, NC Metro Area"	666	0	1.128869
+49340	"Worcester, MA-CT Metro Area"	867	0	.2865768
+49420	"Yakima, WA"	718	0	
+49620	"York-Hanover, PA"	796	0	
+49660	"Youngstown-Warren-Boardman, OH-PA Metro Area"	588	0	.0581539
+49700	"Yuba City, CA"	795	1	
+49740	"Yuma, AZ"	781	0	

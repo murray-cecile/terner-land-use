@@ -1,0 +1,231 @@
+city	mf_new	mfdense
+"Alameda"	5.687614	22
+"Albany"	22.18279	20
+"American Canyon"	1.996008	20
+"Anaheim"	38.90386	36
+"Anderson"	11.16124	10
+"Antioch"	2.439234	20
+"Apple Valley"	0	20
+"Arcadia"	38.04506	12
+"Arcata"	13.72701	15
+"Arroyo Grande"	5.374935	9
+"Atascadero"	14.8631	24
+"Avalon"	0	40
+"Bakersfield"	6.195643	17.42
+"Baldwin Park"	0	20.7
+"Beaumont"	2.943227	22
+"Bell"	7.052186	18.9
+"Bellflower"	1.124633	14
+"Belmont"	6.527652	36
+"Benicia"	0	11
+"Beverly Hills"	4.330853	50
+"Bishop"	0	20
+"Blythe"	0	29
+"Brentwood"	0	30
+"Brisbane"	0	29
+"Buena Park"	3.330085	20
+"Calistoga"	12.93661	20
+"Camarillo"	39.2439	30
+"Carlsbad"	16.65435	30
+"Carson"	2.249676	25
+"Chico"	29.52767	22
+"Chino"	50.05276	12
+"Chula Vista"	35.33293	32
+"Citrus Heights"	0	30
+"Cloverdale"	0	20
+"Coachella"	14.94497	30
+"Colma"	0	30
+"Colton"	13.51682	22
+"Concord"	3.819629	100
+"Corona"	27.32437	37
+"Costa Mesa"	14.76006	20
+"Covina"	0	20
+"Culver City"	7.661083	29
+"Cupertino"	10.54381	35
+"Cypress"	0	20
+"Daly City"	8.46444	50
+"Danville"	1.004142	25
+"Davis"	6.06904	60
+"Del Mar"	0	17.6
+"Desert Hot Springs"	0	8
+"Dinuba"	7.498296	21.78
+"Dixon"	28.26684	29
+"Downey"	.1685346	17
+"Duarte"	5.927764	28
+"El Cajon"	0	20
+"El Centro"	5.802708	25
+"Elk Grove"	0	30
+"El Monte"	6.708177	14
+"Paso Robles"	26.25591	20
+"Emeryville"	106.6807	100
+"Encinitas"	0	11
+"Escondido"	12.79997	30
+"Eureka"	4.204861	30
+"Fairfield"	9.385757	22
+"Fillmore"	0	11
+"Firebaugh"	0	29
+"Fontana"	4.570261	24
+"Fountain Valley"	.6263375	30
+"Fullerton"	18.3835	15
+"Galt"	0	14
+"Garden Grove"	6.286541	24
+"Gilroy"	67.18729	30
+"Glendale"	45.19707	43
+"Gonzales"	0	24
+"Grass Valley"	10.84828	20
+"Grover Beach"	0	20
+"Half Moon Bay"	54.15245	29
+"Hayward"	7.840622	34.8
+"Healdsburg"	12.93283	20
+"Hesperia"	3.309888	15
+"Imperial"	0	30
+"Imperial Beach"	8.702692	21
+"Indian Wells"	0	12
+"Irvine"	134.4272	31
+"Jackson"	0	22
+"Kerman"	0	18.9
+"La Canada Flintridge"	0	30
+"Laguna Beach"	0	22
+"Laguna Hills"	26.29903	50
+"La Habra"	16.6048	9
+"Lakewood"	1.237714	30
+"La Mesa"	13.26098	23
+"Lancaster"	3.00955	15
+"La Palma"	0	25
+"La Quinta"	5.619652	16
+"Lathrop"	0	30
+"Lindsay"	15.03288	14
+"Livermore"	8.422992	18
+"Livingston"	14.75459	29
+"Loma Linda"	16.58203	25
+"Lomita"	1.545411	43.6
+"Long Beach"	10.81053	44
+"Los Angeles"	37.22432	54
+"Los Banos"	9.582417	30
+"Los Gatos"	3.828777	20
+"Mammoth Lakes"	0	12
+"Manhattan Beach"	0	40
+"Manteca"	6.475286	25
+"Marina"	24.44444	15
+"Menifee"	2.642968	24
+"Merced"	.2186111	36
+"Millbrae"	0	3
+"Mill Valley"	0	29
+"Milpitas"	123.1445	90
+"Mission Viejo"	7.450041	14
+"Modesto"	1.930706	29
+"Monrovia"	0	17
+"Montclair"	13.52033	30
+"Monterey"	3.758567	30
+"Monte Sereno"	0	3
+"Moorpark"	0	20
+"Moreno Valley"	2.159866	15
+"Mount Shasta"	4.749341	20
+"Napa"	5.741024	40
+"National City"	27.26405	23
+"Newark"	32.50335	60
+"Norwalk"	.1780437	30
+"Oakley"	0	16.7
+"Ontario"	36.69203	25
+"Pacifica"	0	21
+"Pacific Grove"	3.06035	40
+"Palm Desert"	10.89742	40
+"Palm Springs"	.5173306	15
+"Palo Alto"	7.690127	15
+"Paramount"	0	22
+"Pasadena"	28.31187	32
+"Pico Rivera"	0	30
+"Pinole"	0	50
+"Pittsburg"	17.13528	14.52
+"Placentia"	1.178203	25
+"Pleasanton"	83.59869	10
+"Plymouth"	0	16
+"Port Hueneme"	6.149305	25
+"Rancho Cordova"	14.15686	40
+"Rancho Cucamonga"	6.535024	24
+"Rancho Palos Verdes"	0	6
+"Red Bluff"	0	20
+"Redondo Beach"	.3920416	14.6
+"Redwood City"	58.90218	60
+"Reedley"	15.72739	29
+"Richmond"	3.22425	40
+"Ridgecrest"	0	14
+"Riverside"	10.8996	29
+"Rohnert Park"	19.0925	30
+"Rolling Hills Estates"	0	8
+"Rosemead"	6.146572	30
+"Sacramento"	12.05797	30
+"Saint Helena"	0	16
+"San Anselmo"	0	20
+"San Bernardino"	1.024418	12
+"San Bruno"	6.837718	60
+"San Diego"	40.30944	73
+"San Gabriel"	5.288208	25
+"Sanger"	6.756757	17
+"San Jacinto"	0	10
+"San Juan Capistrano"	0	30
+"San Leandro"	6.169222	14.5
+"San Luis Obispo"	4.324797	24
+"San Pablo"	0	60
+"San Rafael"	.6247137	32
+"San Ramon"	5.735041	14
+"Santa Ana"	10.57988	90
+"Santa Barbara"	9.492332	63
+"Santa Clara"	87.43908	50
+"Santa Clarita"	2.288293	11
+"Santa Cruz"	6.133128	30
+"Santa Fe Springs"	30.1447	21.8
+"Santa Maria"	26.11861	22
+"Santa Paula"	.6857927	29
+"Santa Rosa"	9.837379	18
+"Seaside"	0	25
+"Sebastopol"	0	25
+"Shasta Lake"	0	20
+"Sierra Madre"	0	13
+"Simi Valley"	2.917166	20
+"Solana Beach"	0	12
+"Soledad"	0	20
+"South El Monte"	0	16
+"South San Francisco"	17.83258	35
+"Stanton"	0	18
+"Stockton"	5.038289	29
+"Susanville"	0	20
+"Temple City"	0	30
+"Torrance"	.1027802	60
+"Truckee"	0	24
+"Turlock"	0	30
+"Tustin"	31.58173	25
+"Twentynine Palms"	0	8
+"Union City"	11.42992	17
+"Victorville"	0	11.5
+"Visalia"	3.484557	15
+"Vista"	38.24308	21
+"Walnut Creek"	17.65552	43.5
+"Watsonville"	15.40209	13.99
+"Weed"	0	18
+"West Covina"	0	54
+"West Hollywood"	68.12266	50
+"Westlake Village"	0	25
+"Westminster"	0	24
+"West Sacramento"	26.28339	50
+"Whittier"	8.07678	35
+"Woodland"	6.563668	19.9
+"Yorba Linda"	3.100984	10
+"Yreka"	0	1
+"Yuba City"	0	36
+"Yucaipa"	0	8.7
+"Alpine County Unincorporated"	0	15
+"Calaveras County Unincorporated"	0	12
+"Glenn County Unincorporated"	0	40
+"Los Angeles County Unincorporated"	46.96101	30
+"Marin County Unincorporated"	0	45
+"San Bernardino County Unincorporated"	13.57911	20
+"San Luis Obispo County Unincorporated"	15.4325	38
+"San Mateo County Unincorporated"	9.337069	60
+"Santa Barbara County Unincorporated"	23.4366	12
+"Shasta County Unincorporated"	0	25
+"Sonoma County Unincorporated"	2.915806	40
+"Tehama County Unincorporated"	0	16
+"Tulare County Unincorporated"	2.93203	30
+"Yolo County Unincorporated"	2.904163	20
+"Yuba County Unincorporated"	9.455437	30
